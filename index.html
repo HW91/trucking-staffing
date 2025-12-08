@@ -1724,6 +1724,111 @@
         .language-option.active .lang-check {
             opacity: 1;
         }
+
+        /* Card Title Header with Language Selector */
+        .card-title-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-title-header .card-title {
+            margin-bottom: 0;
+        }
+
+        .candidate-lang-selector {
+            margin-left: auto;
+        }
+
+        .lang-text {
+            font-size: 13px;
+        }
+
+        /* Interview Stats Tracker */
+        .interview-stats-tracker {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--mve-gold);
+            transform: translateY(-2px);
+        }
+
+        .stat-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            background: var(--input-bg);
+        }
+
+        .stat-icon.completed {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+        }
+
+        .stat-icon.pending {
+            background: rgba(212, 160, 25, 0.15);
+            color: var(--mve-gold-light);
+        }
+
+        .stat-icon.offers {
+            background: rgba(65, 105, 225, 0.15);
+            color: var(--mve-blue-accent);
+        }
+
+        .stat-icon.hired {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+        }
+
+        .stat-info {
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.1;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 1200px) {
+            .interview-stats-tracker {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .interview-stats-tracker {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
@@ -1750,18 +1855,18 @@
                 <div class="language-selector" id="languageSelector">
                     <button class="language-btn" onclick="toggleLanguageDropdown()">
                         <span class="lang-flag" id="currentLangFlag">🇺🇸</span>
-                        <span class="lang-code" id="currentLangCode">EN</span>
+                        <span class="lang-text" id="currentLangText">English</span>
                         <span class="lang-arrow">▼</span>
                     </button>
                     <div class="language-dropdown">
-                        <div class="language-option active" data-lang="en" data-flag="🇺🇸" onclick="setLanguage('en', '🇺🇸', 'EN')">
+                        <div class="language-option active" data-lang="en" data-flag="🇺🇸" onclick="setLanguage('en', '🇺🇸', 'English')">
                             <span class="lang-flag">🇺🇸</span>
                             <span class="lang-name">English</span>
                             <span class="lang-check">✓</span>
                         </div>
-                        <div class="language-option" data-lang="es" data-flag="🇪🇸" onclick="setLanguage('es', '🇪🇸', 'ES')">
+                        <div class="language-option" data-lang="es" data-flag="🇪🇸" onclick="setLanguage('es', '🇪🇸', 'Spanish')">
                             <span class="lang-flag">🇪🇸</span>
-                            <span class="lang-name">Español</span>
+                            <span class="lang-name">Spanish</span>
                             <span class="lang-check">✓</span>
                         </div>
                     </div>
@@ -1777,7 +1882,7 @@
             <div class="tab active" data-tab="vacancy">Vacancy Cost</div>
             <div class="tab" data-tab="interviews">Interviews</div>
             <div class="tab" data-tab="onboarding">Onboarding</div>
-            <div class="tab" data-tab="candidate-link">Candidate Link</div>
+            <div class="tab" data-tab="candidate-link">Candidate Dashboard</div>
         </div>
 
         <!-- Tab 1: Vacancy Cost Tracker -->
@@ -1888,6 +1993,44 @@
                         </div>
                     </div>
                     <div class="candidate-details">
+                        <!-- Interview Stats Tracker -->
+                        <div class="interview-stats-tracker">
+                            <div class="stat-card">
+                                <div class="stat-icon">👥</div>
+                                <div class="stat-info">
+                                    <div class="stat-value">47</div>
+                                    <div class="stat-label">Total Candidates</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon completed">✓</div>
+                                <div class="stat-info">
+                                    <div class="stat-value">28</div>
+                                    <div class="stat-label">Interviewed</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon pending">⏳</div>
+                                <div class="stat-info">
+                                    <div class="stat-value">12</div>
+                                    <div class="stat-label">Incomplete</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon offers">📄</div>
+                                <div class="stat-info">
+                                    <div class="stat-value">8</div>
+                                    <div class="stat-label">Offers Sent</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon hired">🎉</div>
+                                <div class="stat-info">
+                                    <div class="stat-value">5</div>
+                                    <div class="stat-label">Hired</div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="video-player">
                             <div class="play-button"></div>
                             <div class="video-controls">
@@ -2103,7 +2246,28 @@
         <!-- Tab 4: Candidate Link View -->
         <div class="tab-content" id="candidate-link">
             <div class="card">
-                <div class="card-title">Candidate Portal - Your Application Journey</div>
+                <div class="card-title-header">
+                    <div class="card-title">Candidate Dashboard</div>
+                    <div class="language-selector candidate-lang-selector" id="candidateLangSelector">
+                        <button class="language-btn" onclick="toggleCandidateLanguageDropdown()">
+                            <span class="lang-flag" id="candidateLangFlag">🇺🇸</span>
+                            <span class="lang-text" id="candidateLangText">English</span>
+                            <span class="lang-arrow">▼</span>
+                        </button>
+                        <div class="language-dropdown">
+                            <div class="language-option active" data-lang="en" onclick="setCandidateLanguage('en', '🇺🇸', 'English')">
+                                <span class="lang-flag">🇺🇸</span>
+                                <span class="lang-name">English</span>
+                                <span class="lang-check">✓</span>
+                            </div>
+                            <div class="language-option" data-lang="es" onclick="setCandidateLanguage('es', '🇪🇸', 'Spanish')">
+                                <span class="lang-flag">🇪🇸</span>
+                                <span class="lang-name">Spanish</span>
+                                <span class="lang-check">✓</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="candidate-journey">
                     <div class="progress-tracker">
                         <div class="progress-line">
@@ -2604,45 +2768,87 @@
             localStorage.setItem('mve-theme', newTheme);
         });
 
-        // Language Selector
+        // Language Selector (Header)
         function toggleLanguageDropdown() {
-            const dropdown = document.querySelector('.language-dropdown');
-            dropdown.classList.toggle('show');
+            const selector = document.getElementById('languageSelector');
+            selector.classList.toggle('open');
         }
 
-        function setLanguage(lang, flag, code) {
-            const btn = document.querySelector('.language-btn');
-            const flagSpan = btn.querySelector('.lang-flag');
-            const textSpan = btn.querySelector('.lang-text');
+        function setLanguage(lang, flag, text) {
+            const selector = document.getElementById('languageSelector');
+            const flagSpan = document.getElementById('currentLangFlag');
+            const textSpan = document.getElementById('currentLangText');
             
             flagSpan.textContent = flag;
-            textSpan.textContent = lang;
+            textSpan.textContent = text;
+            
+            // Update active state in dropdown
+            selector.querySelectorAll('.language-option').forEach(opt => {
+                opt.classList.toggle('active', opt.dataset.lang === lang);
+            });
             
             // Store preference
-            localStorage.setItem('mve-language', code);
+            localStorage.setItem('mve-language', lang);
             
             // Close dropdown
-            document.querySelector('.language-dropdown').classList.remove('show');
+            selector.classList.remove('open');
             
             // Update document language attribute
-            document.documentElement.lang = code;
+            document.documentElement.lang = lang;
             
-            // Here you would trigger actual translation logic
-            console.log('Language changed to:', code);
+            console.log('Language changed to:', lang);
         }
 
-        // Close language dropdown when clicking outside
+        // Language Selector (Candidate Dashboard)
+        function toggleCandidateLanguageDropdown() {
+            const selector = document.getElementById('candidateLangSelector');
+            selector.classList.toggle('open');
+        }
+
+        function setCandidateLanguage(lang, flag, text) {
+            const selector = document.getElementById('candidateLangSelector');
+            const flagSpan = document.getElementById('candidateLangFlag');
+            const textSpan = document.getElementById('candidateLangText');
+            
+            flagSpan.textContent = flag;
+            textSpan.textContent = text;
+            
+            // Update active state in dropdown
+            selector.querySelectorAll('.language-option').forEach(opt => {
+                opt.classList.toggle('active', opt.dataset.lang === lang);
+            });
+            
+            // Store preference for candidate view
+            localStorage.setItem('mve-candidate-language', lang);
+            
+            // Close dropdown
+            selector.classList.remove('open');
+            
+            console.log('Candidate language changed to:', lang);
+        }
+
+        // Close language dropdowns when clicking outside
         document.addEventListener('click', function(e) {
-            const selector = document.querySelector('.language-selector');
-            if (selector && !selector.contains(e.target)) {
-                document.querySelector('.language-dropdown').classList.remove('show');
+            const headerSelector = document.getElementById('languageSelector');
+            const candidateSelector = document.getElementById('candidateLangSelector');
+            
+            if (headerSelector && !headerSelector.contains(e.target)) {
+                headerSelector.classList.remove('open');
+            }
+            if (candidateSelector && !candidateSelector.contains(e.target)) {
+                candidateSelector.classList.remove('open');
             }
         });
 
-        // Load saved language preference
+        // Load saved language preferences
         const savedLang = localStorage.getItem('mve-language');
         if (savedLang === 'es') {
-            setLanguage('Español', '🇪🇸', 'es');
+            setLanguage('es', '🇪🇸', 'Spanish');
+        }
+        
+        const savedCandidateLang = localStorage.getItem('mve-candidate-language');
+        if (savedCandidateLang === 'es') {
+            setCandidateLanguage('es', '🇪🇸', 'Spanish');
         }
 
         // Tab switching
