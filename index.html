@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruiting Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            background: linear-gradient(90deg, #fff, #a8dadc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .notification-badge {
+            position: relative;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .notification-badge::after {
+            content: '3';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ef4444;
+            color: #fff;
+            font-size: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px;
+            border-radius: 12px;
+            width: fit-content;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .tab:hover {
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        /* Vacancy Cost Tracker Styles */
+        .vacancy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .sliders-section {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .slider-group {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .slider-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .slider-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4);
+            transition: transform 0.2s ease;
+        }
+
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        .chart-section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .chart-bar-container {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .chart-bar-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .chart-bar-wrapper {
+            position: relative;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .chart-bar {
+            height: 100%;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            transition: width 0.3s ease;
+            position: relative;
+        }
+
+        .chart-bar.revenue {
+            background: linear-gradient(90deg, #ef4444, #f97316);
+            width: 85%;
+        }
+
+        .chart-bar.savings {
+            background: linear-gradient(90deg, #22c55e, #10b981);
+            width: 35%;
+        }
+
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .summary-card {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .summary-card-value {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .summary-card-value.negative {
+            color: #ef4444;
+        }
+
+        .summary-card-value.positive {
+            color: #22c55e;
+        }
+
+        .summary-card-value.neutral {
+            color: #667eea;
+        }
+
+        .summary-card-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Interviews Section Styles */
+        .interviews-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 24px;
+        }
+
+        .candidates-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .candidate-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .candidate-item:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .candidate-item.active {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .candidate-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .candidate-info {
+            flex: 1;
+        }
+
+        .candidate-name {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+
+        .candidate-role {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .candidate-status {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-pending {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+        }
+
+        .status-completed {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        .status-progress {
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+        }
+
+        .candidate-details {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .video-player {
+            background: #000;
+            border-radius: 16px;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-player::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            z-index: 1;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .play-button::after {
+            content: '';
+            border-style: solid;
+            border-width: 15px 0 15px 25px;
+            border-color: transparent transparent transparent #fff;
+            margin-left: 5px;
+        }
+
+        .video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            z-index: 1;
+        }
+
+        .video-progress {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            margin-bottom: 12px;
+        }
+
+        .video-progress-fill {
+            height: 100%;
+            width: 35%;
+            background: #667eea;
+            border-radius: 2px;
+        }
+
+        .video-time {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .ai-scoring {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 24px;
+            border-radius: 16px;
+        }
+
+        .ai-scoring h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ai-badge {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .score-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .score-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .score-label {
+            width: 140px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .score-bar-bg {
+            flex: 1;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .score-bar-fill {
+            height: 100%;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: width 0.5s ease;
+        }
+
+        .score-bar-fill.communication {
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            width: 88%;
+        }
+
+        .score-bar-fill.experience {
+            background: linear-gradient(90deg, #22c55e, #4ade80);
+            width: 75%;
+        }
+
+        .score-bar-fill.cultural {
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+            width: 92%;
+        }
+
+        .score-bar-fill.technical {
+            background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+            width: 70%;
+        }
+
+        /* Onboarding Section Styles */
+        .onboarding-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .onboarding-tracker {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .onboarding-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            position: relative;
+        }
+
+        .step-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .step-circle.completed {
+            background: linear-gradient(135deg, #22c55e, #10b981);
+            color: #fff;
+        }
+
+        .step-circle.current {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .step-circle.pending {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .step-line {
+            width: 2px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .step-line.completed {
+            background: linear-gradient(180deg, #22c55e, #10b981);
+        }
+
+        .step-content {
+            flex: 1;
+            padding-bottom: 32px;
+        }
+
+        .step-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .step-description {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 8px;
+        }
+
+        .step-date {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .step-date.completed {
+            color: #22c55e;
+        }
+
+        .onboarding-details {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .detail-card {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .detail-card h4 {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .document-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .document-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .document-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .document-icon.pdf {
+            background: rgba(239, 68, 68, 0.2);
+        }
+
+        .document-icon.doc {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        .document-info {
+            flex: 1;
+        }
+
+        .document-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .document-status {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .document-check {
+            color: #22c55e;
+        }
+
+        /* Candidate Link Section Styles */
+        .candidate-journey {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .progress-tracker {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 50%;
+            left: 80px;
+            right: 80px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-50%);
+        }
+
+        .progress-line-fill {
+            height: 100%;
+            width: 50%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            z-index: 1;
+        }
+
+        .progress-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            background: #1a1a2e;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-circle.completed {
+            background: linear-gradient(135deg, #22c55e, #10b981);
+            border-color: #22c55e;
+        }
+
+        .progress-circle.current {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .progress-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            max-width: 80px;
+        }
+
+        .progress-label.active {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .journey-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .journey-video {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .journey-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .info-card {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .info-card h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        .info-value {
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* Scrollbar Styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .vacancy-grid,
+            .interviews-grid,
+            .onboarding-content,
+            .journey-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .summary-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <div class="header">
+            <h1>🚚 FleetRecruit Pro</h1>
+            <div class="header-right">
+                <div class="notification-badge">🔔</div>
+                <div class="user-avatar">JD</div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <div class="tab active" data-tab="vacancy">Vacancy Cost</div>
+            <div class="tab" data-tab="interviews">Interviews</div>
+            <div class="tab" data-tab="onboarding">Onboarding</div>
+            <div class="tab" data-tab="candidate-link">Candidate Link</div>
+        </div>
+
+        <!-- Tab 1: Vacancy Cost Tracker -->
+        <div class="tab-content active" id="vacancy">
+            <div class="card">
+                <div class="card-title">Vacancy Cost Tracker</div>
+                <div class="vacancy-grid">
+                    <div class="sliders-section">
+                        <div class="slider-group">
+                            <div class="slider-header">
+                                <span class="slider-label">Vacant Trucks</span>
+                                <span class="slider-value" id="trucks-value">24</span>
+                            </div>
+                            <input type="range" class="slider" id="trucks-slider" min="0" max="100" value="24">
+                        </div>
+                        <div class="slider-group">
+                            <div class="slider-header">
+                                <span class="slider-label">Revenue per Truck ($/day)</span>
+                                <span class="slider-value" id="revenue-value">$1,250</span>
+                            </div>
+                            <input type="range" class="slider" id="revenue-slider" min="500" max="3000" value="1250">
+                        </div>
+                        <div class="slider-group">
+                            <div class="slider-header">
+                                <span class="slider-label">Improvement Target</span>
+                                <span class="slider-value" id="improvement-value">35%</span>
+                            </div>
+                            <input type="range" class="slider" id="improvement-slider" min="0" max="100" value="35">
+                        </div>
+                    </div>
+                    <div class="chart-section">
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-label">Daily Revenue Loss</div>
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar revenue" id="revenue-bar">$30,000</div>
+                            </div>
+                        </div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-label">Potential Daily Savings</div>
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar savings" id="savings-bar">$10,500</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="summary-card-value negative" id="monthly-loss">$900,000</div>
+                        <div class="summary-card-label">Monthly Loss</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-card-value positive" id="monthly-savings">$315,000</div>
+                        <div class="summary-card-label">Potential Monthly Savings</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-card-value neutral" id="roi">412%</div>
+                        <div class="summary-card-label">ROI with FleetRecruit</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 2: Interviews -->
+        <div class="tab-content" id="interviews">
+            <div class="card">
+                <div class="card-title">Interview Management</div>
+                <div class="interviews-grid">
+                    <div class="candidates-list">
+                        <div class="candidate-item active">
+                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=1') center/cover, linear-gradient(135deg, #667eea, #764ba2);"></div>
+                            <div class="candidate-info">
+                                <div class="candidate-name">Marcus Johnson</div>
+                                <div class="candidate-role">CDL-A Driver • 8 yrs exp</div>
+                            </div>
+                            <span class="candidate-status status-progress">In Review</span>
+                        </div>
+                        <div class="candidate-item">
+                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=5') center/cover, linear-gradient(135deg, #667eea, #764ba2);"></div>
+                            <div class="candidate-info">
+                                <div class="candidate-name">Sarah Williams</div>
+                                <div class="candidate-role">CDL-B Driver • 3 yrs exp</div>
+                            </div>
+                            <span class="candidate-status status-completed">Completed</span>
+                        </div>
+                        <div class="candidate-item">
+                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=3') center/cover, linear-gradient(135deg, #667eea, #764ba2);"></div>
+                            <div class="candidate-info">
+                                <div class="candidate-name">David Chen</div>
+                                <div class="candidate-role">CDL-A Driver • 12 yrs exp</div>
+                            </div>
+                            <span class="candidate-status status-pending">Pending</span>
+                        </div>
+                        <div class="candidate-item">
+                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=9') center/cover, linear-gradient(135deg, #667eea, #764ba2);"></div>
+                            <div class="candidate-info">
+                                <div class="candidate-name">Emily Rodriguez</div>
+                                <div class="candidate-role">CDL-A Driver • 5 yrs exp</div>
+                            </div>
+                            <span class="candidate-status status-completed">Completed</span>
+                        </div>
+                        <div class="candidate-item">
+                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=7') center/cover, linear-gradient(135deg, #667eea, #764ba2);"></div>
+                            <div class="candidate-info">
+                                <div class="candidate-name">James Thompson</div>
+                                <div class="candidate-role">CDL-B Driver • 2 yrs exp</div>
+                            </div>
+                            <span class="candidate-status status-pending">Pending</span>
+                        </div>
+                    </div>
+                    <div class="candidate-details">
+                        <div class="video-player">
+                            <div class="play-button"></div>
+                            <div class="video-controls">
+                                <div class="video-progress">
+                                    <div class="video-progress-fill"></div>
+                                </div>
+                                <div class="video-time">2:34 / 7:15</div>
+                            </div>
+                        </div>
+                        <div class="ai-scoring">
+                            <h3>AI Analysis <span class="ai-badge">Powered by GPT-4</span></h3>
+                            <div class="score-bars">
+                                <div class="score-item">
+                                    <span class="score-label">Communication</span>
+                                    <div class="score-bar-bg">
+                                        <div class="score-bar-fill communication">88%</div>
+                                    </div>
+                                </div>
+                                <div class="score-item">
+                                    <span class="score-label">Experience Match</span>
+                                    <div class="score-bar-bg">
+                                        <div class="score-bar-fill experience">75%</div>
+                                    </div>
+                                </div>
+                                <div class="score-item">
+                                    <span class="score-label">Cultural Fit</span>
+                                    <div class="score-bar-bg">
+                                        <div class="score-bar-fill cultural">92%</div>
+                                    </div>
+                                </div>
+                                <div class="score-item">
+                                    <span class="score-label">Technical Skills</span>
+                                    <div class="score-bar-bg">
+                                        <div class="score-bar-fill technical">70%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 3: Onboarding -->
+        <div class="tab-content" id="onboarding">
+            <div class="card">
+                <div class="card-title">Onboarding Progress - Marcus Johnson</div>
+                <div class="onboarding-content">
+                    <div class="onboarding-tracker">
+                        <div class="onboarding-step">
+                            <div class="step-indicator">
+                                <div class="step-circle completed">✓</div>
+                                <div class="step-line completed"></div>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-title">Offer Accepted</div>
+                                <div class="step-description">Candidate accepted the job offer</div>
+                                <div class="step-date completed">✓ Completed Dec 1, 2025</div>
+                            </div>
+                        </div>
+                        <div class="onboarding-step">
+                            <div class="step-indicator">
+                                <div class="step-circle completed">✓</div>
+                                <div class="step-line completed"></div>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-title">Documents Submitted</div>
+                                <div class="step-description">All required documents received and verified</div>
+                                <div class="step-date completed">✓ Completed Dec 4, 2025</div>
+                            </div>
+                        </div>
+                        <div class="onboarding-step">
+                            <div class="step-indicator">
+                                <div class="step-circle current">3</div>
+                                <div class="step-line"></div>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-title">Training Program</div>
+                                <div class="step-description">Safety orientation and route training</div>
+                                <div class="step-date">In Progress - Due Dec 10, 2025</div>
+                            </div>
+                        </div>
+                        <div class="onboarding-step">
+                            <div class="step-indicator">
+                                <div class="step-circle pending">4</div>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-title">First Assignment</div>
+                                <div class="step-description">Assigned to first delivery route</div>
+                                <div class="step-date">Scheduled Dec 12, 2025</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="onboarding-details">
+                        <div class="detail-card">
+                            <h4>Documents</h4>
+                            <div class="document-list">
+                                <div class="document-item">
+                                    <div class="document-icon pdf">📄</div>
+                                    <div class="document-info">
+                                        <div class="document-name">CDL License</div>
+                                        <div class="document-status">Verified</div>
+                                    </div>
+                                    <span class="document-check">✓</span>
+                                </div>
+                                <div class="document-item">
+                                    <div class="document-icon doc">📋</div>
+                                    <div class="document-info">
+                                        <div class="document-name">Medical Certificate</div>
+                                        <div class="document-status">Verified</div>
+                                    </div>
+                                    <span class="document-check">✓</span>
+                                </div>
+                                <div class="document-item">
+                                    <div class="document-icon pdf">📄</div>
+                                    <div class="document-info">
+                                        <div class="document-name">Background Check</div>
+                                        <div class="document-status">Verified</div>
+                                    </div>
+                                    <span class="document-check">✓</span>
+                                </div>
+                                <div class="document-item">
+                                    <div class="document-icon doc">📋</div>
+                                    <div class="document-info">
+                                        <div class="document-name">Drug Test Results</div>
+                                        <div class="document-status">Verified</div>
+                                    </div>
+                                    <span class="document-check">✓</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-card">
+                            <h4>Training Progress</h4>
+                            <div class="document-list">
+                                <div class="document-item">
+                                    <div class="document-icon" style="background: rgba(34, 197, 94, 0.2);">✓</div>
+                                    <div class="document-info">
+                                        <div class="document-name">Safety Orientation</div>
+                                        <div class="document-status">Completed</div>
+                                    </div>
+                                </div>
+                                <div class="document-item">
+                                    <div class="document-icon" style="background: rgba(102, 126, 234, 0.2);">▶</div>
+                                    <div class="document-info">
+                                        <div class="document-name">Route Training</div>
+                                        <div class="document-status">In Progress - 60%</div>
+                                    </div>
+                                </div>
+                                <div class="document-item">
+                                    <div class="document-icon" style="background: rgba(255, 255, 255, 0.1);">○</div>
+                                    <div class="document-info">
+                                        <div class="document-name">Equipment Certification</div>
+                                        <div class="document-status">Not Started</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 4: Candidate Link View -->
+        <div class="tab-content" id="candidate-link">
+            <div class="card">
+                <div class="card-title">Candidate Portal - Your Application Journey</div>
+                <div class="candidate-journey">
+                    <div class="progress-tracker">
+                        <div class="progress-line">
+                            <div class="progress-line-fill"></div>
+                        </div>
+                        <div class="progress-step">
+                            <div class="progress-circle completed">✓</div>
+                            <div class="progress-label active">Resume Received</div>
+                        </div>
+                        <div class="progress-step">
+                            <div class="progress-circle completed">✓</div>
+                            <div class="progress-label active">Recruiter Review</div>
+                        </div>
+                        <div class="progress-step">
+                            <div class="progress-circle current">3</div>
+                            <div class="progress-label active">Video Interview</div>
+                        </div>
+                        <div class="progress-step">
+                            <div class="progress-circle">4</div>
+                            <div class="progress-label">Offer Stage</div>
+                        </div>
+                    </div>
+                    <div class="journey-content">
+                        <div class="journey-video">
+                            <div class="video-player">
+                                <div class="play-button"></div>
+                                <div class="video-controls">
+                                    <div class="video-progress">
+                                        <div class="video-progress-fill" style="width: 0%"></div>
+                                    </div>
+                                    <div class="video-time">0:00 / 5:00</div>
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <h4>Interview Instructions</h4>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.6;">
+                                    Please record your video interview by clicking the play button above. 
+                                    You'll have 5 minutes to answer 3 questions about your experience 
+                                    and why you want to join our fleet. Make sure you're in a quiet 
+                                    environment with good lighting.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="journey-info">
+                            <div class="ai-scoring">
+                                <h3>AI Analysis Preview <span class="ai-badge">Live Feedback</span></h3>
+                                <div class="score-bars">
+                                    <div class="score-item">
+                                        <span class="score-label">Communication</span>
+                                        <div class="score-bar-bg">
+                                            <div class="score-bar-fill" style="width: 0%; background: rgba(255,255,255,0.1);">—</div>
+                                        </div>
+                                    </div>
+                                    <div class="score-item">
+                                        <span class="score-label">Experience Match</span>
+                                        <div class="score-bar-bg">
+                                            <div class="score-bar-fill" style="width: 0%; background: rgba(255,255,255,0.1);">—</div>
+                                        </div>
+                                    </div>
+                                    <div class="score-item">
+                                        <span class="score-label">Cultural Fit</span>
+                                        <div class="score-bar-bg">
+                                            <div class="score-bar-fill" style="width: 0%; background: rgba(255,255,255,0.1);">—</div>
+                                        </div>
+                                    </div>
+                                    <div class="score-item">
+                                        <span class="score-label">Technical Skills</span>
+                                        <div class="score-bar-bg">
+                                            <div class="score-bar-fill" style="width: 0%; background: rgba(255,255,255,0.1);">—</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <h4>Application Details</h4>
+                                <div class="info-row">
+                                    <span class="info-label">Position</span>
+                                    <span class="info-value">CDL-A Driver</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Location</span>
+                                    <span class="info-value">Dallas, TX</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Applied</span>
+                                    <span class="info-value">Dec 2, 2025</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Status</span>
+                                    <span class="info-value" style="color: #667eea;">Video Interview</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Candidate selection
+        document.querySelectorAll('.candidate-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.candidate-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+
+        // Vacancy Cost Calculator
+        const trucksSlider = document.getElementById('trucks-slider');
+        const revenueSlider = document.getElementById('revenue-slider');
+        const improvementSlider = document.getElementById('improvement-slider');
+
+        function updateCalculations() {
+            const trucks = parseInt(trucksSlider.value);
+            const revenuePerTruck = parseInt(revenueSlider.value);
+            const improvement = parseInt(improvementSlider.value);
+
+            const dailyLoss = trucks * revenuePerTruck;
+            const dailySavings = dailyLoss * (improvement / 100);
+            const monthlyLoss = dailyLoss * 30;
+            const monthlySavings = dailySavings * 30;
+
+            document.getElementById('trucks-value').textContent = trucks;
+            document.getElementById('revenue-value').textContent = '$' + revenuePerTruck.toLocaleString();
+            document.getElementById('improvement-value').textContent = improvement + '%';
+
+            const revenueBar = document.getElementById('revenue-bar');
+            const savingsBar = document.getElementById('savings-bar');
+
+            const maxLoss = 100 * 3000;
+            const revenueWidth = Math.min((dailyLoss / maxLoss) * 100, 100);
+            const savingsWidth = Math.min((dailySavings / maxLoss) * 100, 100);
+
+            revenueBar.style.width = revenueWidth + '%';
+            revenueBar.textContent = '$' + dailyLoss.toLocaleString();
+
+            savingsBar.style.width = Math.max(savingsWidth, 5) + '%';
+            savingsBar.textContent = '$' + dailySavings.toLocaleString();
+
+            document.getElementById('monthly-loss').textContent = '$' + monthlyLoss.toLocaleString();
+            document.getElementById('monthly-savings').textContent = '$' + monthlySavings.toLocaleString();
+
+            const roi = monthlySavings > 0 ? Math.round((monthlySavings / 5000) * 100) : 0;
+            document.getElementById('roi').textContent = roi + '%';
+        }
+
+        trucksSlider.addEventListener('input', updateCalculations);
+        revenueSlider.addEventListener('input', updateCalculations);
+        improvementSlider.addEventListener('input', updateCalculations);
+
+        updateCalculations();
+    </script>
+</body>
+</html>
