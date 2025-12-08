@@ -1255,6 +1255,374 @@
             font-size: 12px;
             color: var(--text-muted);
         }
+
+        /* Recruiter Actions Panel */
+        .recruiter-actions {
+            background: var(--bg-tertiary);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .recruiter-actions h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .action-buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .action-btn .action-icon {
+            font-size: 16px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .action-btn .action-text {
+            flex: 1;
+        }
+
+        .action-btn.primary {
+            background: var(--gradient-accent);
+            color: var(--mve-navy-dark);
+        }
+
+        .action-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 160, 25, 0.4);
+        }
+
+        .action-btn.success {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+        }
+
+        .action-btn.success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+        }
+
+        .action-btn.secondary {
+            background: var(--mve-blue-accent);
+            color: white;
+        }
+
+        .action-btn.secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(65, 105, 225, 0.4);
+        }
+
+        .action-btn.outline {
+            background: var(--input-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .action-btn.outline:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--mve-gold);
+        }
+
+        .action-btn.danger {
+            background: rgba(220, 53, 69, 0.15);
+            color: #dc3545;
+            border: 1px solid rgba(220, 53, 69, 0.3);
+        }
+
+        .action-btn.danger:hover {
+            background: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+
+        /* Quick Notes Section */
+        .quick-notes {
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
+        }
+
+        .quick-notes h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .notes-input {
+            width: 100%;
+            min-height: 80px;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+            transition: border-color 0.2s ease;
+        }
+
+        .notes-input:focus {
+            outline: none;
+            border-color: var(--mve-gold);
+        }
+
+        .notes-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .notes-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            gap: 12px;
+        }
+
+        .note-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .note-tag {
+            padding: 4px 10px;
+            background: var(--input-bg);
+            border-radius: 20px;
+            font-size: 11px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .note-tag:hover {
+            background: var(--mve-gold);
+            color: var(--mve-navy-dark);
+            border-color: var(--mve-gold);
+        }
+
+        .save-notes-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            background: var(--gradient-accent);
+            color: var(--mve-navy-dark);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .save-notes-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(212, 160, 25, 0.3);
+        }
+
+        /* Action Modal */
+        .action-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .action-modal-overlay.show {
+            display: flex;
+        }
+
+        .action-modal {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            width: 90%;
+            max-width: 480px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 60px var(--shadow-color);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            border: none;
+            background: var(--input-bg);
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .modal-body p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .modal-input-group {
+            margin-bottom: 16px;
+        }
+
+        .modal-input-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .modal-input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .modal-input:focus {
+            outline: none;
+            border-color: var(--mve-gold);
+        }
+
+        .modal-select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .modal-textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .modal-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .modal-btn.cancel {
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .modal-btn.cancel:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .modal-btn.confirm {
+            background: var(--gradient-accent);
+            border: none;
+            color: var(--mve-navy-dark);
+        }
+
+        .modal-btn.confirm:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(212, 160, 25, 0.3);
+        }
+
+        .modal-btn.confirm.danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .modal-btn.confirm.danger:hover {
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+        }
     </style>
 </head>
 <body>
@@ -1434,6 +1802,56 @@
                                     <div class="score-bar-bg">
                                         <div class="score-bar-fill technical">70%</div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Recruiter Actions Panel -->
+                        <div class="recruiter-actions">
+                            <h3>Recruiter Actions</h3>
+                            <div class="action-buttons-grid">
+                                <button class="action-btn primary" onclick="showActionModal('approve')">
+                                    <span class="action-icon">✓</span>
+                                    <span class="action-text">Approve for Next Step</span>
+                                </button>
+                                <button class="action-btn success" onclick="showActionModal('offer')">
+                                    <span class="action-icon">📄</span>
+                                    <span class="action-text">Send Offer Letter</span>
+                                </button>
+                                <button class="action-btn secondary" onclick="showActionModal('forward')">
+                                    <span class="action-icon">↗️</span>
+                                    <span class="action-text">Forward to Manager</span>
+                                </button>
+                                <button class="action-btn secondary" onclick="showActionModal('schedule')">
+                                    <span class="action-icon">📅</span>
+                                    <span class="action-text">Schedule Interview</span>
+                                </button>
+                                <button class="action-btn outline" onclick="showActionModal('notes')">
+                                    <span class="action-icon">📝</span>
+                                    <span class="action-text">Add Notes</span>
+                                </button>
+                                <button class="action-btn outline" onclick="showActionModal('message')">
+                                    <span class="action-icon">💬</span>
+                                    <span class="action-text">Send Message</span>
+                                </button>
+                                <button class="action-btn outline" onclick="showActionModal('hold')">
+                                    <span class="action-icon">⏸️</span>
+                                    <span class="action-text">Put on Hold</span>
+                                </button>
+                                <button class="action-btn danger" onclick="showActionModal('reject')">
+                                    <span class="action-icon">✕</span>
+                                    <span class="action-text">Reject Candidate</span>
+                                </button>
+                            </div>
+                            <div class="quick-notes">
+                                <h4>Quick Notes</h4>
+                                <textarea class="notes-input" placeholder="Add notes about this candidate..."></textarea>
+                                <div class="notes-footer">
+                                    <div class="note-tags">
+                                        <span class="note-tag" onclick="addTag('Strong candidate')">Strong candidate</span>
+                                        <span class="note-tag" onclick="addTag('Needs follow-up')">Needs follow-up</span>
+                                        <span class="note-tag" onclick="addTag('Check references')">Check references</span>
+                                    </div>
+                                    <button class="save-notes-btn">Save Notes</button>
                                 </div>
                             </div>
                         </div>
@@ -1768,7 +2186,288 @@
         </div>
     </div>
 
+    <!-- Action Modal -->
+    <div class="action-modal-overlay" id="actionModal">
+        <div class="action-modal">
+            <div class="modal-header">
+                <h3 id="modalTitle"><span id="modalIcon"></span> <span id="modalTitleText"></span></h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content -->
+            </div>
+            <div class="modal-footer" id="modalFooter">
+                <button class="modal-btn cancel" onclick="closeModal()">Cancel</button>
+                <button class="modal-btn confirm" id="modalConfirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Modal configurations for different actions
+        const modalConfigs = {
+            approve: {
+                icon: '✓',
+                title: 'Approve for Next Step',
+                body: `
+                    <p>You are about to advance <strong>Marcus Johnson</strong> to the next stage in the hiring process.</p>
+                    <div class="modal-input-group">
+                        <label>Move to Stage</label>
+                        <select class="modal-select">
+                            <option value="phone">Phone Screen</option>
+                            <option value="interview" selected>In-Person Interview</option>
+                            <option value="background">Background Check</option>
+                            <option value="offer">Offer Stage</option>
+                        </select>
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Notes (optional)</label>
+                        <textarea class="modal-textarea" placeholder="Add any notes about this decision..."></textarea>
+                    </div>
+                `,
+                confirmText: 'Approve & Advance',
+                confirmClass: ''
+            },
+            offer: {
+                icon: '📄',
+                title: 'Send Offer Letter',
+                body: `
+                    <p>Send an offer letter to <strong>Marcus Johnson</strong> for the CDL-A Driver position.</p>
+                    <div class="modal-input-group">
+                        <label>Offer Template</label>
+                        <select class="modal-select">
+                            <option value="standard">Standard CDL-A Offer</option>
+                            <option value="experienced">Experienced Driver Offer</option>
+                            <option value="signing">Signing Bonus Offer</option>
+                        </select>
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Starting Salary</label>
+                        <input type="text" class="modal-input" value="$65,000/year" />
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Start Date</label>
+                        <input type="date" class="modal-input" value="2025-12-15" />
+                    </div>
+                `,
+                confirmText: 'Send Offer',
+                confirmClass: ''
+            },
+            forward: {
+                icon: '↗️',
+                title: 'Forward to Manager',
+                body: `
+                    <p>Forward <strong>Marcus Johnson's</strong> application to a manager for review.</p>
+                    <div class="modal-input-group">
+                        <label>Select Manager</label>
+                        <select class="modal-select">
+                            <option value="mike">Mike Reynolds - Fleet Manager</option>
+                            <option value="sarah">Sarah Chen - Operations Director</option>
+                            <option value="tom">Tom Wilson - HR Director</option>
+                        </select>
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Priority</label>
+                        <select class="modal-select">
+                            <option value="normal">Normal</option>
+                            <option value="high">High Priority</option>
+                            <option value="urgent">Urgent Review</option>
+                        </select>
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Message</label>
+                        <textarea class="modal-textarea" placeholder="Add a message for the manager...">Strong candidate with 8 years of CDL-A experience. AI scores indicate excellent cultural fit (92%). Recommend moving forward.</textarea>
+                    </div>
+                `,
+                confirmText: 'Forward Application',
+                confirmClass: ''
+            },
+            schedule: {
+                icon: '📅',
+                title: 'Schedule Interview',
+                body: `
+                    <p>Schedule an interview with <strong>Marcus Johnson</strong>.</p>
+                    <div class="modal-input-group">
+                        <label>Interview Type</label>
+                        <select class="modal-select">
+                            <option value="phone">Phone Screen</option>
+                            <option value="video">Video Interview</option>
+                            <option value="inperson" selected>In-Person Interview</option>
+                            <option value="road">Road Test</option>
+                        </select>
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Date & Time</label>
+                        <input type="datetime-local" class="modal-input" />
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Location / Link</label>
+                        <input type="text" class="modal-input" placeholder="MVE Dallas Terminal or Zoom link" />
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Interviewer</label>
+                        <select class="modal-select">
+                            <option value="you">Yourself</option>
+                            <option value="mike">Mike Reynolds</option>
+                            <option value="panel">Interview Panel</option>
+                        </select>
+                    </div>
+                `,
+                confirmText: 'Schedule & Send Invite',
+                confirmClass: ''
+            },
+            notes: {
+                icon: '📝',
+                title: 'Add Notes',
+                body: `
+                    <p>Add detailed notes about <strong>Marcus Johnson</strong>.</p>
+                    <div class="modal-input-group">
+                        <label>Note Category</label>
+                        <select class="modal-select">
+                            <option value="interview">Interview Feedback</option>
+                            <option value="reference">Reference Check</option>
+                            <option value="general">General Notes</option>
+                            <option value="concern">Concern/Flag</option>
+                        </select>
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Notes</label>
+                        <textarea class="modal-textarea" rows="6" placeholder="Enter your detailed notes here..."></textarea>
+                    </div>
+                `,
+                confirmText: 'Save Notes',
+                confirmClass: ''
+            },
+            message: {
+                icon: '💬',
+                title: 'Send Message',
+                body: `
+                    <p>Send a message to <strong>Marcus Johnson</strong>.</p>
+                    <div class="modal-input-group">
+                        <label>Message Type</label>
+                        <select class="modal-select">
+                            <option value="email">Email</option>
+                            <option value="sms">SMS Text</option>
+                            <option value="both">Both Email & SMS</option>
+                        </select>
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Template (optional)</label>
+                        <select class="modal-select">
+                            <option value="custom">Custom Message</option>
+                            <option value="status">Application Status Update</option>
+                            <option value="docs">Document Request</option>
+                            <option value="reminder">Interview Reminder</option>
+                        </select>
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Subject</label>
+                        <input type="text" class="modal-input" placeholder="Message subject..." />
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Message</label>
+                        <textarea class="modal-textarea" rows="5" placeholder="Type your message here..."></textarea>
+                    </div>
+                `,
+                confirmText: 'Send Message',
+                confirmClass: ''
+            },
+            hold: {
+                icon: '⏸️',
+                title: 'Put on Hold',
+                body: `
+                    <p>Place <strong>Marcus Johnson's</strong> application on hold.</p>
+                    <div class="modal-input-group">
+                        <label>Hold Reason</label>
+                        <select class="modal-select">
+                            <option value="pending">Pending Additional Info</option>
+                            <option value="timing">Timing - Candidate Not Ready</option>
+                            <option value="headcount">Headcount Freeze</option>
+                            <option value="other">Other Reason</option>
+                        </select>
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Follow-up Date</label>
+                        <input type="date" class="modal-input" />
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Notes</label>
+                        <textarea class="modal-textarea" placeholder="Reason for hold and next steps..."></textarea>
+                    </div>
+                `,
+                confirmText: 'Put on Hold',
+                confirmClass: ''
+            },
+            reject: {
+                icon: '✕',
+                title: 'Reject Candidate',
+                body: `
+                    <p>You are about to reject <strong>Marcus Johnson's</strong> application. This action will:</p>
+                    <ul style="color: var(--text-secondary); font-size: 14px; margin: 12px 0; padding-left: 20px;">
+                        <li>Move the candidate to rejected status</li>
+                        <li>Send a rejection notification (optional)</li>
+                        <li>Archive the application</li>
+                    </ul>
+                    <div class="modal-input-group">
+                        <label>Rejection Reason</label>
+                        <select class="modal-select">
+                            <option value="qualifications">Does Not Meet Qualifications</option>
+                            <option value="experience">Insufficient Experience</option>
+                            <option value="culture">Culture Fit Concerns</option>
+                            <option value="background">Background Check Issues</option>
+                            <option value="withdrew">Candidate Withdrew</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="modal-input-group">
+                        <label>Internal Notes</label>
+                        <textarea class="modal-textarea" placeholder="Add internal notes about this decision..."></textarea>
+                    </div>
+                    <div class="modal-input-group" style="display: flex; align-items: center; gap: 10px;">
+                        <input type="checkbox" id="sendRejection" checked style="width: auto;" />
+                        <label for="sendRejection" style="margin-bottom: 0;">Send rejection email to candidate</label>
+                    </div>
+                `,
+                confirmText: 'Reject Candidate',
+                confirmClass: 'danger'
+            }
+        };
+
+        function showActionModal(actionType) {
+            const config = modalConfigs[actionType];
+            if (!config) return;
+
+            document.getElementById('modalIcon').textContent = config.icon;
+            document.getElementById('modalTitleText').textContent = config.title;
+            document.getElementById('modalBody').innerHTML = config.body;
+            document.getElementById('modalConfirm').textContent = config.confirmText;
+            
+            const confirmBtn = document.getElementById('modalConfirm');
+            confirmBtn.className = 'modal-btn confirm' + (config.confirmClass ? ' ' + config.confirmClass : '');
+            
+            document.getElementById('actionModal').classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('actionModal').classList.remove('show');
+        }
+
+        // Close modal on overlay click
+        document.getElementById('actionModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Add tag to notes
+        function addTag(tag) {
+            const notesInput = document.querySelector('.notes-input');
+            if (notesInput.value) {
+                notesInput.value += ' [' + tag + ']';
+            } else {
+                notesInput.value = '[' + tag + '] ';
+            }
+            notesInput.focus();
+        }
+
         // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const html = document.documentElement;
