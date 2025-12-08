@@ -10,40 +10,41 @@
     <style>
         /* Mountain Valley Express Brand Colors */
         :root {
-            /* MVE Brand Colors */
-            --mve-primary: #1a3a5c;      /* Deep navy blue */
-            --mve-primary-dark: #0d2840;  /* Darker navy */
-            --mve-secondary: #c41e3a;     /* MVE Red */
-            --mve-secondary-light: #e63950;
-            --mve-accent: #f4a024;        /* Orange/gold accent */
-            --mve-accent-light: #ffb940;
+            /* MVE Brand Colors - Matched from website */
+            --mve-navy: #1e2a4a;          /* Primary dark navy */
+            --mve-navy-dark: #141c33;     /* Darker navy */
+            --mve-navy-light: #2a3a5c;    /* Lighter navy */
+            --mve-gold: #d4a019;          /* Primary gold/yellow */
+            --mve-gold-light: #f4b41a;    /* Bright gold */
+            --mve-gold-dark: #b8890f;     /* Darker gold */
+            --mve-blue-accent: #4169e1;   /* Blue accent from map */
             
-            /* Dark Theme (default) */
-            --bg-primary: linear-gradient(135deg, #0d2840 0%, #1a3a5c 100%);
-            --bg-secondary: rgba(255, 255, 255, 0.08);
-            --bg-tertiary: rgba(0, 0, 0, 0.2);
+            /* Dark Theme (default) - Navy background */
+            --bg-primary: linear-gradient(135deg, #141c33 0%, #1e2a4a 100%);
+            --bg-secondary: rgba(255, 255, 255, 0.06);
+            --bg-tertiary: rgba(0, 0, 0, 0.25);
             --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-secondary: rgba(255, 255, 255, 0.75);
             --text-muted: rgba(255, 255, 255, 0.5);
             --border-color: rgba(255, 255, 255, 0.1);
-            --card-bg: rgba(255, 255, 255, 0.08);
-            --input-bg: rgba(255, 255, 255, 0.1);
-            --shadow-color: rgba(0, 0, 0, 0.3);
-            --gradient-primary: linear-gradient(135deg, var(--mve-primary), var(--mve-secondary));
-            --gradient-accent: linear-gradient(135deg, var(--mve-secondary), var(--mve-accent));
+            --card-bg: rgba(255, 255, 255, 0.06);
+            --input-bg: rgba(255, 255, 255, 0.08);
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --gradient-primary: linear-gradient(135deg, var(--mve-navy), var(--mve-navy-light));
+            --gradient-accent: linear-gradient(135deg, var(--mve-gold-dark), var(--mve-gold-light));
         }
 
         [data-theme="light"] {
-            --bg-primary: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
-            --bg-secondary: rgba(255, 255, 255, 0.95);
-            --bg-tertiary: rgba(26, 58, 92, 0.05);
-            --text-primary: #1a3a5c;
-            --text-secondary: rgba(26, 58, 92, 0.7);
-            --text-muted: rgba(26, 58, 92, 0.5);
-            --border-color: rgba(26, 58, 92, 0.15);
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --input-bg: rgba(26, 58, 92, 0.08);
-            --shadow-color: rgba(26, 58, 92, 0.15);
+            --bg-primary: linear-gradient(135deg, #f8f9fc 0%, #eef1f7 100%);
+            --bg-secondary: rgba(255, 255, 255, 0.98);
+            --bg-tertiary: rgba(30, 42, 74, 0.04);
+            --text-primary: #1e2a4a;
+            --text-secondary: rgba(30, 42, 74, 0.7);
+            --text-muted: rgba(30, 42, 74, 0.5);
+            --border-color: rgba(30, 42, 74, 0.12);
+            --card-bg: rgba(255, 255, 255, 0.98);
+            --input-bg: rgba(30, 42, 74, 0.06);
+            --shadow-color: rgba(30, 42, 74, 0.12);
         }
 
         * {
@@ -107,7 +108,7 @@
             display: block;
             font-size: 12px;
             font-weight: 500;
-            color: var(--mve-accent);
+            color: var(--mve-gold-light);
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-top: 2px;
@@ -151,7 +152,7 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            background: var(--mve-accent);
+            background: var(--mve-gold);
             border-radius: 50%;
             top: 2px;
             left: 28px;
@@ -188,8 +189,8 @@
             position: absolute;
             top: -5px;
             right: -5px;
-            background: var(--mve-secondary);
-            color: #fff;
+            background: var(--mve-gold);
+            color: var(--mve-navy-dark);
             font-size: 10px;
             width: 16px;
             height: 16px;
@@ -227,8 +228,8 @@
 
         .tab.active {
             background: var(--gradient-accent);
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(196, 30, 58, 0.4);
+            color: var(--mve-navy-dark);
+            box-shadow: 0 4px 15px rgba(212, 160, 25, 0.4);
         }
 
         .tab-content {
@@ -316,7 +317,7 @@
             border-radius: 50%;
             background: var(--gradient-accent);
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(196, 30, 58, 0.4);
+            box-shadow: 0 4px 10px rgba(212, 160, 25, 0.4);
             transition: transform 0.2s ease;
         }
 
@@ -367,7 +368,7 @@
         }
 
         .chart-bar.revenue {
-            background: linear-gradient(90deg, var(--mve-secondary), var(--mve-accent));
+            background: linear-gradient(90deg, #dc3545, var(--mve-gold));
             width: 85%;
         }
 
@@ -398,7 +399,7 @@
         }
 
         .summary-card-value.negative {
-            color: var(--mve-secondary);
+            color: #dc3545;
         }
 
         .summary-card-value.positive {
@@ -406,7 +407,7 @@
         }
 
         .summary-card-value.neutral {
-            color: var(--mve-accent);
+            color: var(--mve-gold-light);
         }
 
         .summary-card-label {
@@ -448,8 +449,8 @@
         }
 
         .candidate-item.active {
-            border-color: var(--mve-accent);
-            background: rgba(244, 160, 36, 0.1);
+            border-color: var(--mve-gold);
+            background: rgba(212, 160, 25, 0.1);
         }
 
         .candidate-avatar {
@@ -485,8 +486,8 @@
         }
 
         .status-pending {
-            background: rgba(244, 160, 36, 0.2);
-            color: var(--mve-accent);
+            background: rgba(212, 160, 25, 0.2);
+            color: var(--mve-gold-light);
         }
 
         .status-completed {
@@ -495,8 +496,8 @@
         }
 
         .status-progress {
-            background: rgba(196, 30, 58, 0.2);
-            color: var(--mve-secondary-light);
+            background: rgba(65, 105, 225, 0.2);
+            color: var(--mve-blue-accent);
         }
 
         .candidate-details {
@@ -520,7 +521,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(45deg, var(--mve-primary-dark), var(--mve-primary));
+            background: linear-gradient(45deg, var(--mve-navy-dark), var(--mve-navy));
         }
 
         .play-button {
@@ -569,7 +570,7 @@
         .video-progress-fill {
             height: 100%;
             width: 35%;
-            background: var(--mve-accent);
+            background: var(--mve-gold);
             border-radius: 2px;
         }
 
@@ -644,7 +645,7 @@
         }
 
         .score-bar-fill.communication {
-            background: linear-gradient(90deg, var(--mve-primary), #3b82f6);
+            background: linear-gradient(90deg, var(--mve-navy), var(--mve-blue-accent));
             width: 88%;
         }
 
@@ -654,12 +655,12 @@
         }
 
         .score-bar-fill.cultural {
-            background: linear-gradient(90deg, var(--mve-accent), var(--mve-accent-light));
+            background: linear-gradient(90deg, var(--mve-gold-dark), var(--mve-gold-light));
             width: 92%;
         }
 
         .score-bar-fill.technical {
-            background: linear-gradient(90deg, var(--mve-secondary), var(--mve-secondary-light));
+            background: linear-gradient(90deg, var(--mve-blue-accent), #6b8cff);
             width: 70%;
         }
 
@@ -708,7 +709,7 @@
 
         .step-circle.current {
             background: var(--gradient-accent);
-            box-shadow: 0 0 20px rgba(196, 30, 58, 0.5);
+            box-shadow: 0 0 20px rgba(212, 160, 25, 0.5);
         }
 
         .step-circle.pending {
@@ -800,11 +801,11 @@
         }
 
         .document-icon.pdf {
-            background: rgba(196, 30, 58, 0.2);
+            background: rgba(220, 53, 69, 0.2);
         }
 
         .document-icon.doc {
-            background: rgba(26, 58, 92, 0.3);
+            background: rgba(65, 105, 225, 0.2);
         }
 
         .document-info {
@@ -877,7 +878,7 @@
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            background: var(--mve-primary-dark);
+            background: var(--mve-navy-dark);
             border: 3px solid var(--border-color);
             color: var(--text-primary);
         }
@@ -890,9 +891,9 @@
 
         .progress-circle.current {
             background: var(--gradient-accent);
-            border-color: var(--mve-secondary);
-            box-shadow: 0 0 20px rgba(196, 30, 58, 0.5);
-            color: white;
+            border-color: var(--mve-gold);
+            box-shadow: 0 0 20px rgba(212, 160, 25, 0.5);
+            color: var(--mve-navy-dark);
         }
 
         .progress-label {
@@ -972,12 +973,12 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--mve-primary);
+            background: var(--mve-navy-light);
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--mve-secondary);
+            background: var(--mve-gold);
         }
 
         /* Responsive */
@@ -1005,7 +1006,7 @@
         }
 
         .footer-brand a {
-            color: var(--mve-accent);
+            color: var(--mve-gold-light);
             text-decoration: none;
             font-weight: 500;
         }
@@ -1290,7 +1291,7 @@
                                     </div>
                                 </div>
                                 <div class="document-item">
-                                    <div class="document-icon" style="background: rgba(244, 160, 36, 0.2);">▶</div>
+                                    <div class="document-icon" style="background: rgba(212, 160, 25, 0.2);">▶</div>
                                     <div class="document-info">
                                         <div class="document-name">Route Training</div>
                                         <div class="document-status">In Progress - 60%</div>
@@ -1403,7 +1404,7 @@
                                 </div>
                                 <div class="info-row">
                                     <span class="info-label">Status</span>
-                                    <span class="info-value" style="color: var(--mve-secondary);">Video Interview</span>
+                                    <span class="info-value" style="color: var(--mve-gold-light);">Video Interview</span>
                                 </div>
                             </div>
                         </div>
