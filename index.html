@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recruiting Dashboard</title>
+    <title>Mountain Valley Express - Recruiting Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Mountain Valley Express Brand Colors */
+        :root {
+            /* MVE Brand Colors */
+            --mve-primary: #1a3a5c;      /* Deep navy blue */
+            --mve-primary-dark: #0d2840;  /* Darker navy */
+            --mve-secondary: #c41e3a;     /* MVE Red */
+            --mve-secondary-light: #e63950;
+            --mve-accent: #f4a024;        /* Orange/gold accent */
+            --mve-accent-light: #ffb940;
+            
+            /* Dark Theme (default) */
+            --bg-primary: linear-gradient(135deg, #0d2840 0%, #1a3a5c 100%);
+            --bg-secondary: rgba(255, 255, 255, 0.08);
+            --bg-tertiary: rgba(0, 0, 0, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --input-bg: rgba(255, 255, 255, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --gradient-primary: linear-gradient(135deg, var(--mve-primary), var(--mve-secondary));
+            --gradient-accent: linear-gradient(135deg, var(--mve-secondary), var(--mve-accent));
+        }
+
+        [data-theme="light"] {
+            --bg-primary: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            --bg-secondary: rgba(255, 255, 255, 0.95);
+            --bg-tertiary: rgba(26, 58, 92, 0.05);
+            --text-primary: #1a3a5c;
+            --text-secondary: rgba(26, 58, 92, 0.7);
+            --text-muted: rgba(26, 58, 92, 0.5);
+            --border-color: rgba(26, 58, 92, 0.15);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --input-bg: rgba(26, 58, 92, 0.08);
+            --shadow-color: rgba(26, 58, 92, 0.15);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,10 +53,11 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--bg-primary);
             min-height: 100vh;
-            color: #fff;
+            color: var(--text-primary);
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         .dashboard {
@@ -31,12 +73,44 @@
             margin-bottom: 24px;
         }
 
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
         .header h1 {
-            font-size: 28px;
-            font-weight: 600;
-            background: linear-gradient(90deg, #fff, #a8dadc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .header h1 span {
+            display: block;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--mve-accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 2px;
         }
 
         .header-right {
@@ -45,16 +119,62 @@
             gap: 16px;
         }
 
+        /* Theme Toggle */
+        .theme-toggle {
+            width: 56px;
+            height: 28px;
+            background: var(--bg-tertiary);
+            border-radius: 14px;
+            position: relative;
+            cursor: pointer;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle::before {
+            content: '🌙';
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .theme-toggle::before {
+            content: '☀️';
+            left: calc(100% - 22px);
+        }
+
+        .theme-toggle::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--mve-accent);
+            border-radius: 50%;
+            top: 2px;
+            left: 28px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px var(--shadow-color);
+        }
+
+        [data-theme="light"] .theme-toggle::after {
+            left: 4px;
+        }
+
         .user-avatar {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: var(--gradient-accent);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
             font-size: 14px;
+            color: white;
+            box-shadow: 0 4px 15px var(--shadow-color);
         }
 
         .notification-badge {
@@ -68,7 +188,7 @@
             position: absolute;
             top: -5px;
             right: -5px;
-            background: #ef4444;
+            background: var(--mve-secondary);
             color: #fff;
             font-size: 10px;
             width: 16px;
@@ -83,10 +203,11 @@
             display: flex;
             gap: 8px;
             margin-bottom: 24px;
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--bg-tertiary);
             padding: 6px;
             border-radius: 12px;
             width: fit-content;
+            border: 1px solid var(--border-color);
         }
 
         .tab {
@@ -96,18 +217,18 @@
             font-weight: 500;
             font-size: 14px;
             transition: all 0.2s ease;
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-secondary);
         }
 
         .tab:hover {
-            color: rgba(255, 255, 255, 0.9);
-            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            background: var(--input-bg);
         }
 
         .tab.active {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: var(--gradient-accent);
             color: #fff;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 4px 15px rgba(196, 30, 58, 0.4);
         }
 
         .tab-content {
@@ -125,18 +246,20 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.08);
+            background: var(--card-bg);
             border-radius: 16px;
             padding: 24px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 32px var(--shadow-color);
+            transition: background 0.3s ease, border 0.3s ease;
         }
 
         .card-title {
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 20px;
-            color: #fff;
+            color: var(--text-primary);
         }
 
         /* Vacancy Cost Tracker Styles */
@@ -153,9 +276,10 @@
         }
 
         .slider-group {
-            background: rgba(0, 0, 0, 0.2);
+            background: var(--bg-tertiary);
             padding: 20px;
             border-radius: 12px;
+            border: 1px solid var(--border-color);
         }
 
         .slider-header {
@@ -167,13 +291,13 @@
 
         .slider-label {
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-secondary);
         }
 
         .slider-value {
             font-size: 24px;
             font-weight: 700;
-            color: #fff;
+            color: var(--text-primary);
         }
 
         .slider {
@@ -181,7 +305,7 @@
             width: 100%;
             height: 8px;
             border-radius: 4px;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--input-bg);
             outline: none;
         }
 
@@ -190,9 +314,9 @@
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: var(--gradient-accent);
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 4px 10px rgba(196, 30, 58, 0.4);
             transition: transform 0.2s ease;
         }
 
@@ -207,14 +331,15 @@
         }
 
         .chart-bar-container {
-            background: rgba(0, 0, 0, 0.2);
+            background: var(--bg-tertiary);
             padding: 20px;
             border-radius: 12px;
+            border: 1px solid var(--border-color);
         }
 
         .chart-bar-label {
             font-size: 12px;
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-secondary);
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -223,7 +348,7 @@
         .chart-bar-wrapper {
             position: relative;
             height: 48px;
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--input-bg);
             border-radius: 8px;
             overflow: hidden;
         }
@@ -238,10 +363,11 @@
             font-size: 16px;
             transition: width 0.3s ease;
             position: relative;
+            color: white;
         }
 
         .chart-bar.revenue {
-            background: linear-gradient(90deg, #ef4444, #f97316);
+            background: linear-gradient(90deg, var(--mve-secondary), var(--mve-accent));
             width: 85%;
         }
 
@@ -258,10 +384,11 @@
         }
 
         .summary-card {
-            background: rgba(0, 0, 0, 0.2);
+            background: var(--bg-tertiary);
             padding: 20px;
             border-radius: 12px;
             text-align: center;
+            border: 1px solid var(--border-color);
         }
 
         .summary-card-value {
@@ -271,7 +398,7 @@
         }
 
         .summary-card-value.negative {
-            color: #ef4444;
+            color: var(--mve-secondary);
         }
 
         .summary-card-value.positive {
@@ -279,12 +406,12 @@
         }
 
         .summary-card-value.neutral {
-            color: #667eea;
+            color: var(--mve-accent);
         }
 
         .summary-card-label {
             font-size: 12px;
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -309,7 +436,7 @@
             align-items: center;
             gap: 12px;
             padding: 16px;
-            background: rgba(0, 0, 0, 0.2);
+            background: var(--bg-tertiary);
             border-radius: 12px;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -317,12 +444,12 @@
         }
 
         .candidate-item:hover {
-            background: rgba(0, 0, 0, 0.3);
+            background: var(--input-bg);
         }
 
         .candidate-item.active {
-            border-color: #667eea;
-            background: rgba(102, 126, 234, 0.1);
+            border-color: var(--mve-accent);
+            background: rgba(244, 160, 36, 0.1);
         }
 
         .candidate-avatar {
@@ -330,7 +457,7 @@
             height: 48px;
             border-radius: 50%;
             object-fit: cover;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: var(--gradient-accent);
         }
 
         .candidate-info {
@@ -341,11 +468,12 @@
             font-weight: 600;
             font-size: 15px;
             margin-bottom: 2px;
+            color: var(--text-primary);
         }
 
         .candidate-role {
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-secondary);
         }
 
         .candidate-status {
@@ -357,8 +485,8 @@
         }
 
         .status-pending {
-            background: rgba(251, 191, 36, 0.2);
-            color: #fbbf24;
+            background: rgba(244, 160, 36, 0.2);
+            color: var(--mve-accent);
         }
 
         .status-completed {
@@ -367,8 +495,8 @@
         }
 
         .status-progress {
-            background: rgba(102, 126, 234, 0.2);
-            color: #667eea;
+            background: rgba(196, 30, 58, 0.2);
+            color: var(--mve-secondary-light);
         }
 
         .candidate-details {
@@ -392,7 +520,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            background: linear-gradient(45deg, var(--mve-primary-dark), var(--mve-primary));
         }
 
         .play-button {
@@ -441,7 +569,7 @@
         .video-progress-fill {
             height: 100%;
             width: 35%;
-            background: #667eea;
+            background: var(--mve-accent);
             border-radius: 2px;
         }
 
@@ -451,9 +579,10 @@
         }
 
         .ai-scoring {
-            background: rgba(0, 0, 0, 0.2);
+            background: var(--bg-tertiary);
             padding: 24px;
             border-radius: 16px;
+            border: 1px solid var(--border-color);
         }
 
         .ai-scoring h3 {
@@ -463,14 +592,16 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            color: var(--text-primary);
         }
 
         .ai-badge {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: var(--gradient-accent);
             padding: 4px 10px;
             border-radius: 20px;
             font-size: 10px;
             font-weight: 600;
+            color: white;
         }
 
         .score-bars {
@@ -488,13 +619,13 @@
         .score-label {
             width: 140px;
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--text-secondary);
         }
 
         .score-bar-bg {
             flex: 1;
             height: 24px;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--input-bg);
             border-radius: 12px;
             overflow: hidden;
         }
@@ -509,10 +640,11 @@
             font-size: 12px;
             font-weight: 600;
             transition: width 0.5s ease;
+            color: white;
         }
 
         .score-bar-fill.communication {
-            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            background: linear-gradient(90deg, var(--mve-primary), #3b82f6);
             width: 88%;
         }
 
@@ -522,12 +654,12 @@
         }
 
         .score-bar-fill.cultural {
-            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+            background: linear-gradient(90deg, var(--mve-accent), var(--mve-accent-light));
             width: 92%;
         }
 
         .score-bar-fill.technical {
-            background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+            background: linear-gradient(90deg, var(--mve-secondary), var(--mve-secondary-light));
             width: 70%;
         }
 
@@ -567,28 +699,27 @@
             font-weight: 600;
             font-size: 14px;
             transition: all 0.3s ease;
+            color: white;
         }
 
         .step-circle.completed {
             background: linear-gradient(135deg, #22c55e, #10b981);
-            color: #fff;
         }
 
         .step-circle.current {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: #fff;
-            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+            background: var(--gradient-accent);
+            box-shadow: 0 0 20px rgba(196, 30, 58, 0.5);
         }
 
         .step-circle.pending {
-            background: rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.4);
+            background: var(--input-bg);
+            color: var(--text-muted);
         }
 
         .step-line {
             width: 2px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--input-bg);
         }
 
         .step-line.completed {
@@ -604,17 +735,18 @@
             font-weight: 600;
             font-size: 16px;
             margin-bottom: 4px;
+            color: var(--text-primary);
         }
 
         .step-description {
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-secondary);
             margin-bottom: 8px;
         }
 
         .step-date {
             font-size: 12px;
-            color: rgba(255, 255, 255, 0.4);
+            color: var(--text-muted);
         }
 
         .step-date.completed {
@@ -628,14 +760,15 @@
         }
 
         .detail-card {
-            background: rgba(0, 0, 0, 0.2);
+            background: var(--bg-tertiary);
             padding: 20px;
             border-radius: 12px;
+            border: 1px solid var(--border-color);
         }
 
         .detail-card h4 {
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-secondary);
             margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -652,7 +785,7 @@
             align-items: center;
             gap: 12px;
             padding: 12px;
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--input-bg);
             border-radius: 8px;
         }
 
@@ -667,11 +800,11 @@
         }
 
         .document-icon.pdf {
-            background: rgba(239, 68, 68, 0.2);
+            background: rgba(196, 30, 58, 0.2);
         }
 
         .document-icon.doc {
-            background: rgba(59, 130, 246, 0.2);
+            background: rgba(26, 58, 92, 0.3);
         }
 
         .document-info {
@@ -681,11 +814,12 @@
         .document-name {
             font-size: 14px;
             font-weight: 500;
+            color: var(--text-primary);
         }
 
         .document-status {
             font-size: 12px;
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--text-muted);
         }
 
         .document-check {
@@ -704,9 +838,10 @@
             align-items: center;
             justify-content: space-between;
             padding: 24px;
-            background: rgba(0, 0, 0, 0.2);
+            background: var(--bg-tertiary);
             border-radius: 16px;
             position: relative;
+            border: 1px solid var(--border-color);
         }
 
         .progress-line {
@@ -715,14 +850,14 @@
             left: 80px;
             right: 80px;
             height: 4px;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--input-bg);
             transform: translateY(-50%);
         }
 
         .progress-line-fill {
             height: 100%;
             width: 50%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: var(--gradient-accent);
             border-radius: 2px;
         }
 
@@ -742,30 +877,33 @@
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            background: #1a1a2e;
-            border: 3px solid rgba(255, 255, 255, 0.1);
+            background: var(--mve-primary-dark);
+            border: 3px solid var(--border-color);
+            color: var(--text-primary);
         }
 
         .progress-circle.completed {
             background: linear-gradient(135deg, #22c55e, #10b981);
             border-color: #22c55e;
+            color: white;
         }
 
         .progress-circle.current {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-color: #667eea;
-            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+            background: var(--gradient-accent);
+            border-color: var(--mve-secondary);
+            box-shadow: 0 0 20px rgba(196, 30, 58, 0.5);
+            color: white;
         }
 
         .progress-label {
             font-size: 12px;
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-secondary);
             text-align: center;
             max-width: 80px;
         }
 
         .progress-label.active {
-            color: #fff;
+            color: var(--text-primary);
             font-weight: 500;
         }
 
@@ -788,22 +926,24 @@
         }
 
         .info-card {
-            background: rgba(0, 0, 0, 0.2);
+            background: var(--bg-tertiary);
             padding: 20px;
             border-radius: 12px;
+            border: 1px solid var(--border-color);
         }
 
         .info-card h4 {
             font-size: 14px;
             font-weight: 600;
             margin-bottom: 12px;
+            color: var(--text-primary);
         }
 
         .info-row {
             display: flex;
             justify-content: space-between;
             padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .info-row:last-child {
@@ -811,13 +951,14 @@
         }
 
         .info-label {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-secondary);
             font-size: 14px;
         }
 
         .info-value {
             font-weight: 500;
             font-size: 14px;
+            color: var(--text-primary);
         }
 
         /* Scrollbar Styles */
@@ -826,17 +967,17 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--input-bg);
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.2);
+            background: var(--mve-primary);
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: var(--mve-secondary);
         }
 
         /* Responsive */
@@ -852,14 +993,40 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Footer branding */
+        .footer-brand {
+            text-align: center;
+            padding: 24px;
+            margin-top: 24px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        .footer-brand a {
+            color: var(--mve-accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-brand a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="dashboard">
         <!-- Header -->
         <div class="header">
-            <h1>🚚 FleetRecruit Pro</h1>
+            <div class="header-brand">
+                <div class="logo-container">
+                    <div class="logo-icon">🚛</div>
+                    <h1>Mountain Valley Express<span>Recruiting Dashboard</span></h1>
+                </div>
+            </div>
             <div class="header-right">
+                <div class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Mode"></div>
                 <div class="notification-badge">🔔</div>
                 <div class="user-avatar">JD</div>
             </div>
@@ -940,7 +1107,7 @@
                 <div class="interviews-grid">
                     <div class="candidates-list">
                         <div class="candidate-item active">
-                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=1') center/cover, linear-gradient(135deg, #667eea, #764ba2);"></div>
+                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=1') center/cover, var(--gradient-accent);"></div>
                             <div class="candidate-info">
                                 <div class="candidate-name">Marcus Johnson</div>
                                 <div class="candidate-role">CDL-A Driver • 8 yrs exp</div>
@@ -948,7 +1115,7 @@
                             <span class="candidate-status status-progress">In Review</span>
                         </div>
                         <div class="candidate-item">
-                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=5') center/cover, linear-gradient(135deg, #667eea, #764ba2);"></div>
+                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=5') center/cover, var(--gradient-accent);"></div>
                             <div class="candidate-info">
                                 <div class="candidate-name">Sarah Williams</div>
                                 <div class="candidate-role">CDL-B Driver • 3 yrs exp</div>
@@ -956,7 +1123,7 @@
                             <span class="candidate-status status-completed">Completed</span>
                         </div>
                         <div class="candidate-item">
-                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=3') center/cover, linear-gradient(135deg, #667eea, #764ba2);"></div>
+                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=3') center/cover, var(--gradient-accent);"></div>
                             <div class="candidate-info">
                                 <div class="candidate-name">David Chen</div>
                                 <div class="candidate-role">CDL-A Driver • 12 yrs exp</div>
@@ -964,7 +1131,7 @@
                             <span class="candidate-status status-pending">Pending</span>
                         </div>
                         <div class="candidate-item">
-                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=9') center/cover, linear-gradient(135deg, #667eea, #764ba2);"></div>
+                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=9') center/cover, var(--gradient-accent);"></div>
                             <div class="candidate-info">
                                 <div class="candidate-name">Emily Rodriguez</div>
                                 <div class="candidate-role">CDL-A Driver • 5 yrs exp</div>
@@ -972,7 +1139,7 @@
                             <span class="candidate-status status-completed">Completed</span>
                         </div>
                         <div class="candidate-item">
-                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=7') center/cover, linear-gradient(135deg, #667eea, #764ba2);"></div>
+                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=7') center/cover, var(--gradient-accent);"></div>
                             <div class="candidate-info">
                                 <div class="candidate-name">James Thompson</div>
                                 <div class="candidate-role">CDL-B Driver • 2 yrs exp</div>
@@ -1123,14 +1290,14 @@
                                     </div>
                                 </div>
                                 <div class="document-item">
-                                    <div class="document-icon" style="background: rgba(102, 126, 234, 0.2);">▶</div>
+                                    <div class="document-icon" style="background: rgba(244, 160, 36, 0.2);">▶</div>
                                     <div class="document-info">
                                         <div class="document-name">Route Training</div>
                                         <div class="document-status">In Progress - 60%</div>
                                     </div>
                                 </div>
                                 <div class="document-item">
-                                    <div class="document-icon" style="background: rgba(255, 255, 255, 0.1);">○</div>
+                                    <div class="document-icon" style="background: var(--input-bg);">○</div>
                                     <div class="document-info">
                                         <div class="document-name">Equipment Certification</div>
                                         <div class="document-status">Not Started</div>
@@ -1182,7 +1349,7 @@
                             </div>
                             <div class="info-card">
                                 <h4>Interview Instructions</h4>
-                                <p style="color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.6;">
+                                <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.6;">
                                     Please record your video interview by clicking the play button above. 
                                     You'll have 5 minutes to answer 3 questions about your experience 
                                     and why you want to join our fleet. Make sure you're in a quiet 
@@ -1197,25 +1364,25 @@
                                     <div class="score-item">
                                         <span class="score-label">Communication</span>
                                         <div class="score-bar-bg">
-                                            <div class="score-bar-fill" style="width: 0%; background: rgba(255,255,255,0.1);">—</div>
+                                            <div class="score-bar-fill" style="width: 0%; background: var(--input-bg);">—</div>
                                         </div>
                                     </div>
                                     <div class="score-item">
                                         <span class="score-label">Experience Match</span>
                                         <div class="score-bar-bg">
-                                            <div class="score-bar-fill" style="width: 0%; background: rgba(255,255,255,0.1);">—</div>
+                                            <div class="score-bar-fill" style="width: 0%; background: var(--input-bg);">—</div>
                                         </div>
                                     </div>
                                     <div class="score-item">
                                         <span class="score-label">Cultural Fit</span>
                                         <div class="score-bar-bg">
-                                            <div class="score-bar-fill" style="width: 0%; background: rgba(255,255,255,0.1);">—</div>
+                                            <div class="score-bar-fill" style="width: 0%; background: var(--input-bg);">—</div>
                                         </div>
                                     </div>
                                     <div class="score-item">
                                         <span class="score-label">Technical Skills</span>
                                         <div class="score-bar-bg">
-                                            <div class="score-bar-fill" style="width: 0%; background: rgba(255,255,255,0.1);">—</div>
+                                            <div class="score-bar-fill" style="width: 0%; background: var(--input-bg);">—</div>
                                         </div>
                                     </div>
                                 </div>
@@ -1236,7 +1403,7 @@
                                 </div>
                                 <div class="info-row">
                                     <span class="info-label">Status</span>
-                                    <span class="info-value" style="color: #667eea;">Video Interview</span>
+                                    <span class="info-value" style="color: var(--mve-secondary);">Video Interview</span>
                                 </div>
                             </div>
                         </div>
@@ -1244,9 +1411,30 @@
                 </div>
             </div>
         </div>
+
+        <!-- Footer -->
+        <div class="footer-brand">
+            <p>Powered by <a href="https://www.mountainvalleyexpress.com/" target="_blank">Mountain Valley Express</a> • Delivering your freight. Connecting your world.</p>
+            <p style="margin-top: 8px;">📞 877-325-6447 • 📧 customerservice@mveltl.com</p>
+        </div>
     </div>
 
     <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or default to dark
+        const savedTheme = localStorage.getItem('mve-theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('mve-theme', newTheme);
+        });
+
         // Tab switching
         document.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', () => {
