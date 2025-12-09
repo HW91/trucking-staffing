@@ -663,10 +663,7 @@
             font-weight: 600;
             transition: width 0.5s ease;
             color: white;
-        }
-
-        .score-bar-fill {
-            background: linear-gradient(90deg, var(--mve-navy), var(--mve-blue-accent));
+            background: var(--mve-navy-dark);
         }
 
         /* Onboarding Section Styles */
@@ -1343,6 +1340,41 @@
         .task-desc {
             font-size: 12px;
             color: var(--text-muted);
+        }
+
+        /* Interview Candidate Header */
+        .interview-candidate-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 16px;
+        }
+
+        .interview-candidate-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .interview-candidate-info .candidate-avatar {
+            width: 48px;
+            height: 48px;
+        }
+
+        .interview-candidate-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .interview-candidate-info p {
+            font-size: 13px;
+            color: var(--text-secondary);
         }
 
         /* Recruiter Actions Panel */
@@ -2086,13 +2118,24 @@
                         <div class="candidate-item">
                             <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=7') center/cover, var(--gradient-accent);"></div>
                             <div class="candidate-info">
-                                <div class="candidate-name">James Thompson</div>
+                                <div class="candidate-name">John Thompson</div>
                                 <div class="candidate-role">CDL-B Driver • 2 yrs exp</div>
                             </div>
                             <span class="candidate-status status-pending">Pending</span>
                         </div>
                     </div>
                     <div class="candidate-details">
+                        <!-- Selected Candidate Header -->
+                        <div class="interview-candidate-header" id="interviewCandidateHeader">
+                            <div class="interview-candidate-info">
+                                <div class="candidate-avatar" id="interviewCandidateAvatar" style="background: url('https://i.pravatar.cc/100?img=1') center/cover, var(--gradient-accent);"></div>
+                                <div>
+                                    <h3 id="interviewCandidateName">Marcus Johnson</h3>
+                                    <p id="interviewCandidateRole">CDL-A Driver • 8 yrs exp</p>
+                                </div>
+                            </div>
+                            <span class="candidate-status" id="interviewCandidateStatus">In Review</span>
+                        </div>
                         <!-- Interview Stats Tracker -->
                         <div class="interview-stats-tracker">
                             <div class="stat-card">
@@ -2657,7 +2700,7 @@
                 icon: '✓',
                 title: 'Approve for Next Step',
                 body: `
-                    <p>You are about to advance <strong>Marcus Johnson</strong> to the next stage in the hiring process.</p>
+                    <p>You are about to advance <strong>[Candidate Name]</strong> to the next stage in the hiring process.</p>
                     <div class="modal-input-group">
                         <label>Move to Stage</label>
                         <select class="modal-select">
@@ -2679,7 +2722,7 @@
                 icon: '📄',
                 title: 'Send Offer Letter',
                 body: `
-                    <p>Send an offer letter to <strong>Marcus Johnson</strong> for the CDL-A Driver position.</p>
+                    <p>Send an offer letter to <strong>[Candidate Name]</strong> for the CDL-A Driver position.</p>
                     <div class="modal-input-group">
                         <label>Offer Template</label>
                         <select class="modal-select">
@@ -2704,7 +2747,7 @@
                 icon: '↗️',
                 title: 'Forward to Manager',
                 body: `
-                    <p>Forward <strong>Marcus Johnson's</strong> application to a manager for review.</p>
+                    <p>Forward <strong>[Candidate Name]'s</strong> application to a manager for review.</p>
                     <div class="modal-input-group">
                         <label>Select Manager</label>
                         <select class="modal-select">
@@ -2723,7 +2766,7 @@
                     </div>
                     <div class="modal-input-group">
                         <label>Message</label>
-                        <textarea class="modal-textarea" placeholder="Add a message for the manager...">Strong candidate with 8 years of CDL-A experience. AI scores indicate excellent cultural fit (92%). Recommend moving forward.</textarea>
+                        <textarea class="modal-textarea" placeholder="Add a message for the manager...">Strong candidate with excellent experience. AI scores indicate good fit. Recommend moving forward.</textarea>
                     </div>
                 `,
                 confirmText: 'Forward Application',
@@ -2733,7 +2776,7 @@
                 icon: '📅',
                 title: 'Schedule Interview',
                 body: `
-                    <p>Schedule an interview with <strong>Marcus Johnson</strong>.</p>
+                    <p>Schedule an interview with <strong>[Candidate Name]</strong>.</p>
                     <div class="modal-input-group">
                         <label>Interview Type</label>
                         <select class="modal-select">
@@ -2767,7 +2810,7 @@
                 icon: '📝',
                 title: 'Add Notes',
                 body: `
-                    <p>Add detailed notes about <strong>Marcus Johnson</strong>.</p>
+                    <p>Add detailed notes about <strong>[Candidate Name]</strong>.</p>
                     <div class="modal-input-group">
                         <label>Note Category</label>
                         <select class="modal-select">
@@ -2823,7 +2866,7 @@
                 icon: '⏸️',
                 title: 'Put on Hold',
                 body: `
-                    <p>Place <strong>Marcus Johnson's</strong> application on hold.</p>
+                    <p>Place <strong>[Candidate Name]'s</strong> application on hold.</p>
                     <div class="modal-input-group">
                         <label>Hold Reason</label>
                         <select class="modal-select">
@@ -2849,7 +2892,7 @@
                 icon: '✕',
                 title: 'Reject Candidate',
                 body: `
-                    <p>You are about to reject <strong>Marcus Johnson's</strong> application. This action will:</p>
+                    <p>You are about to reject <strong>[Candidate Name]'s</strong> application. This action will:</p>
                     <ul style="color: var(--text-secondary); font-size: 14px; margin: 12px 0; padding-left: 20px;">
                         <li>Move the candidate to rejected status</li>
                         <li>Send a rejection notification (optional)</li>
@@ -2884,9 +2927,16 @@
             const config = modalConfigs[actionType];
             if (!config) return;
 
+            // Get current candidate name for the modal
+            const candidate = candidatesData[currentCandidate];
+            const candidateName = candidate ? candidate.name : 'Selected Candidate';
+
             document.getElementById('modalIcon').textContent = config.icon;
             document.getElementById('modalTitleText').textContent = config.title;
-            document.getElementById('modalBody').innerHTML = config.body;
+            
+            // Replace placeholder with actual candidate name
+            let bodyContent = config.body.replace(/\[Candidate Name\]/g, candidateName);
+            document.getElementById('modalBody').innerHTML = bodyContent;
             document.getElementById('modalConfirm').textContent = config.confirmText;
             
             const confirmBtn = document.getElementById('modalConfirm');
@@ -3023,13 +3073,391 @@
             });
         });
 
-        // Candidate selection
-        document.querySelectorAll('.candidate-item').forEach(item => {
-            item.addEventListener('click', () => {
-                document.querySelectorAll('.candidate-item').forEach(i => i.classList.remove('active'));
-                item.classList.add('active');
+        // Candidate Data Store
+        const candidatesData = {
+            // Interview candidates
+            'marcus-johnson': {
+                id: 'marcus-johnson',
+                name: 'Marcus Johnson',
+                role: 'CDL-A Driver',
+                experience: '8 yrs exp',
+                location: 'Dallas, TX',
+                avatar: 'https://i.pravatar.cc/100?img=1',
+                status: 'In Review',
+                statusClass: 'status-progress',
+                videoTime: '2:34 / 7:15',
+                videoProgress: 35,
+                scores: { communications: 88, experience: 75, skills: 92, history: 70, resume: 85 },
+                onboarding: {
+                    progress: 75,
+                    status: 'Training',
+                    startDate: 'Dec 15, 2025',
+                    steps: [
+                        { title: 'Offer Accepted', desc: 'Candidate accepted the job offer', completed: true, date: 'Completed Dec 1, 2025' },
+                        { title: 'Documents Submitted', desc: 'All required documents received and verified', completed: true, date: 'Completed Dec 4, 2025' },
+                        { title: 'Training Program', desc: 'Safety orientation and route training', current: true, date: 'In Progress - Due Dec 10, 2025' },
+                        { title: 'First Assignment', desc: 'Assigned to first delivery route', pending: true, date: 'Scheduled Dec 12, 2025' }
+                    ],
+                    documents: [
+                        { name: 'CDL License', status: 'Verified', verified: true },
+                        { name: 'Medical Certificate', status: 'Verified', verified: true },
+                        { name: 'Background Check', status: 'Verified', verified: true },
+                        { name: 'Drug Test Results', status: 'Verified', verified: true }
+                    ],
+                    training: [
+                        { name: 'Safety Orientation', status: 'Completed', completed: true },
+                        { name: 'Route Training', status: 'In Progress - 60%', inProgress: true },
+                        { name: 'Equipment Certification', status: 'Not Started', notStarted: true }
+                    ]
+                }
+            },
+            'sarah-williams': {
+                id: 'sarah-williams',
+                name: 'Sarah Williams',
+                role: 'CDL-B Driver',
+                experience: '3 yrs exp',
+                location: 'Houston, TX',
+                avatar: 'https://i.pravatar.cc/100?img=5',
+                status: 'Completed',
+                statusClass: 'status-completed',
+                videoTime: '5:42 / 5:42',
+                videoProgress: 100,
+                scores: { communications: 92, experience: 68, skills: 85, history: 88, resume: 90 },
+                onboarding: {
+                    progress: 100,
+                    status: 'Docs Complete',
+                    startDate: 'Dec 18, 2025',
+                    steps: [
+                        { title: 'Offer Accepted', desc: 'Candidate accepted the job offer', completed: true, date: 'Completed Nov 28, 2025' },
+                        { title: 'Documents Submitted', desc: 'All required documents received and verified', completed: true, date: 'Completed Dec 2, 2025' },
+                        { title: 'Training Program', desc: 'Safety orientation and route training', completed: true, date: 'Completed Dec 6, 2025' },
+                        { title: 'First Assignment', desc: 'Assigned to first delivery route', current: true, date: 'Scheduled Dec 10, 2025' }
+                    ],
+                    documents: [
+                        { name: 'CDL License', status: 'Verified', verified: true },
+                        { name: 'Medical Certificate', status: 'Verified', verified: true },
+                        { name: 'Background Check', status: 'Verified', verified: true },
+                        { name: 'Drug Test Results', status: 'Verified', verified: true }
+                    ],
+                    training: [
+                        { name: 'Safety Orientation', status: 'Completed', completed: true },
+                        { name: 'Route Training', status: 'Completed', completed: true },
+                        { name: 'Equipment Certification', status: 'Completed', completed: true }
+                    ]
+                }
+            },
+            'david-chen': {
+                id: 'david-chen',
+                name: 'David Chen',
+                role: 'CDL-A Driver',
+                experience: '12 yrs exp',
+                location: 'Fort Worth, TX',
+                avatar: 'https://i.pravatar.cc/100?img=3',
+                status: 'Pending',
+                statusClass: 'status-pending',
+                videoTime: '0:00 / 6:30',
+                videoProgress: 0,
+                scores: { communications: 0, experience: 0, skills: 0, history: 0, resume: 0 },
+                onboarding: null
+            },
+            'emily-rodriguez': {
+                id: 'emily-rodriguez',
+                name: 'Emily Rodriguez',
+                role: 'CDL-A Driver',
+                experience: '5 yrs exp',
+                location: 'Austin, TX',
+                avatar: 'https://i.pravatar.cc/100?img=9',
+                status: 'Completed',
+                statusClass: 'status-completed',
+                videoTime: '4:15 / 4:15',
+                videoProgress: 100,
+                scores: { communications: 78, experience: 82, skills: 88, history: 75, resume: 80 },
+                onboarding: {
+                    progress: 50,
+                    status: 'Docs Pending',
+                    startDate: 'Dec 20, 2025',
+                    steps: [
+                        { title: 'Offer Accepted', desc: 'Candidate accepted the job offer', completed: true, date: 'Completed Dec 3, 2025' },
+                        { title: 'Documents Submitted', desc: 'Awaiting document verification', current: true, date: 'In Progress - Due Dec 12, 2025' },
+                        { title: 'Training Program', desc: 'Safety orientation and route training', pending: true, date: 'Scheduled Dec 15, 2025' },
+                        { title: 'First Assignment', desc: 'Assigned to first delivery route', pending: true, date: 'Scheduled Dec 22, 2025' }
+                    ],
+                    documents: [
+                        { name: 'CDL License', status: 'Verified', verified: true },
+                        { name: 'Medical Certificate', status: 'Pending Review', pending: true },
+                        { name: 'Background Check', status: 'In Progress', pending: true },
+                        { name: 'Drug Test Results', status: 'Awaiting Results', pending: true }
+                    ],
+                    training: [
+                        { name: 'Safety Orientation', status: 'Not Started', notStarted: true },
+                        { name: 'Route Training', status: 'Not Started', notStarted: true },
+                        { name: 'Equipment Certification', status: 'Not Started', notStarted: true }
+                    ]
+                }
+            },
+            'james-thompson': {
+                id: 'james-thompson',
+                name: 'John Thompson',
+                role: 'CDL-B Driver',
+                experience: '2 yrs exp',
+                location: 'Plano, TX',
+                avatar: 'https://i.pravatar.cc/100?img=7',
+                status: 'Pending',
+                statusClass: 'status-pending',
+                videoTime: '0:00 / 5:45',
+                videoProgress: 0,
+                scores: { communications: 0, experience: 0, skills: 0, history: 0, resume: 0 },
+                onboarding: null
+            },
+            'robert-martinez': {
+                id: 'robert-martinez',
+                name: 'Robert Martinez',
+                role: 'CDL-A Driver',
+                experience: '7 yrs exp',
+                location: 'San Antonio, TX',
+                avatar: 'https://i.pravatar.cc/100?img=12',
+                status: 'Ready to Start',
+                statusClass: 'status-completed',
+                videoTime: '6:00 / 6:00',
+                videoProgress: 100,
+                scores: { communications: 95, experience: 90, skills: 94, history: 92, resume: 88 },
+                onboarding: {
+                    progress: 100,
+                    status: 'Ready to Start',
+                    startDate: 'Dec 10, 2025',
+                    steps: [
+                        { title: 'Offer Accepted', desc: 'Candidate accepted the job offer', completed: true, date: 'Completed Nov 20, 2025' },
+                        { title: 'Documents Submitted', desc: 'All required documents received and verified', completed: true, date: 'Completed Nov 25, 2025' },
+                        { title: 'Training Program', desc: 'Safety orientation and route training', completed: true, date: 'Completed Dec 5, 2025' },
+                        { title: 'First Assignment', desc: 'Ready for first delivery route', completed: true, date: 'Completed Dec 8, 2025' }
+                    ],
+                    documents: [
+                        { name: 'CDL License', status: 'Verified', verified: true },
+                        { name: 'Medical Certificate', status: 'Verified', verified: true },
+                        { name: 'Background Check', status: 'Verified', verified: true },
+                        { name: 'Drug Test Results', status: 'Verified', verified: true }
+                    ],
+                    training: [
+                        { name: 'Safety Orientation', status: 'Completed', completed: true },
+                        { name: 'Route Training', status: 'Completed', completed: true },
+                        { name: 'Equipment Certification', status: 'Completed', completed: true }
+                    ]
+                }
+            }
+        };
+
+        let currentCandidate = 'marcus-johnson';
+
+        // Update Interview Details Panel
+        function updateInterviewDetails(candidateId) {
+            const candidate = candidatesData[candidateId];
+            if (!candidate) return;
+
+            // Update candidate header
+            const avatarEl = document.getElementById('interviewCandidateAvatar');
+            const nameEl = document.getElementById('interviewCandidateName');
+            const roleEl = document.getElementById('interviewCandidateRole');
+            const statusEl = document.getElementById('interviewCandidateStatus');
+            
+            if (avatarEl) avatarEl.style.background = `url('${candidate.avatar}') center/cover, var(--gradient-accent)`;
+            if (nameEl) nameEl.textContent = candidate.name;
+            if (roleEl) roleEl.textContent = `${candidate.role} • ${candidate.experience}`;
+            if (statusEl) {
+                statusEl.textContent = candidate.status;
+                statusEl.className = 'candidate-status ' + candidate.statusClass;
+            }
+
+            // Update video time and progress
+            const videoTimeEl = document.querySelector('#interviews .video-time');
+            const videoProgressFill = document.querySelector('#interviews .video-progress-fill');
+            if (videoTimeEl) videoTimeEl.textContent = candidate.videoTime;
+            if (videoProgressFill) videoProgressFill.style.width = candidate.videoProgress + '%';
+
+            // Update AI scoring bars
+            const scoreItems = document.querySelectorAll('#interviews .score-item');
+            const scoreKeys = ['communications', 'experience', 'skills', 'history', 'resume'];
+            scoreItems.forEach((item, index) => {
+                const fill = item.querySelector('.score-bar-fill');
+                const score = candidate.scores[scoreKeys[index]];
+                if (fill) {
+                    fill.style.width = score + '%';
+                    fill.textContent = score > 0 ? score + '%' : 'N/A';
+                }
             });
-        });
+        }
+
+        // Update Onboarding Details Panel
+        function updateOnboardingDetails(candidateId) {
+            const candidate = candidatesData[candidateId];
+            const detailsPanel = document.querySelector('#onboarding .candidate-details');
+            
+            if (!candidate || !candidate.onboarding) {
+                // Show placeholder for candidates not in onboarding
+                if (detailsPanel) {
+                    detailsPanel.innerHTML = `
+                        <div class="onboarding-header-card" style="justify-content: center;">
+                            <div style="text-align: center; padding: 40px;">
+                                <div style="font-size: 48px; margin-bottom: 16px;">📋</div>
+                                <h3 style="color: var(--text-primary); margin-bottom: 8px;">Not in Onboarding</h3>
+                                <p style="color: var(--text-secondary);">This candidate has not yet reached the onboarding stage.</p>
+                            </div>
+                        </div>
+                    `;
+                }
+                return;
+            }
+
+            const ob = candidate.onboarding;
+
+            // Build steps HTML
+            let stepsHtml = '';
+            ob.steps.forEach((step, index) => {
+                const isLast = index === ob.steps.length - 1;
+                const circleClass = step.completed ? 'completed' : (step.current ? 'current' : 'pending');
+                const circleContent = step.completed ? '✓' : (index + 1);
+                const lineClass = step.completed ? 'completed' : '';
+                const dateClass = step.completed ? 'completed' : '';
+                const datePrefix = step.completed ? '✓ ' : '';
+
+                stepsHtml += `
+                    <div class="onboarding-step">
+                        <div class="step-indicator">
+                            <div class="step-circle ${circleClass}">${circleContent}</div>
+                            ${!isLast ? `<div class="step-line ${lineClass}"></div>` : ''}
+                        </div>
+                        <div class="step-content">
+                            <div class="step-title">${step.title}</div>
+                            <div class="step-description">${step.desc}</div>
+                            <div class="step-date ${dateClass}">${datePrefix}${step.date}</div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Build documents HTML
+            let docsHtml = '';
+            ob.documents.forEach(doc => {
+                const iconClass = doc.verified ? 'pdf' : 'doc';
+                const checkmark = doc.verified ? '<span class="document-check">✓</span>' : '<span style="color: var(--mve-gold-light);">⏳</span>';
+                docsHtml += `
+                    <div class="document-item">
+                        <div class="document-icon ${iconClass}">📄</div>
+                        <div class="document-info">
+                            <div class="document-name">${doc.name}</div>
+                            <div class="document-status">${doc.status}</div>
+                        </div>
+                        ${checkmark}
+                    </div>
+                `;
+            });
+
+            // Build training HTML
+            let trainingHtml = '';
+            ob.training.forEach(item => {
+                let iconBg = 'var(--input-bg)';
+                let icon = '○';
+                if (item.completed) {
+                    iconBg = 'rgba(34, 197, 94, 0.2)';
+                    icon = '✓';
+                } else if (item.inProgress) {
+                    iconBg = 'rgba(212, 160, 25, 0.2)';
+                    icon = '▶';
+                }
+                trainingHtml += `
+                    <div class="document-item">
+                        <div class="document-icon" style="background: ${iconBg};">${icon}</div>
+                        <div class="document-info">
+                            <div class="document-name">${item.name}</div>
+                            <div class="document-status">${item.status}</div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Rebuild entire details panel
+            detailsPanel.innerHTML = `
+                <div class="onboarding-header-card">
+                    <div class="onboarding-candidate-info">
+                        <div class="candidate-avatar large" style="background: url('${candidate.avatar}') center/cover, var(--gradient-accent);"></div>
+                        <div>
+                            <h3>${candidate.name}</h3>
+                            <p>${candidate.role} • Start Date: ${ob.startDate}</p>
+                        </div>
+                    </div>
+                    <div class="onboarding-progress-badge">
+                        <span class="progress-value">${ob.progress}%</span>
+                        <span class="progress-label">Complete</span>
+                    </div>
+                </div>
+                <div class="onboarding-content">
+                    <div class="onboarding-tracker">
+                        ${stepsHtml}
+                    </div>
+                    <div class="onboarding-details">
+                        <div class="detail-card">
+                            <h4>Documents</h4>
+                            <div class="document-list">
+                                ${docsHtml}
+                            </div>
+                        </div>
+                        <div class="detail-card">
+                            <h4>Training Progress</h4>
+                            <div class="document-list">
+                                ${trainingHtml}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Candidate selection with dynamic updates
+        function selectCandidate(candidateId, listType) {
+            currentCandidate = candidateId;
+            
+            // Update active state in the specific list
+            const listSelector = listType === 'interview' ? '#interviews .candidates-list' : '#onboarding .candidates-list';
+            document.querySelectorAll(listSelector + ' .candidate-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Find and activate the clicked item
+            const clickedItem = document.querySelector(`${listSelector} .candidate-item[data-candidate="${candidateId}"]`);
+            if (clickedItem) clickedItem.classList.add('active');
+
+            // Update the relevant details panel
+            if (listType === 'interview') {
+                updateInterviewDetails(candidateId);
+            } else {
+                updateOnboardingDetails(candidateId);
+            }
+        }
+
+        // Initialize candidate items with data attributes and click handlers
+        function initializeCandidateLists() {
+            // Interview candidates list
+            const interviewCandidates = ['marcus-johnson', 'sarah-williams', 'david-chen', 'emily-rodriguez', 'james-thompson'];
+            const interviewItems = document.querySelectorAll('#interviews .candidates-list .candidate-item');
+            interviewItems.forEach((item, index) => {
+                if (interviewCandidates[index]) {
+                    item.setAttribute('data-candidate', interviewCandidates[index]);
+                    item.addEventListener('click', () => selectCandidate(interviewCandidates[index], 'interview'));
+                }
+            });
+
+            // Onboarding candidates list (skip the list-header div)
+            const onboardingCandidates = ['marcus-johnson', 'sarah-williams', 'emily-rodriguez', 'robert-martinez'];
+            const onboardingItems = document.querySelectorAll('#onboarding .candidates-list .candidate-item');
+            onboardingItems.forEach((item, index) => {
+                if (onboardingCandidates[index]) {
+                    item.setAttribute('data-candidate', onboardingCandidates[index]);
+                    item.addEventListener('click', () => selectCandidate(onboardingCandidates[index], 'onboarding'));
+                }
+            });
+        }
+
+        // Initialize on page load
+        initializeCandidateLists();
 
         // Vacancy Cost Calculator
         const trucksSlider = document.getElementById('trucks-slider');
