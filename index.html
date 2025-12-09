@@ -583,12 +583,14 @@
             border-radius: 8px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
+            padding-left: 12px;
             font-weight: 700;
             font-size: 16px;
             transition: width 0.3s ease;
             position: relative;
             color: white;
+            min-width: 120px;
         }
 
         .chart-bar.revenue {
@@ -3000,16 +3002,16 @@
                             <div class="truck-slider-group">
                                 <div class="truck-slider-header">
                                     <span class="truck-slider-label"><span class="tab-text-en">Vacant Trucks</span><span class="tab-text-es">Camiones Vacantes</span></span>
-                                    <span class="truck-slider-value" id="dryvan-trucks-value">8</span>
+                                    <span class="truck-slider-value" id="dryvan-trucks-value">0</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="dryvan-trucks-slider" min="0" max="50" value="8">
+                                <input type="range" class="truck-slider" id="dryvan-trucks-slider" min="0" max="20" value="0">
                             </div>
                             <div class="truck-slider-group">
                                 <div class="truck-slider-header">
                                     <span class="truck-slider-label"><span class="tab-text-en">Revenue $/day</span><span class="tab-text-es">Ingreso $/día</span></span>
-                                    <span class="truck-slider-value" id="dryvan-revenue-value">$1,100</span>
+                                    <span class="truck-slider-value" id="dryvan-revenue-value">$0</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="dryvan-revenue-slider" min="0" max="2000" value="1100">
+                                <input type="range" class="truck-slider" id="dryvan-revenue-slider" min="0" max="2000" value="0">
                             </div>
                             <div class="truck-row-bars">
                                 <div class="truck-mini-bar-container">
@@ -3040,16 +3042,16 @@
                             <div class="truck-slider-group">
                                 <div class="truck-slider-header">
                                     <span class="truck-slider-label"><span class="tab-text-en">Vacant Trucks</span><span class="tab-text-es">Camiones Vacantes</span></span>
-                                    <span class="truck-slider-value" id="reefer-trucks-value">6</span>
+                                    <span class="truck-slider-value" id="reefer-trucks-value">0</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="reefer-trucks-slider" min="0" max="50" value="6">
+                                <input type="range" class="truck-slider" id="reefer-trucks-slider" min="0" max="20" value="0">
                             </div>
                             <div class="truck-slider-group">
                                 <div class="truck-slider-header">
                                     <span class="truck-slider-label"><span class="tab-text-en">Revenue $/day</span><span class="tab-text-es">Ingreso $/día</span></span>
-                                    <span class="truck-slider-value" id="reefer-revenue-value">$1,400</span>
+                                    <span class="truck-slider-value" id="reefer-revenue-value">$0</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="reefer-revenue-slider" min="0" max="2000" value="1400">
+                                <input type="range" class="truck-slider" id="reefer-revenue-slider" min="0" max="2000" value="0">
                             </div>
                             <div class="truck-row-bars">
                                 <div class="truck-mini-bar-container">
@@ -3080,16 +3082,16 @@
                             <div class="truck-slider-group">
                                 <div class="truck-slider-header">
                                     <span class="truck-slider-label"><span class="tab-text-en">Vacant Trucks</span><span class="tab-text-es">Camiones Vacantes</span></span>
-                                    <span class="truck-slider-value" id="boxtruck-trucks-value">5</span>
+                                    <span class="truck-slider-value" id="boxtruck-trucks-value">0</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="boxtruck-trucks-slider" min="0" max="50" value="5">
+                                <input type="range" class="truck-slider" id="boxtruck-trucks-slider" min="0" max="20" value="0">
                             </div>
                             <div class="truck-slider-group">
                                 <div class="truck-slider-header">
                                     <span class="truck-slider-label"><span class="tab-text-en">Revenue $/day</span><span class="tab-text-es">Ingreso $/día</span></span>
-                                    <span class="truck-slider-value" id="boxtruck-revenue-value">$900</span>
+                                    <span class="truck-slider-value" id="boxtruck-revenue-value">$0</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="boxtruck-revenue-slider" min="0" max="2000" value="900">
+                                <input type="range" class="truck-slider" id="boxtruck-revenue-slider" min="0" max="2000" value="0">
                             </div>
                             <div class="truck-row-bars">
                                 <div class="truck-mini-bar-container">
@@ -3120,16 +3122,16 @@
                             <div class="truck-slider-group">
                                 <div class="truck-slider-header">
                                     <span class="truck-slider-label"><span class="tab-text-en">Vacant Trucks</span><span class="tab-text-es">Camiones Vacantes</span></span>
-                                    <span class="truck-slider-value" id="flatbed-trucks-value">4</span>
+                                    <span class="truck-slider-value" id="flatbed-trucks-value">0</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="flatbed-trucks-slider" min="0" max="50" value="4">
+                                <input type="range" class="truck-slider" id="flatbed-trucks-slider" min="0" max="20" value="0">
                             </div>
                             <div class="truck-slider-group">
                                 <div class="truck-slider-header">
                                     <span class="truck-slider-label"><span class="tab-text-en">Revenue $/day</span><span class="tab-text-es">Ingreso $/día</span></span>
-                                    <span class="truck-slider-value" id="flatbed-revenue-value">$1,300</span>
+                                    <span class="truck-slider-value" id="flatbed-revenue-value">$0</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="flatbed-revenue-slider" min="0" max="2000" value="1300">
+                                <input type="range" class="truck-slider" id="flatbed-revenue-slider" min="0" max="2000" value="0">
                             </div>
                             <div class="truck-row-bars">
                                 <div class="truck-mini-bar-container">
@@ -3160,16 +3162,16 @@
                             <div class="truck-slider-group">
                                 <div class="truck-slider-header">
                                     <span class="truck-slider-label"><span class="tab-text-en">Vacant Trucks</span><span class="tab-text-es">Camiones Vacantes</span></span>
-                                    <span class="truck-slider-value" id="tanker-trucks-value">3</span>
+                                    <span class="truck-slider-value" id="tanker-trucks-value">0</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="tanker-trucks-slider" min="0" max="50" value="3">
+                                <input type="range" class="truck-slider" id="tanker-trucks-slider" min="0" max="20" value="0">
                             </div>
                             <div class="truck-slider-group">
                                 <div class="truck-slider-header">
                                     <span class="truck-slider-label"><span class="tab-text-en">Revenue $/day</span><span class="tab-text-es">Ingreso $/día</span></span>
-                                    <span class="truck-slider-value" id="tanker-revenue-value">$1,600</span>
+                                    <span class="truck-slider-value" id="tanker-revenue-value">$0</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="tanker-revenue-slider" min="0" max="2000" value="1600">
+                                <input type="range" class="truck-slider" id="tanker-revenue-slider" min="0" max="2000" value="0">
                             </div>
                             <div class="truck-row-bars">
                                 <div class="truck-mini-bar-container">
@@ -3200,16 +3202,16 @@
                             <div class="truck-slider-group">
                                 <div class="truck-slider-header">
                                     <span class="truck-slider-label"><span class="tab-text-en">Vacant Trucks</span><span class="tab-text-es">Camiones Vacantes</span></span>
-                                    <span class="truck-slider-value" id="stepdeck-trucks-value">3</span>
+                                    <span class="truck-slider-value" id="stepdeck-trucks-value">0</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="stepdeck-trucks-slider" min="0" max="50" value="3">
+                                <input type="range" class="truck-slider" id="stepdeck-trucks-slider" min="0" max="20" value="0">
                             </div>
                             <div class="truck-slider-group">
                                 <div class="truck-slider-header">
                                     <span class="truck-slider-label"><span class="tab-text-en">Revenue $/day</span><span class="tab-text-es">Ingreso $/día</span></span>
-                                    <span class="truck-slider-value" id="stepdeck-revenue-value">$1,500</span>
+                                    <span class="truck-slider-value" id="stepdeck-revenue-value">$0</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="stepdeck-revenue-slider" min="0" max="2000" value="1500">
+                                <input type="range" class="truck-slider" id="stepdeck-revenue-slider" min="0" max="2000" value="0">
                             </div>
                             <div class="truck-row-bars">
                                 <div class="truck-mini-bar-container">
@@ -3241,9 +3243,9 @@
                             <div class="chart-bar-label"><span class="tab-text-en">Improvement Target</span><span class="tab-text-es">Meta de Mejora</span></div>
                             <div class="slider-header" style="margin-bottom: 8px;">
                                 <span></span>
-                                <span class="slider-value" id="improvement-value" style="font-size: 20px;">35%</span>
+                                <span class="slider-value" id="improvement-value" style="font-size: 20px;">20%</span>
                             </div>
-                            <input type="range" class="slider" id="improvement-slider" min="0" max="100" value="35">
+                            <input type="range" class="slider" id="improvement-slider" min="0" max="100" value="20">
                         </div>
                         <!-- Estimated Annual Revenue Loss -->
                         <div class="chart-bar-container">
@@ -3322,35 +3324,35 @@
                         <!-- Interview Stats Tracker -->
                         <div class="interview-stats-tracker">
                             <div class="stat-card">
-                                <div class="stat-icon">👥</div>
+                                <div class="stat-icon"></div>
                                 <div class="stat-info">
                                     <div class="stat-value">47</div>
                                     <div class="stat-label"><span class="tab-text-en">Total Candidates</span><span class="tab-text-es">Total de Candidatos</span></div>
                                 </div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-icon completed">✓</div>
+                                <div class="stat-icon completed"></div>
                                 <div class="stat-info">
                                     <div class="stat-value">28</div>
                                     <div class="stat-label"><span class="tab-text-en">Interviewed</span><span class="tab-text-es">Entrevistados</span></div>
                                 </div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-icon pending">⏳</div>
+                                <div class="stat-icon pending"></div>
                                 <div class="stat-info">
                                     <div class="stat-value">12</div>
                                     <div class="stat-label"><span class="tab-text-en">Incomplete</span><span class="tab-text-es">Incompletos</span></div>
                                 </div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-icon offers">📄</div>
+                                <div class="stat-icon offers"></div>
                                 <div class="stat-info">
                                     <div class="stat-value">8</div>
                                     <div class="stat-label"><span class="tab-text-en">Offers Sent</span><span class="tab-text-es">Ofertas Enviadas</span></div>
                                 </div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-icon hired">🎉</div>
+                                <div class="stat-icon hired"></div>
                                 <div class="stat-info">
                                     <div class="stat-value">5</div>
                                     <div class="stat-label"><span class="tab-text-en">Hired</span><span class="tab-text-es">Contratados</span></div>
@@ -3889,6 +3891,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Need Help Section -->
+        <div class="need-help-banner">
+            <span class="tab-text-en">Need Help? Ask Chatbot or call </span><span class="tab-text-es">¿Necesitas Ayuda? Pregunta al Chatbot o llama al </span><a href="tel:555-555-5555">555-555-5555</a>
         </div>
 
         <!-- Footer -->
@@ -4715,7 +4722,7 @@
 
         function updateCalculations() {
             let totalDailyLoss = 0;
-            const maxSingleTruckLoss = 50 * 2000; // Max loss for a single truck type (50 trucks × $2000)
+            const maxSingleTruckLoss = 20 * 2000; // Max loss for a single truck type (20 trucks × $2000)
             const improvement = parseInt(improvementSlider.value);
 
             // Calculate daily loss for each truck type
@@ -4769,7 +4776,7 @@
             const revenueBar = document.getElementById('revenue-bar');
             const savingsBar = document.getElementById('savings-bar');
 
-            const maxLoss = 50 * 6 * 2000; // 50 trucks × 6 types × $2000 max
+            const maxLoss = 20 * 6 * 2000; // 20 trucks × 6 types × $2000 max
             const maxAnnualLoss = maxLoss * 365;
             const lossWidth = Math.min((annualLoss / maxAnnualLoss) * 100, 100);
             const savingsWidth = Math.min((annualSavings / maxAnnualLoss) * 100, 100);
@@ -4900,6 +4907,7 @@
                                 <button class="quick-action-btn" data-message="What are the pay rates?">Pay Rates</button>
                                 <button class="quick-action-btn" data-message="How do I apply?">How to Apply</button>
                                 <button class="quick-action-btn" data-message="Benefits information">Benefits</button>
+                                <button class="quick-action-btn" data-message="I need to reset my password">Reset Password</button>
                             </div>
                             
                             <div class="chatbot-input-container">
@@ -4910,6 +4918,7 @@
                                     </svg>
                                 </button>
                             </div>
+                            <div class="chatbot-disclaimer">AI Assistant can make mistakes. Check important info.</div>
                         </div>
                     </div>
                 `;
@@ -5094,6 +5103,17 @@
                 
                 if (lowerMsg.includes('thank')) {
                     return `You're welcome! 😊 If you have any more questions about joining the MVE family, feel free to ask. We're here to help you succeed!`;
+                }
+                
+                if (lowerMsg.includes('reset') || lowerMsg.includes('password') || lowerMsg.includes('forgot')) {
+                    return `🔐 <strong>Reset Your Password:</strong><br><br>
+                    To reset your password:<br>
+                    1. Go to the login page<br>
+                    2. Click "Forgot Password"<br>
+                    3. Enter your email address<br>
+                    4. Check your inbox for the reset link<br>
+                    5. Create a new password<br><br>
+                    If you don't receive the email within 5 minutes, check your spam folder or contact support at <strong>(800) 555-HAUL</strong>.`;
                 }
                 
                 // Default response
@@ -5417,6 +5437,35 @@
         .chatbot-send svg {
             width: 20px;
             height: 20px;
+        }
+        
+        .chatbot-disclaimer {
+            padding: 8px 20px 12px;
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            font-style: italic;
+        }
+        
+        .need-help-banner {
+            text-align: center;
+            padding: 16px 24px;
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            margin: 24px 0 0 0;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .need-help-banner a {
+            color: var(--mve-gold-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .need-help-banner a:hover {
+            text-decoration: underline;
         }
         
         /* Mobile responsive */
