@@ -34,19 +34,6 @@
             --gradient-accent: linear-gradient(135deg, var(--mve-gold-dark), var(--mve-gold-light));
         }
 
-        [data-theme="light"] {
-            --bg-primary: linear-gradient(135deg, #f8f9fc 0%, #eef1f7 100%);
-            --bg-secondary: rgba(255, 255, 255, 0.98);
-            --bg-tertiary: rgba(30, 42, 74, 0.04);
-            --text-primary: #1e2a4a;
-            --text-secondary: rgba(30, 42, 74, 0.7);
-            --text-muted: rgba(30, 42, 74, 0.5);
-            --border-color: rgba(30, 42, 74, 0.12);
-            --card-bg: rgba(255, 255, 255, 0.98);
-            --input-bg: rgba(30, 42, 74, 0.06);
-            --shadow-color: rgba(30, 42, 74, 0.12);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -150,50 +137,6 @@
             display: flex;
             align-items: center;
             gap: 16px;
-        }
-
-        /* Theme Toggle */
-        .theme-toggle {
-            width: 56px;
-            height: 28px;
-            background: var(--bg-tertiary);
-            border-radius: 14px;
-            position: relative;
-            cursor: pointer;
-            border: 2px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle::before {
-            content: '🌙';
-            position: absolute;
-            left: 4px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        [data-theme="light"] .theme-toggle::before {
-            content: '☀️';
-            left: calc(100% - 22px);
-        }
-
-        .theme-toggle::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--mve-gold);
-            border-radius: 50%;
-            top: 2px;
-            left: 28px;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px var(--shadow-color);
-        }
-
-        [data-theme="light"] .theme-toggle::after {
-            left: 4px;
         }
 
         .user-avatar {
@@ -1653,11 +1596,6 @@
             animation: modalSlideIn 0.3s ease;
         }
 
-        [data-theme="light"] .action-modal {
-            background: #ffffff;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-        }
-
         @keyframes modalSlideIn {
             from {
                 opacity: 0;
@@ -1867,11 +1805,6 @@
             transition: all 0.2s ease;
             z-index: 100;
             overflow: hidden;
-        }
-
-        [data-theme="light"] .language-dropdown {
-            background: #ffffff;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
 
         .language-selector.open .language-dropdown {
@@ -2425,7 +2358,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Mode"></div>
                 <div class="notification-badge">🔔</div>
                 <div class="user-avatar">JD</div>
             </div>
@@ -2834,40 +2766,35 @@
                 <div class="card-title"><span class="tab-text-en">Interview Management</span><span class="tab-text-es">Gestión de Entrevistas</span></div>
                 <div class="interviews-grid">
                     <div class="candidates-list">
-                        <div class="candidate-item active">
-                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=1') center/cover, var(--gradient-accent);"></div>
+                        <div class="candidate-item active" data-candidate="marcus-johnson">
                             <div class="candidate-info">
                                 <div class="candidate-name">Marcus Johnson</div>
                                 <div class="candidate-role">CDL-A Driver • 8 yrs exp</div>
                             </div>
                             <span class="candidate-status status-progress">In Review</span>
                         </div>
-                        <div class="candidate-item">
-                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=5') center/cover, var(--gradient-accent);"></div>
+                        <div class="candidate-item" data-candidate="sarah-williams">
                             <div class="candidate-info">
                                 <div class="candidate-name">Sarah Williams</div>
                                 <div class="candidate-role">CDL-B Driver • 3 yrs exp</div>
                             </div>
                             <span class="candidate-status status-completed">Completed</span>
                         </div>
-                        <div class="candidate-item">
-                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=3') center/cover, var(--gradient-accent);"></div>
+                        <div class="candidate-item" data-candidate="santiago-hernandez">
                             <div class="candidate-info">
-                                <div class="candidate-name">David Chen</div>
+                                <div class="candidate-name">Santiago Hernandez</div>
                                 <div class="candidate-role">CDL-A Driver • 12 yrs exp</div>
                             </div>
                             <span class="candidate-status status-pending">Pending</span>
                         </div>
-                        <div class="candidate-item">
-                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=9') center/cover, var(--gradient-accent);"></div>
+                        <div class="candidate-item" data-candidate="emily-rodriguez">
                             <div class="candidate-info">
                                 <div class="candidate-name">Emily Rodriguez</div>
                                 <div class="candidate-role">CDL-A Driver • 5 yrs exp</div>
                             </div>
                             <span class="candidate-status status-completed">Completed</span>
                         </div>
-                        <div class="candidate-item">
-                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=7') center/cover, var(--gradient-accent);"></div>
+                        <div class="candidate-item" data-candidate="john-thompson">
                             <div class="candidate-info">
                                 <div class="candidate-name">John Thompson</div>
                                 <div class="candidate-role">CDL-B Driver • 2 yrs exp</div>
@@ -3046,32 +2973,28 @@
                             <span class="list-title"><span class="tab-text-en">Onboarding Candidates</span><span class="tab-text-es">Candidatos en Incorporación</span></span>
                             <span class="list-count"><span class="tab-text-en">4 active</span><span class="tab-text-es">4 activos</span></span>
                         </div>
-                        <div class="candidate-item active">
-                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=1') center/cover, var(--gradient-accent);"></div>
+                        <div class="candidate-item active" data-candidate="marcus-johnson">
                             <div class="candidate-info">
                                 <div class="candidate-name">Marcus Johnson</div>
                                 <div class="candidate-role">CDL-A Driver • Dallas, TX</div>
                             </div>
                             <span class="candidate-status status-progress">Training</span>
                         </div>
-                        <div class="candidate-item">
-                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=5') center/cover, var(--gradient-accent);"></div>
+                        <div class="candidate-item" data-candidate="sarah-williams">
                             <div class="candidate-info">
                                 <div class="candidate-name">Sarah Williams</div>
                                 <div class="candidate-role">CDL-B Driver • Houston, TX</div>
                             </div>
                             <span class="candidate-status status-completed">Docs Complete</span>
                         </div>
-                        <div class="candidate-item">
-                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=9') center/cover, var(--gradient-accent);"></div>
+                        <div class="candidate-item" data-candidate="emily-rodriguez">
                             <div class="candidate-info">
                                 <div class="candidate-name">Emily Rodriguez</div>
                                 <div class="candidate-role">CDL-A Driver • Austin, TX</div>
                             </div>
                             <span class="candidate-status status-pending">Docs Pending</span>
                         </div>
-                        <div class="candidate-item">
-                            <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=12') center/cover, var(--gradient-accent);"></div>
+                        <div class="candidate-item" data-candidate="robert-martinez">
                             <div class="candidate-info">
                                 <div class="candidate-name">Robert Martinez</div>
                                 <div class="candidate-role">CDL-A Driver • San Antonio, TX</div>
@@ -3727,20 +3650,7 @@
             notesInput.focus();
         }
 
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
         const html = document.documentElement;
-        
-        // Check for saved theme preference or default to dark
-        const savedTheme = localStorage.getItem('mve-theme') || 'dark';
-        html.setAttribute('data-theme', savedTheme);
-
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('mve-theme', newTheme);
-        });
 
         // Language Selector (Header)
         function toggleLanguageDropdown() {
@@ -3847,6 +3757,7 @@
                 avatar: 'https://i.pravatar.cc/100?img=1',
                 status: 'In Review',
                 statusClass: 'status-progress',
+                videoSrc: 'interview.mp4',
                 videoTime: '2:34 / 7:15',
                 videoProgress: 35,
                 scores: { communications: 88, experience: 75, skills: 92, history: 70, resume: 85 },
@@ -3908,15 +3819,16 @@
                     ]
                 }
             },
-            'david-chen': {
-                id: 'david-chen',
-                name: 'David Chen',
+            'santiago-hernandez': {
+                id: 'santiago-hernandez',
+                name: 'Santiago Hernandez',
                 role: 'CDL-A Driver',
                 experience: '12 yrs exp',
                 location: 'Fort Worth, TX',
                 avatar: 'https://i.pravatar.cc/100?img=3',
                 status: 'Pending',
                 statusClass: 'status-pending',
+                videoSrc: 'interview2.mp4',
                 videoTime: '0:00 / 6:30',
                 videoProgress: 0,
                 scores: { communications: 0, experience: 0, skills: 0, history: 0, resume: 0 },
@@ -4034,6 +3946,17 @@
             const videoProgressFill = document.querySelector('#interviews .video-progress-fill');
             if (videoTimeEl) videoTimeEl.textContent = candidate.videoTime;
             if (videoProgressFill) videoProgressFill.style.width = candidate.videoProgress + '%';
+
+            // Update video source if candidate has a video
+            const video = document.getElementById('interviewVideo');
+            if (video && candidate.videoSrc) {
+                const source = video.querySelector('source');
+                if (source) {
+                    source.src = candidate.videoSrc;
+                    video.load();
+                    video.play();
+                }
+            }
 
             // Update AI scoring bars
             const scoreItems = document.querySelectorAll('#interviews .score-item');
