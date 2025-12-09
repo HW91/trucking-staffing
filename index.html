@@ -538,11 +538,73 @@
             overflow: hidden;
         }
 
+        .video-player video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
         .video-player::before {
             content: '';
             position: absolute;
             inset: 0;
             background: linear-gradient(45deg, var(--mve-navy-dark), var(--mve-navy));
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .video-player.has-video::before {
+            display: none;
+        }
+
+        .video-demo-overlay {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            color: rgba(255, 255, 255, 0.85);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .video-demo-overlay .mute-icon {
+            font-size: 14px;
+        }
+
+        .video-pause-btn {
+            position: absolute;
+            bottom: 60px;
+            right: 16px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 10;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .video-pause-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.05);
+        }
+
+        .video-pause-btn .pause-icon {
+            font-size: 14px;
         }
 
         .play-button {
@@ -2524,96 +2586,7 @@
                     </div>
                 </div>
 
-                <!-- Section 2: Candidate Experience -->
-                <div class="intro-section">
-                    <div class="intro-section-header">
-                        <div class="intro-section-icon">📱</div>
-                        <div class="intro-section-title">
-                            <h3><span class="tab-text-en">Candidate Experience Upgrades</span><span class="tab-text-es">Mejoras en la Experiencia del Candidato</span></h3>
-                            <p><span class="tab-text-en">Remove friction and dramatically increase hiring speed</span><span class="tab-text-es">Elimina la fricción y aumenta dramáticamente la velocidad de contratación</span></p>
-                        </div>
-                    </div>
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <div class="feature-card-header">
-                                <div class="feature-number">5</div>
-                                <div class="feature-card-title">
-                                    <h4><span class="tab-text-en">Mobile App for Candidates</span><span class="tab-text-es">Aplicación Móvil para Candidatos</span></h4>
-                                    <span class="feature-tag"><span class="tab-text-en">Optional</span><span class="tab-text-es">Opcional</span></span>
-                                </div>
-                            </div>
-                            <p><span class="tab-text-en">A dedicated mobile experience that makes applying and tracking progress effortless.</span><span class="tab-text-es">Una experiencia móvil dedicada que hace que aplicar y seguir el progreso sea fácil.</span></p>
-                            <div class="feature-highlights">
-                                <div class="feature-highlight">
-                                    <span class="feature-highlight-icon">✓</span>
-                                    <span><span class="tab-text-en">Apply for jobs in under 3 minutes</span><span class="tab-text-es">Aplica a trabajos en menos de 3 minutos</span></span>
-                                </div>
-                                <div class="feature-highlight">
-                                    <span class="feature-highlight-icon">✓</span>
-                                    <span><span class="tab-text-en">Upload documents with phone camera</span><span class="tab-text-es">Sube documentos con la cámara del teléfono</span></span>
-                                </div>
-                                <div class="feature-highlight">
-                                    <span class="feature-highlight-icon">✓</span>
-                                    <span><span class="tab-text-en">Track progress like pizza delivery status</span><span class="tab-text-es">Sigue el progreso como el estado de entrega de pizza</span></span>
-                                </div>
-                                <div class="feature-highlight">
-                                    <span class="feature-highlight-icon">✓</span>
-                                    <span><span class="tab-text-en">24/7 AI assistant chat support</span><span class="tab-text-es">Soporte de chat con asistente IA 24/7</span></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-card-header">
-                                <div class="feature-number">6</div>
-                                <div class="feature-card-title">
-                                    <h4><span class="tab-text-en">One-Click Reapply</span><span class="tab-text-es">Re-aplicar con Un Clic</span></h4>
-                                    <span class="feature-tag"><span class="tab-text-en">Retention</span><span class="tab-text-es">Retención</span></span>
-                                </div>
-                            </div>
-                            <p><span class="tab-text-en">Many trucking applicants reapply often. Give them a simple way to update their info and reapply instantly.</span><span class="tab-text-es">Muchos solicitantes de transporte re-aplican frecuentemente. Dales una forma simple de actualizar su información y re-aplicar al instante.</span></p>
-                            <div class="feature-highlights">
-                                <div class="feature-highlight">
-                                    <span class="feature-highlight-icon">✓</span>
-                                    <span><span class="tab-text-en">Previous application data auto-populated</span><span class="tab-text-es">Datos de aplicación anterior auto-completados</span></span>
-                                </div>
-                                <div class="feature-highlight">
-                                    <span class="feature-highlight-icon">✓</span>
-                                    <span><span class="tab-text-en">Only update what's changed</span><span class="tab-text-es">Solo actualiza lo que ha cambiado</span></span>
-                                </div>
-                                <div class="feature-highlight">
-                                    <span class="feature-highlight-icon">✓</span>
-                                    <span><span class="tab-text-en">Keep candidates in your pipeline</span><span class="tab-text-es">Mantén candidatos en tu pipeline</span></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-card-header">
-                                <div class="feature-number">7</div>
-                                <div class="feature-card-title">
-                                    <h4><span class="tab-text-en">Job Description Simplification</span><span class="tab-text-es">Simplificación de Descripción de Trabajo</span></h4>
-                                    <span class="feature-tag"><span class="tab-text-en">AI-Powered</span><span class="tab-text-es">Impulsado por IA</span></span>
-                                </div>
-                            </div>
-                            <p><span class="tab-text-en">AI rewrites complicated job postings into simple language. Truck drivers often skip confusing posts.</span><span class="tab-text-es">La IA reescribe publicaciones de trabajo complicadas en lenguaje simple. Los conductores de camión a menudo omiten publicaciones confusas.</span></p>
-                            <div class="feature-highlights">
-                                <div class="feature-highlight">
-                                    <span class="feature-highlight-icon">✓</span>
-                                    <span><span class="tab-text-en">Clear, readable job descriptions</span><span class="tab-text-es">Descripciones de trabajo claras y legibles</span></span>
-                                </div>
-                                <div class="feature-highlight">
-                                    <span class="feature-highlight-icon">✓</span>
-                                    <span><span class="tab-text-en">Key info highlighted upfront (pay, location, benefits)</span><span class="tab-text-es">Información clave destacada al frente (pago, ubicación, beneficios)</span></span>
-                                </div>
-                                <div class="feature-highlight">
-                                    <span class="feature-highlight-icon">✓</span>
-                                    <span><span class="tab-text-en">Bilingual versions auto-generated</span><span class="tab-text-es">Versiones bilingües auto-generadas</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section 3: Recruiter Tools -->
+                <!-- Section 2: Recruiter Tools -->
                 <div class="intro-section">
                     <div class="intro-section-header">
                         <div class="intro-section-icon">💼</div>
@@ -2625,7 +2598,7 @@
                     <div class="feature-grid">
                         <div class="feature-card">
                             <div class="feature-card-header">
-                                <div class="feature-number">8</div>
+                                <div class="feature-number">5</div>
                                 <div class="feature-card-title">
                                     <h4><span class="tab-text-en">AI Workflow Automation</span><span class="tab-text-es">Automatización de Flujo de Trabajo con IA</span></h4>
                                     <span class="feature-tag"><span class="tab-text-en">Automation</span><span class="tab-text-es">Automatización</span></span>
@@ -2649,7 +2622,7 @@
                         </div>
                         <div class="feature-card">
                             <div class="feature-card-header">
-                                <div class="feature-number">9</div>
+                                <div class="feature-number">6</div>
                                 <div class="feature-card-title">
                                     <h4><span class="tab-text-en">Recruiter Dashboard</span><span class="tab-text-es">Panel del Reclutador</span></h4>
                                     <span class="feature-tag"><span class="tab-text-en">Analytics</span><span class="tab-text-es">Analíticas</span></span>
@@ -2673,7 +2646,7 @@
                         </div>
                         <div class="feature-card">
                             <div class="feature-card-header">
-                                <div class="feature-number">10</div>
+                                <div class="feature-number">7</div>
                                 <div class="feature-card-title">
                                     <h4><span class="tab-text-en">Predictive Hiring Analytics</span><span class="tab-text-es">Analíticas Predictivas de Contratación</span></h4>
                                     <span class="feature-tag"><span class="tab-text-en">Insights</span><span class="tab-text-es">Perspectivas</span></span>
@@ -2710,31 +2683,7 @@
                     <div class="feature-grid">
                         <div class="feature-card innovation-card">
                             <div class="feature-card-header">
-                                <div class="feature-number">11</div>
-                                <div class="feature-card-title">
-                                    <h4><span class="tab-text-en">Voice-to-Application System</span><span class="tab-text-es">Sistema de Voz a Aplicación</span></h4>
-                                    <span class="feature-tag"><span class="tab-text-en">Innovation</span><span class="tab-text-es">Innovación</span></span>
-                                </div>
-                            </div>
-                            <p><span class="tab-text-en">Candidate calls a number, speaks in Spanish or English, and AI fills in the whole application. Perfect for drivers who hate filling forms.</span><span class="tab-text-es">El candidato llama a un número, habla en español o inglés, y la IA completa toda la aplicación. Perfecto para conductores que odian llenar formularios.</span></p>
-                            <div class="feature-highlights">
-                                <div class="feature-highlight">
-                                    <span class="feature-highlight-icon">✓</span>
-                                    <span><span class="tab-text-en">Call-in application in any language</span><span class="tab-text-es">Aplicación por llamada en cualquier idioma</span></span>
-                                </div>
-                                <div class="feature-highlight">
-                                    <span class="feature-highlight-icon">✓</span>
-                                    <span><span class="tab-text-en">AI transcribes and structures the data</span><span class="tab-text-es">La IA transcribe y estructura los datos</span></span>
-                                </div>
-                                <div class="feature-highlight">
-                                    <span class="feature-highlight-icon">✓</span>
-                                    <span><span class="tab-text-en">Zero forms, zero friction</span><span class="tab-text-es">Cero formularios, cero fricción</span></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="feature-card innovation-card">
-                            <div class="feature-card-header">
-                                <div class="feature-number">12</div>
+                                <div class="feature-number">8</div>
                                 <div class="feature-card-title">
                                     <h4><span class="tab-text-en">AI License Conversion Assistant</span><span class="tab-text-es">Asistente de Conversión de Licencia con IA</span></h4>
                                     <span class="feature-tag"><span class="tab-text-en">Innovation</span><span class="tab-text-es">Innovación</span></span>
@@ -2758,7 +2707,7 @@
                         </div>
                         <div class="feature-card innovation-card">
                             <div class="feature-card-header">
-                                <div class="feature-number">13</div>
+                                <div class="feature-number">9</div>
                                 <div class="feature-card-title">
                                     <h4><span class="tab-text-en">AI Training Microsessions</span><span class="tab-text-es">Micro-Sesiones de Capacitación con IA</span></h4>
                                     <span class="feature-tag"><span class="tab-text-en">Innovation</span><span class="tab-text-es">Innovación</span></span>
@@ -2782,7 +2731,7 @@
                         </div>
                         <div class="feature-card innovation-card">
                             <div class="feature-card-header">
-                                <div class="feature-number">14</div>
+                                <div class="feature-number">10</div>
                                 <div class="feature-card-title">
                                     <h4><span class="tab-text-en">Instant Offer Generation</span><span class="tab-text-es">Generación Instantánea de Ofertas</span></h4>
                                     <span class="feature-tag"><span class="tab-text-en">Innovation</span><span class="tab-text-es">Innovación</span></span>
@@ -2976,13 +2925,24 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="video-player">
-                            <div class="play-button"></div>
+                        <div class="video-player has-video">
+                            <video id="interviewVideo" autoplay loop muted playsinline>
+                                <source src="interview.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="video-demo-overlay">
+                                <span class="mute-icon">🔇</span>
+                                <span><span class="tab-text-en">No sound - for demo purposes only</span><span class="tab-text-es">Sin sonido - solo para demostración</span></span>
+                            </div>
+                            <button class="video-pause-btn" onclick="toggleInterviewVideo()">
+                                <span class="pause-icon" id="videoPauseIcon">⏸</span>
+                                <span id="videoPauseText"><span class="tab-text-en">Pause</span><span class="tab-text-es">Pausar</span></span>
+                            </button>
                             <div class="video-controls">
                                 <div class="video-progress">
-                                    <div class="video-progress-fill"></div>
+                                    <div class="video-progress-fill" id="videoProgressFill"></div>
                                 </div>
-                                <div class="video-time">2:34 / 7:15</div>
+                                <div class="video-time" id="videoTimeDisplay">0:00 / 0:00</div>
                             </div>
                         </div>
                         <div class="ai-scoring">
@@ -4308,6 +4268,63 @@
         improvementSlider.addEventListener('input', updateCalculations);
 
         updateCalculations();
+
+        // Interview Video Controls
+        function toggleInterviewVideo() {
+            const video = document.getElementById('interviewVideo');
+            const pauseIcon = document.getElementById('videoPauseIcon');
+            const pauseTextEn = document.querySelector('#videoPauseText .tab-text-en');
+            const pauseTextEs = document.querySelector('#videoPauseText .tab-text-es');
+            
+            if (video) {
+                if (video.paused) {
+                    video.play();
+                    pauseIcon.textContent = '⏸';
+                    if (pauseTextEn) pauseTextEn.textContent = 'Pause';
+                    if (pauseTextEs) pauseTextEs.textContent = 'Pausar';
+                } else {
+                    video.pause();
+                    pauseIcon.textContent = '▶';
+                    if (pauseTextEn) pauseTextEn.textContent = 'Play';
+                    if (pauseTextEs) pauseTextEs.textContent = 'Reproducir';
+                }
+            }
+        }
+
+        // Format time for video display
+        function formatVideoTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }
+
+        // Update video progress bar and time
+        function initVideoProgress() {
+            const video = document.getElementById('interviewVideo');
+            const progressFill = document.getElementById('videoProgressFill');
+            const timeDisplay = document.getElementById('videoTimeDisplay');
+            
+            if (video) {
+                video.addEventListener('timeupdate', function() {
+                    if (progressFill && video.duration) {
+                        const progress = (video.currentTime / video.duration) * 100;
+                        progressFill.style.width = progress + '%';
+                    }
+                    if (timeDisplay && video.duration) {
+                        timeDisplay.textContent = formatVideoTime(video.currentTime) + ' / ' + formatVideoTime(video.duration);
+                    }
+                });
+
+                video.addEventListener('loadedmetadata', function() {
+                    if (timeDisplay) {
+                        timeDisplay.textContent = '0:00 / ' + formatVideoTime(video.duration);
+                    }
+                });
+            }
+        }
+
+        // Initialize video progress tracking
+        initVideoProgress();
     </script>
 </body>
 </html>
