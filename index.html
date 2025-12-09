@@ -4625,6 +4625,596 @@
 
         // Initialize video progress tracking
         initVideoProgress();
+
+        // ===== BRANDED CHATBOT =====
+        const chatbot = {
+            isOpen: false,
+            messages: [],
+            
+            init() {
+                this.render();
+                this.bindEvents();
+                this.addWelcomeMessage();
+            },
+            
+            render() {
+                const chatbotHTML = `
+                    <div id="chatbot-container" class="chatbot-container">
+                        <div id="chatbot-button" class="chatbot-button">
+                            <svg class="chatbot-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.48 2 2 6.48 2 12C2 13.85 2.5 15.55 3.35 17L2 22L7 20.65C8.45 21.5 10.15 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" fill="currentColor"/>
+                                <circle cx="8" cy="12" r="1.5" fill="var(--mve-navy-dark)"/>
+                                <circle cx="12" cy="12" r="1.5" fill="var(--mve-navy-dark)"/>
+                                <circle cx="16" cy="12" r="1.5" fill="var(--mve-navy-dark)"/>
+                            </svg>
+                            <span class="chatbot-badge" id="chatbot-badge">1</span>
+                        </div>
+                        
+                        <div id="chatbot-window" class="chatbot-window">
+                            <div class="chatbot-header">
+                                <div class="chatbot-header-info">
+                                    <div class="chatbot-avatar">
+                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z" fill="var(--mve-gold)"/>
+                                            <circle cx="9" cy="10" r="2" fill="var(--mve-navy-dark)"/>
+                                            <circle cx="15" cy="10" r="2" fill="var(--mve-navy-dark)"/>
+                                            <path d="M8 15C8 15 9.5 17 12 17C14.5 17 16 15 16 15" stroke="var(--mve-navy-dark)" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    <div class="chatbot-header-text">
+                                        <span class="chatbot-name">MVE Assistant</span>
+                                        <span class="chatbot-status">● Online</span>
+                                    </div>
+                                </div>
+                                <button class="chatbot-close" id="chatbot-close">×</button>
+                            </div>
+                            
+                            <div class="chatbot-messages" id="chatbot-messages">
+                            </div>
+                            
+                            <div class="chatbot-quick-actions" id="chatbot-quick-actions">
+                                <button class="quick-action-btn" data-message="Tell me about driver requirements">Driver Requirements</button>
+                                <button class="quick-action-btn" data-message="What are the pay rates?">Pay Rates</button>
+                                <button class="quick-action-btn" data-message="How do I apply?">How to Apply</button>
+                                <button class="quick-action-btn" data-message="Benefits information">Benefits</button>
+                            </div>
+                            
+                            <div class="chatbot-input-container">
+                                <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Type your message...">
+                                <button class="chatbot-send" id="chatbot-send">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 21L23 12L2 3V10L17 12L2 14V21Z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.insertAdjacentHTML('beforeend', chatbotHTML);
+            },
+            
+            bindEvents() {
+                const button = document.getElementById('chatbot-button');
+                const closeBtn = document.getElementById('chatbot-close');
+                const input = document.getElementById('chatbot-input');
+                const sendBtn = document.getElementById('chatbot-send');
+                const quickActions = document.querySelectorAll('.quick-action-btn');
+                
+                button.addEventListener('click', () => this.toggle());
+                closeBtn.addEventListener('click', () => this.close());
+                sendBtn.addEventListener('click', () => this.sendMessage());
+                input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') this.sendMessage();
+                });
+                
+                quickActions.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const message = btn.dataset.message;
+                        document.getElementById('chatbot-input').value = message;
+                        this.sendMessage();
+                    });
+                });
+            },
+            
+            toggle() {
+                this.isOpen = !this.isOpen;
+                const window = document.getElementById('chatbot-window');
+                const badge = document.getElementById('chatbot-badge');
+                
+                if (this.isOpen) {
+                    window.classList.add('open');
+                    badge.style.display = 'none';
+                    document.getElementById('chatbot-input').focus();
+                } else {
+                    window.classList.remove('open');
+                }
+            },
+            
+            close() {
+                this.isOpen = false;
+                document.getElementById('chatbot-window').classList.remove('open');
+            },
+            
+            addWelcomeMessage() {
+                const welcomeMsg = `👋 Welcome to Mountain Valley Express! I'm your recruiting assistant. How can I help you today?`;
+                this.addMessage(welcomeMsg, 'bot');
+            },
+            
+            addMessage(text, sender) {
+                const messagesContainer = document.getElementById('chatbot-messages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `chatbot-message ${sender}`;
+                
+                const now = new Date();
+                const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                
+                messageDiv.innerHTML = `
+                    <div class="message-content">${text}</div>
+                    <div class="message-time">${time}</div>
+                `;
+                
+                messagesContainer.appendChild(messageDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
+                this.messages.push({ text, sender, time });
+            },
+            
+            sendMessage() {
+                const input = document.getElementById('chatbot-input');
+                const message = input.value.trim();
+                
+                if (!message) return;
+                
+                this.addMessage(message, 'user');
+                input.value = '';
+                
+                // Hide quick actions after first message
+                document.getElementById('chatbot-quick-actions').style.display = 'none';
+                
+                // Simulate typing indicator
+                this.showTyping();
+                
+                // Simulate bot response
+                setTimeout(() => {
+                    this.hideTyping();
+                    const response = this.getBotResponse(message);
+                    this.addMessage(response, 'bot');
+                }, 1000 + Math.random() * 1000);
+            },
+            
+            showTyping() {
+                const messagesContainer = document.getElementById('chatbot-messages');
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'chatbot-message bot typing-indicator';
+                typingDiv.id = 'typing-indicator';
+                typingDiv.innerHTML = `
+                    <div class="message-content">
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                    </div>
+                `;
+                messagesContainer.appendChild(typingDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            },
+            
+            hideTyping() {
+                const typing = document.getElementById('typing-indicator');
+                if (typing) typing.remove();
+            },
+            
+            getBotResponse(message) {
+                const lowerMsg = message.toLowerCase();
+                
+                if (lowerMsg.includes('requirement') || lowerMsg.includes('qualify')) {
+                    return `📋 <strong>Driver Requirements:</strong><br><br>
+                    • Valid CDL-A license<br>
+                    • Minimum 1 year OTR experience<br>
+                    • Clean MVR (no major violations)<br>
+                    • Must pass DOT physical & drug screen<br>
+                    • 21+ years of age<br><br>
+                    Would you like to start an application?`;
+                }
+                
+                if (lowerMsg.includes('pay') || lowerMsg.includes('rate') || lowerMsg.includes('salary') || lowerMsg.includes('money')) {
+                    return `💰 <strong>Competitive Pay Rates:</strong><br><br>
+                    • Solo drivers: $0.52-$0.65 CPM<br>
+                    • Team drivers: $0.70-$0.80 CPM split<br>
+                    • Weekly settlements every Friday<br>
+                    • Bonuses for safety & fuel efficiency<br>
+                    • Sign-on bonus available!<br><br>
+                    Want to learn more about our bonus programs?`;
+                }
+                
+                if (lowerMsg.includes('apply') || lowerMsg.includes('application') || lowerMsg.includes('start')) {
+                    return `🚀 <strong>Ready to Join MVE?</strong><br><br>
+                    Applying is easy! You can:<br>
+                    1. Fill out our quick online application<br>
+                    2. Call our recruiting team: (800) 555-HAUL<br>
+                    3. Visit our terminal in person<br><br>
+                    The application takes about 10 minutes. Would you like me to guide you through it?`;
+                }
+                
+                if (lowerMsg.includes('benefit') || lowerMsg.includes('insurance') || lowerMsg.includes('health')) {
+                    return `🏥 <strong>MVE Benefits Package:</strong><br><br>
+                    • Medical, Dental & Vision insurance<br>
+                    • 401(k) with company match<br>
+                    • Paid vacation & holidays<br>
+                    • Life insurance included<br>
+                    • Rider & pet programs<br>
+                    • Late-model equipment<br><br>
+                    Benefits start after 60 days!`;
+                }
+                
+                if (lowerMsg.includes('home') || lowerMsg.includes('time off')) {
+                    return `🏠 <strong>Home Time Policy:</strong><br><br>
+                    • Regional: Home weekly<br>
+                    • OTR: Home every 2-3 weeks<br>
+                    • Flexible scheduling available<br>
+                    • We respect your family time!<br><br>
+                    What type of route are you interested in?`;
+                }
+                
+                if (lowerMsg.includes('truck') || lowerMsg.includes('equipment') || lowerMsg.includes('fleet')) {
+                    return `🚛 <strong>Our Fleet:</strong><br><br>
+                    • 2022-2024 Freightliner Cascadias<br>
+                    • APU equipped for comfort<br>
+                    • Refrigerator & microwave<br>
+                    • Inverter for electronics<br>
+                    • Automatic & manual available<br><br>
+                    All trucks under 3 years old!`;
+                }
+                
+                if (lowerMsg.includes('hello') || lowerMsg.includes('hi') || lowerMsg.includes('hey')) {
+                    return `Hello! 👋 Great to hear from you! I'm here to help you learn about driving opportunities at Mountain Valley Express. What would you like to know?`;
+                }
+                
+                if (lowerMsg.includes('thank')) {
+                    return `You're welcome! 😊 If you have any more questions about joining the MVE family, feel free to ask. We're here to help you succeed!`;
+                }
+                
+                // Default response
+                return `Thanks for your message! For specific questions about:<br><br>
+                • 📋 Driver requirements<br>
+                • 💰 Pay & compensation<br>
+                • 🏥 Benefits<br>
+                • 🚛 Equipment<br>
+                • 🏠 Home time<br><br>
+                Just ask! Or call us at <strong>(800) 555-HAUL</strong> to speak with a recruiter directly.`;
+            }
+        };
+        
+        // Initialize chatbot
+        chatbot.init();
     </script>
+    
+    <style>
+        /* ===== CHATBOT STYLES ===== */
+        .chatbot-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        .chatbot-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--mve-gold-dark), var(--mve-gold-light));
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(212, 160, 25, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .chatbot-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(212, 160, 25, 0.6);
+        }
+        
+        .chatbot-icon {
+            width: 32px;
+            height: 32px;
+            color: var(--mve-navy-dark);
+        }
+        
+        .chatbot-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #ef4444;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .chatbot-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 380px;
+            height: 520px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 60px var(--shadow-color);
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .chatbot-window.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+        
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--mve-navy), var(--mve-navy-light));
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .chatbot-header-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .chatbot-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .chatbot-avatar svg {
+            width: 28px;
+            height: 28px;
+        }
+        
+        .chatbot-header-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chatbot-name {
+            font-weight: 600;
+            font-size: 15px;
+            color: white;
+        }
+        
+        .chatbot-status {
+            font-size: 12px;
+            color: #4ade80;
+        }
+        
+        .chatbot-close {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        
+        .chatbot-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .chatbot-message {
+            max-width: 85%;
+            animation: messageIn 0.3s ease;
+        }
+        
+        @keyframes messageIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .chatbot-message.bot {
+            align-self: flex-start;
+        }
+        
+        .chatbot-message.user {
+            align-self: flex-end;
+        }
+        
+        .chatbot-message .message-content {
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .chatbot-message.bot .message-content {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border-bottom-left-radius: 4px;
+        }
+        
+        .chatbot-message.user .message-content {
+            background: linear-gradient(135deg, var(--mve-gold-dark), var(--mve-gold-light));
+            color: var(--mve-navy-dark);
+            border-bottom-right-radius: 4px;
+        }
+        
+        .chatbot-message .message-time {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            padding: 0 4px;
+        }
+        
+        .chatbot-message.user .message-time {
+            text-align: right;
+        }
+        
+        /* Typing indicator */
+        .typing-indicator .message-content {
+            display: flex;
+            gap: 4px;
+            padding: 16px 20px;
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--text-muted);
+            border-radius: 50%;
+            animation: typingBounce 1.4s infinite ease-in-out;
+        }
+        
+        .typing-dot:nth-child(1) { animation-delay: 0s; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        
+        @keyframes typingBounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-8px); }
+        }
+        
+        .chatbot-quick-actions {
+            padding: 12px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .quick-action-btn {
+            padding: 8px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--mve-gold);
+            background: transparent;
+            color: var(--mve-gold-light);
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .quick-action-btn:hover {
+            background: var(--mve-gold);
+            color: var(--mve-navy-dark);
+        }
+        
+        .chatbot-input-container {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 12px;
+        }
+        
+        .chatbot-input {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        
+        .chatbot-input:focus {
+            border-color: var(--mve-gold);
+        }
+        
+        .chatbot-input::placeholder {
+            color: var(--text-muted);
+        }
+        
+        .chatbot-send {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, var(--mve-gold-dark), var(--mve-gold-light));
+            color: var(--mve-navy-dark);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .chatbot-send:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(212, 160, 25, 0.4);
+        }
+        
+        .chatbot-send svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 480px) {
+            .chatbot-container {
+                bottom: 16px;
+                right: 16px;
+            }
+            
+            .chatbot-window {
+                width: calc(100vw - 32px);
+                height: calc(100vh - 120px);
+                max-height: 500px;
+                right: -8px;
+            }
+            
+            .chatbot-button {
+                width: 54px;
+                height: 54px;
+            }
+        }
+    </style>
 </body>
 </html>
