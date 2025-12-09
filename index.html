@@ -1960,6 +1960,366 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
+        /* Introduction Tab Styles */
+        .intro-hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(212, 160, 25, 0.1), rgba(65, 105, 225, 0.05));
+            border-radius: 16px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border-color);
+        }
+
+        .intro-hero h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .intro-hero h2 span {
+            color: var(--mve-gold-light);
+        }
+
+        .intro-hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 24px;
+            line-height: 1.6;
+        }
+
+        .intro-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--gradient-accent);
+            color: var(--mve-navy-dark);
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .intro-section {
+            margin-bottom: 40px;
+        }
+
+        .intro-section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .intro-section-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            background: var(--gradient-accent);
+        }
+
+        .intro-section-title {
+            flex: 1;
+        }
+
+        .intro-section-title h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .intro-section-title p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-card {
+            background: var(--bg-tertiary);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--mve-gold);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .feature-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--input-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--mve-gold-light);
+            flex-shrink: 0;
+        }
+
+        .feature-card-title {
+            flex: 1;
+        }
+
+        .feature-card-title h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .feature-card-title .feature-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            background: rgba(212, 160, 25, 0.15);
+            color: var(--mve-gold-light);
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .feature-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .feature-highlight {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .feature-highlight-icon {
+            color: var(--mve-gold-light);
+            font-size: 14px;
+            margin-top: 2px;
+        }
+
+        .customization-banner {
+            background: linear-gradient(135deg, var(--mve-navy), var(--mve-navy-light));
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            border: 2px solid var(--mve-gold);
+            margin-bottom: 40px;
+        }
+
+        .customization-banner h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--mve-gold-light);
+            margin-bottom: 12px;
+        }
+
+        .customization-banner p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+
+        .customization-points {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .customization-point {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .customization-point-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(212, 160, 25, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .innovation-card {
+            background: linear-gradient(135deg, rgba(65, 105, 225, 0.15), rgba(212, 160, 25, 0.1));
+            border: 2px solid var(--mve-blue-accent);
+        }
+
+        .innovation-card .feature-number {
+            background: var(--mve-blue-accent);
+            color: white;
+        }
+
+        .innovation-card .feature-tag {
+            background: rgba(65, 105, 225, 0.2);
+            color: var(--mve-blue-accent);
+        }
+
+        .intro-cta {
+            text-align: center;
+            padding: 40px;
+            background: var(--bg-tertiary);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .intro-cta h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .intro-cta p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: var(--gradient-accent);
+            color: var(--mve-navy-dark);
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 160, 25, 0.4);
+        }
+
+        /* ===========================================
+           SPANISH LANGUAGE CSS TRANSLATIONS
+           When html[lang="es"] is set, swap text
+        =========================================== */
+        
+        /* Hide English text, show Spanish */
+        [data-en][data-es] {
+            visibility: visible;
+        }
+        
+        html[lang="es"] [data-en][data-es]::after {
+            content: attr(data-es);
+        }
+        
+        /* Translatable text spans */
+        .translatable {
+            display: inline;
+        }
+        
+        html[lang="es"] .translatable .en {
+            display: none;
+        }
+        
+        html[lang="es"] .translatable .es {
+            display: inline;
+        }
+        
+        .translatable .es {
+            display: none;
+        }
+        
+        /* Global language text switching */
+        .tab-text-es {
+            display: none;
+        }
+        
+        html[lang="es"] .tab-text-en {
+            display: none;
+        }
+        
+        html[lang="es"] .tab-text-es {
+            display: inline;
+        }
+        
+        /* Tab translations */
+        html[lang="es"] [data-tab="introduction"]::after { content: "Introducción"; }
+        html[lang="es"] [data-tab="vacancy"]::after { content: "Costo de Vacantes"; }
+        html[lang="es"] [data-tab="interviews"]::after { content: "Entrevistas"; }
+        html[lang="es"] [data-tab="onboarding"]::after { content: "Incorporación"; }
+        html[lang="es"] [data-tab="candidate-link"]::after { content: "Panel del Candidato"; }
+        
+        [data-tab]::after {
+            content: "";
+        }
     </style>
 </head>
 <body>
@@ -2011,35 +2371,477 @@
 
         <!-- Tabs -->
         <div class="tabs">
-            <div class="tab active" data-tab="vacancy">Vacancy Cost</div>
-            <div class="tab" data-tab="interviews">Interviews</div>
-            <div class="tab" data-tab="onboarding">Onboarding</div>
-            <div class="tab" data-tab="candidate-link">Candidate Dashboard</div>
+            <div class="tab active" data-tab="introduction"><span class="tab-text-en">Introduction</span><span class="tab-text-es">Introducción</span></div>
+            <div class="tab" data-tab="vacancy"><span class="tab-text-en">Vacancy Cost</span><span class="tab-text-es">Costo de Vacantes</span></div>
+            <div class="tab" data-tab="interviews"><span class="tab-text-en">Interviews</span><span class="tab-text-es">Entrevistas</span></div>
+            <div class="tab" data-tab="onboarding"><span class="tab-text-en">Onboarding</span><span class="tab-text-es">Incorporación</span></div>
+            <div class="tab" data-tab="candidate-link"><span class="tab-text-en">Candidate Dashboard</span><span class="tab-text-es">Panel del Candidato</span></div>
+        </div>
+
+        <!-- Tab 0: Introduction -->
+        <div class="tab-content active" id="introduction">
+            <div class="card">
+                <!-- Hero Section -->
+                <div class="intro-hero">
+                    <h2><span class="tab-text-en">Your Recruiting Process, </span><span class="tab-text-es">Tu Proceso de Reclutamiento, </span><span><span class="tab-text-en">Your Way</span><span class="tab-text-es">A Tu Manera</span></span></h2>
+                    <p><span class="tab-text-en">This isn't just software — it's a completely customizable recruiting platform designed around one question: <strong>What does the perfect recruiting process look like for YOU?</strong></span><span class="tab-text-es">Esto no es solo software — es una plataforma de reclutamiento completamente personalizable diseñada en torno a una pregunta: <strong>¿Cómo es el proceso de reclutamiento perfecto para TI?</strong></span></p>
+                    <div class="intro-badge">
+                        <span>✨</span>
+                        <span><span class="tab-text-en">100% Customizable to Your Needs</span><span class="tab-text-es">100% Personalizable a Tus Necesidades</span></span>
+                    </div>
+                </div>
+
+                <!-- Customization Banner -->
+                <div class="customization-banner">
+                    <h3><span class="tab-text-en">🎯 Built Around Your Vision</span><span class="tab-text-es">🎯 Construido Alrededor de Tu Visión</span></h3>
+                    <p><span class="tab-text-en">Every feature you see here can be modified, combined, or completely reimagined. Don't think "this is what the software does" — think "this is what's possible when we build around YOUR perfect process."</span><span class="tab-text-es">Cada función que ves aquí puede ser modificada, combinada o completamente reinventada. No pienses "esto es lo que hace el software" — piensa "esto es lo que es posible cuando construimos alrededor de TU proceso perfecto."</span></p>
+                    <div class="customization-points">
+                        <div class="customization-point">
+                            <div class="customization-point-icon">🔧</div>
+                            <span><span class="tab-text-en">Fully Configurable Workflows</span><span class="tab-text-es">Flujos de Trabajo Totalmente Configurables</span></span>
+                        </div>
+                        <div class="customization-point">
+                            <div class="customization-point-icon">🌐</div>
+                            <span><span class="tab-text-en">Bilingual by Design</span><span class="tab-text-es">Bilingüe por Diseño</span></span>
+                        </div>
+                        <div class="customization-point">
+                            <div class="customization-point-icon">🤖</div>
+                            <span><span class="tab-text-en">AI That Adapts to You</span><span class="tab-text-es">IA Que Se Adapta a Ti</span></span>
+                        </div>
+                        <div class="customization-point">
+                            <div class="customization-point-icon">📱</div>
+                            <span><span class="tab-text-en">Mobile-First Experience</span><span class="tab-text-es">Experiencia Móvil Primero</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 1: Smart Hiring Intelligence -->
+                <div class="intro-section">
+                    <div class="intro-section-header">
+                        <div class="intro-section-icon">🧠</div>
+                        <div class="intro-section-title">
+                            <h3><span class="tab-text-en">Smart Hiring Intelligence</span><span class="tab-text-es">Inteligencia de Contratación Inteligente</span></h3>
+                            <p><span class="tab-text-en">AI that understands trucking and cross-border recruiting</span><span class="tab-text-es">IA que entiende el transporte y el reclutamiento transfronterizo</span></p>
+                        </div>
+                    </div>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-card-header">
+                                <div class="feature-number">1</div>
+                                <div class="feature-card-title">
+                                    <h4><span class="tab-text-en">Smart Job Matching with Natural Language</span><span class="tab-text-es">Emparejamiento Inteligente con Lenguaje Natural</span></h4>
+                                    <span class="feature-tag"><span class="tab-text-en">AI-Powered</span><span class="tab-text-es">Impulsado por IA</span></span>
+                                </div>
+                            </div>
+                            <p><span class="tab-text-en">Your system reads resumes like a human. A "chofer" from Mexico gets matched to truck driver roles even when terms differ.</span><span class="tab-text-es">Tu sistema lee currículums como un humano. Un "chofer" de México se empareja con roles de conductor de camión incluso cuando los términos difieren.</span></p>
+                            <div class="feature-highlights">
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Automatic skill translation between Spanish and English</span><span class="tab-text-es">Traducción automática de habilidades entre español e inglés</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Automatic detection of equivalent licenses and experience</span><span class="tab-text-es">Detección automática de licencias y experiencia equivalentes</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Smart rejection prevention — good candidates never fall through cracks</span><span class="tab-text-es">Prevención inteligente de rechazo — los buenos candidatos nunca se pierden</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-card-header">
+                                <div class="feature-number">2</div>
+                                <div class="feature-card-title">
+                                    <h4><span class="tab-text-en">Cross-Border Compliance Profiles</span><span class="tab-text-es">Perfiles de Cumplimiento Transfronterizo</span></h4>
+                                    <span class="feature-tag"><span class="tab-text-en">Compliance</span><span class="tab-text-es">Cumplimiento</span></span>
+                                </div>
+                            </div>
+                            <p><span class="tab-text-en">The system understands differences between U.S. and Mexican driver requirements automatically.</span><span class="tab-text-es">El sistema entiende automáticamente las diferencias entre los requisitos de conductores de EE.UU. y México.</span></p>
+                            <div class="feature-highlights">
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Automatically check if candidates meet legal requirements</span><span class="tab-text-es">Verificar automáticamente si los candidatos cumplen requisitos legales</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Flag missing items with clear steps to complete them</span><span class="tab-text-es">Marcar elementos faltantes con pasos claros para completarlos</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Auto-sort: qualified, semi-qualified, and not qualified</span><span class="tab-text-es">Clasificación automática: calificado, semi-calificado y no calificado</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-card-header">
+                                <div class="feature-number">3</div>
+                                <div class="feature-card-title">
+                                    <h4><span class="tab-text-en">Automated Pre-Screen Interviews</span><span class="tab-text-es">Entrevistas de Pre-Selección Automatizadas</span></h4>
+                                    <span class="feature-tag"><span class="tab-text-en">Time Saver</span><span class="tab-text-es">Ahorra Tiempo</span></span>
+                                </div>
+                            </div>
+                            <p><span class="tab-text-en">AI conducts the first interview so recruiters only see top, pre-screened candidates. Perfect when hundreds apply every week.</span><span class="tab-text-es">La IA realiza la primera entrevista para que los reclutadores solo vean los mejores candidatos pre-seleccionados. Perfecto cuando cientos aplican cada semana.</span></p>
+                            <div class="feature-highlights">
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Simple voice or text interview in English or Spanish</span><span class="tab-text-es">Entrevista simple por voz o texto en inglés o español</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Standardized questions — every candidate treated equally</span><span class="tab-text-es">Preguntas estandarizadas — cada candidato tratado por igual</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Recruiters only review the best candidates</span><span class="tab-text-es">Los reclutadores solo revisan los mejores candidatos</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-card-header">
+                                <div class="feature-number">4</div>
+                                <div class="feature-card-title">
+                                    <h4><span class="tab-text-en">Multilingual Candidate Communication</span><span class="tab-text-es">Comunicación Multilingüe con Candidatos</span></h4>
+                                    <span class="feature-tag"><span class="tab-text-en">Mobile-First</span><span class="tab-text-es">Móvil Primero</span></span>
+                                </div>
+                            </div>
+                            <p><span class="tab-text-en">Most trucking candidates prefer mobile and WhatsApp. Meet them where they are.</span><span class="tab-text-es">La mayoría de los candidatos de transporte prefieren móvil y WhatsApp. Encuéntralos donde están.</span></p>
+                            <div class="feature-highlights">
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Automatic updates in candidate's preferred language</span><span class="tab-text-es">Actualizaciones automáticas en el idioma preferido del candidato</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">WhatsApp, SMS, and email options</span><span class="tab-text-es">Opciones de WhatsApp, SMS y correo electrónico</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Automated reminders without recruiter involvement</span><span class="tab-text-es">Recordatorios automatizados sin participación del reclutador</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Candidate Experience -->
+                <div class="intro-section">
+                    <div class="intro-section-header">
+                        <div class="intro-section-icon">📱</div>
+                        <div class="intro-section-title">
+                            <h3><span class="tab-text-en">Candidate Experience Upgrades</span><span class="tab-text-es">Mejoras en la Experiencia del Candidato</span></h3>
+                            <p><span class="tab-text-en">Remove friction and dramatically increase hiring speed</span><span class="tab-text-es">Elimina la fricción y aumenta dramáticamente la velocidad de contratación</span></p>
+                        </div>
+                    </div>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-card-header">
+                                <div class="feature-number">5</div>
+                                <div class="feature-card-title">
+                                    <h4><span class="tab-text-en">Mobile App for Candidates</span><span class="tab-text-es">Aplicación Móvil para Candidatos</span></h4>
+                                    <span class="feature-tag"><span class="tab-text-en">Optional</span><span class="tab-text-es">Opcional</span></span>
+                                </div>
+                            </div>
+                            <p><span class="tab-text-en">A dedicated mobile experience that makes applying and tracking progress effortless.</span><span class="tab-text-es">Una experiencia móvil dedicada que hace que aplicar y seguir el progreso sea fácil.</span></p>
+                            <div class="feature-highlights">
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Apply for jobs in under 3 minutes</span><span class="tab-text-es">Aplica a trabajos en menos de 3 minutos</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Upload documents with phone camera</span><span class="tab-text-es">Sube documentos con la cámara del teléfono</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Track progress like pizza delivery status</span><span class="tab-text-es">Sigue el progreso como el estado de entrega de pizza</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">24/7 AI assistant chat support</span><span class="tab-text-es">Soporte de chat con asistente IA 24/7</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-card-header">
+                                <div class="feature-number">6</div>
+                                <div class="feature-card-title">
+                                    <h4><span class="tab-text-en">One-Click Reapply</span><span class="tab-text-es">Re-aplicar con Un Clic</span></h4>
+                                    <span class="feature-tag"><span class="tab-text-en">Retention</span><span class="tab-text-es">Retención</span></span>
+                                </div>
+                            </div>
+                            <p><span class="tab-text-en">Many trucking applicants reapply often. Give them a simple way to update their info and reapply instantly.</span><span class="tab-text-es">Muchos solicitantes de transporte re-aplican frecuentemente. Dales una forma simple de actualizar su información y re-aplicar al instante.</span></p>
+                            <div class="feature-highlights">
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Previous application data auto-populated</span><span class="tab-text-es">Datos de aplicación anterior auto-completados</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Only update what's changed</span><span class="tab-text-es">Solo actualiza lo que ha cambiado</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Keep candidates in your pipeline</span><span class="tab-text-es">Mantén candidatos en tu pipeline</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-card-header">
+                                <div class="feature-number">7</div>
+                                <div class="feature-card-title">
+                                    <h4><span class="tab-text-en">Job Description Simplification</span><span class="tab-text-es">Simplificación de Descripción de Trabajo</span></h4>
+                                    <span class="feature-tag"><span class="tab-text-en">AI-Powered</span><span class="tab-text-es">Impulsado por IA</span></span>
+                                </div>
+                            </div>
+                            <p><span class="tab-text-en">AI rewrites complicated job postings into simple language. Truck drivers often skip confusing posts.</span><span class="tab-text-es">La IA reescribe publicaciones de trabajo complicadas en lenguaje simple. Los conductores de camión a menudo omiten publicaciones confusas.</span></p>
+                            <div class="feature-highlights">
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Clear, readable job descriptions</span><span class="tab-text-es">Descripciones de trabajo claras y legibles</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Key info highlighted upfront (pay, location, benefits)</span><span class="tab-text-es">Información clave destacada al frente (pago, ubicación, beneficios)</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Bilingual versions auto-generated</span><span class="tab-text-es">Versiones bilingües auto-generadas</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Recruiter Tools -->
+                <div class="intro-section">
+                    <div class="intro-section-header">
+                        <div class="intro-section-icon">💼</div>
+                        <div class="intro-section-title">
+                            <h3><span class="tab-text-en">Recruiter Tools That Save Money</span><span class="tab-text-es">Herramientas de Reclutador Que Ahorran Dinero</span></h3>
+                            <p><span class="tab-text-en">Features that drastically reduce recruiter workload</span><span class="tab-text-es">Funciones que reducen drásticamente la carga de trabajo del reclutador</span></p>
+                        </div>
+                    </div>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-card-header">
+                                <div class="feature-number">8</div>
+                                <div class="feature-card-title">
+                                    <h4><span class="tab-text-en">AI Workflow Automation</span><span class="tab-text-es">Automatización de Flujo de Trabajo con IA</span></h4>
+                                    <span class="feature-tag"><span class="tab-text-en">Automation</span><span class="tab-text-es">Automatización</span></span>
+                                </div>
+                            </div>
+                            <p><span class="tab-text-en">A recruiter only steps in when the candidate is almost ready to hire. Everything else is automated.</span><span class="tab-text-es">Un reclutador solo interviene cuando el candidato está casi listo para contratar. Todo lo demás está automatizado.</span></p>
+                            <div class="feature-highlights">
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Automated resume intake & screening</span><span class="tab-text-es">Recepción y selección automatizada de currículums</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Interview scheduling without back-and-forth</span><span class="tab-text-es">Programación de entrevistas sin ir y venir</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Document collection & background check reminders</span><span class="tab-text-es">Recordatorios de recopilación de documentos y verificación de antecedentes</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-card-header">
+                                <div class="feature-number">9</div>
+                                <div class="feature-card-title">
+                                    <h4><span class="tab-text-en">Recruiter Dashboard</span><span class="tab-text-es">Panel del Reclutador</span></h4>
+                                    <span class="feature-tag"><span class="tab-text-en">Analytics</span><span class="tab-text-es">Analíticas</span></span>
+                                </div>
+                            </div>
+                            <p><span class="tab-text-en">All candidates ranked by likelihood to succeed with clear explanations for every recommendation.</span><span class="tab-text-es">Todos los candidatos clasificados por probabilidad de éxito con explicaciones claras para cada recomendación.</span></p>
+                            <div class="feature-highlights">
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Traffic-light color coding (green/yellow/red)</span><span class="tab-text-es">Código de colores tipo semáforo (verde/amarillo/rojo)</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">"Why this candidate" explanations</span><span class="tab-text-es">Explicaciones de "Por qué este candidato"</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Automatic notes generated after every step</span><span class="tab-text-es">Notas automáticas generadas después de cada paso</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-card-header">
+                                <div class="feature-number">10</div>
+                                <div class="feature-card-title">
+                                    <h4><span class="tab-text-en">Predictive Hiring Analytics</span><span class="tab-text-es">Analíticas Predictivas de Contratación</span></h4>
+                                    <span class="feature-tag"><span class="tab-text-en">Insights</span><span class="tab-text-es">Perspectivas</span></span>
+                                </div>
+                            </div>
+                            <p><span class="tab-text-en">Data-driven insights to optimize your entire hiring funnel in real time.</span><span class="tab-text-es">Perspectivas basadas en datos para optimizar todo tu embudo de contratación en tiempo real.</span></p>
+                            <div class="feature-highlights">
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">See where candidates are dropping off</span><span class="tab-text-es">Ver dónde se pierden los candidatos</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Which regions produce the best hires</span><span class="tab-text-es">Qué regiones producen las mejores contrataciones</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Which job ads perform best</span><span class="tab-text-es">Qué anuncios de trabajo funcionan mejor</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Innovation / Game-Changers -->
+                <div class="intro-section">
+                    <div class="intro-section-header">
+                        <div class="intro-section-icon">🚀</div>
+                        <div class="intro-section-title">
+                            <h3><span class="tab-text-en">Game-Changing Innovations</span><span class="tab-text-es">Innovaciones Revolucionarias</span></h3>
+                            <p><span class="tab-text-en">Out-of-the-box features to truly stand out from competition</span><span class="tab-text-es">Funciones innovadoras para destacar verdaderamente de la competencia</span></p>
+                        </div>
+                    </div>
+                    <div class="feature-grid">
+                        <div class="feature-card innovation-card">
+                            <div class="feature-card-header">
+                                <div class="feature-number">11</div>
+                                <div class="feature-card-title">
+                                    <h4><span class="tab-text-en">Voice-to-Application System</span><span class="tab-text-es">Sistema de Voz a Aplicación</span></h4>
+                                    <span class="feature-tag"><span class="tab-text-en">Innovation</span><span class="tab-text-es">Innovación</span></span>
+                                </div>
+                            </div>
+                            <p><span class="tab-text-en">Candidate calls a number, speaks in Spanish or English, and AI fills in the whole application. Perfect for drivers who hate filling forms.</span><span class="tab-text-es">El candidato llama a un número, habla en español o inglés, y la IA completa toda la aplicación. Perfecto para conductores que odian llenar formularios.</span></p>
+                            <div class="feature-highlights">
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Call-in application in any language</span><span class="tab-text-es">Aplicación por llamada en cualquier idioma</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">AI transcribes and structures the data</span><span class="tab-text-es">La IA transcribe y estructura los datos</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Zero forms, zero friction</span><span class="tab-text-es">Cero formularios, cero fricción</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-card innovation-card">
+                            <div class="feature-card-header">
+                                <div class="feature-number">12</div>
+                                <div class="feature-card-title">
+                                    <h4><span class="tab-text-en">AI License Conversion Assistant</span><span class="tab-text-es">Asistente de Conversión de Licencia con IA</span></h4>
+                                    <span class="feature-tag"><span class="tab-text-en">Innovation</span><span class="tab-text-es">Innovación</span></span>
+                                </div>
+                            </div>
+                            <p><span class="tab-text-en">Helps Mexican drivers understand exactly what they need to drive legally in the U.S.</span><span class="tab-text-es">Ayuda a los conductores mexicanos a entender exactamente lo que necesitan para conducir legalmente en EE.UU.</span></p>
+                            <div class="feature-highlights">
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Step-by-step conversion instructions</span><span class="tab-text-es">Instrucciones de conversión paso a paso</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Auto-detects documents they already have</span><span class="tab-text-es">Auto-detecta documentos que ya tienen</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Helps gather missing documents</span><span class="tab-text-es">Ayuda a reunir documentos faltantes</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-card innovation-card">
+                            <div class="feature-card-header">
+                                <div class="feature-number">13</div>
+                                <div class="feature-card-title">
+                                    <h4><span class="tab-text-en">AI Training Microsessions</span><span class="tab-text-es">Micro-Sesiones de Capacitación con IA</span></h4>
+                                    <span class="feature-tag"><span class="tab-text-en">Innovation</span><span class="tab-text-es">Innovación</span></span>
+                                </div>
+                            </div>
+                            <p><span class="tab-text-en">Small 3-minute lessons that reduce orientation time and help filter out poor fits early.</span><span class="tab-text-es">Pequeñas lecciones de 3 minutos que reducen el tiempo de orientación y ayudan a filtrar candidatos no aptos temprano.</span></p>
+                            <div class="feature-highlights">
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Safety guidelines & company values</span><span class="tab-text-es">Pautas de seguridad y valores de la empresa</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Work expectations preview</span><span class="tab-text-es">Vista previa de expectativas laborales</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Completion tracking & engagement scores</span><span class="tab-text-es">Seguimiento de finalización y puntuaciones de compromiso</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feature-card innovation-card">
+                            <div class="feature-card-header">
+                                <div class="feature-number">14</div>
+                                <div class="feature-card-title">
+                                    <h4><span class="tab-text-en">Instant Offer Generation</span><span class="tab-text-es">Generación Instantánea de Ofertas</span></h4>
+                                    <span class="feature-tag"><span class="tab-text-en">Innovation</span><span class="tab-text-es">Innovación</span></span>
+                                </div>
+                            </div>
+                            <p><span class="tab-text-en">Once qualified, the system generates a complete offer for 10-second recruiter approval. Cuts hiring time dramatically.</span><span class="tab-text-es">Una vez calificado, el sistema genera una oferta completa para aprobación del reclutador en 10 segundos. Reduce drásticamente el tiempo de contratación.</span></p>
+                            <div class="feature-highlights">
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Auto-fill location, pay, and benefits</span><span class="tab-text-es">Auto-completar ubicación, pago y beneficios</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">Draft offer generated instantly</span><span class="tab-text-es">Borrador de oferta generado al instante</span></span>
+                                </div>
+                                <div class="feature-highlight">
+                                    <span class="feature-highlight-icon">✓</span>
+                                    <span><span class="tab-text-en">One-click approval and send</span><span class="tab-text-es">Aprobación y envío con un clic</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="intro-cta">
+                    <h3><span class="tab-text-en">Ready to Build Your Perfect Recruiting Process?</span><span class="tab-text-es">¿Listo para Construir Tu Proceso de Reclutamiento Perfecto?</span></h3>
+                    <p><span class="tab-text-en">Explore the demo tabs above to see these features in action. Remember — everything can be customized to fit exactly how YOU want to recruit.</span><span class="tab-text-es">Explora las pestañas de demostración arriba para ver estas funciones en acción. Recuerda — todo puede ser personalizado para ajustarse exactamente a cómo TÚ quieres reclutar.</span></p>
+                    <button class="cta-button" onclick="document.querySelector('[data-tab=vacancy]').click()">
+                        <span><span class="tab-text-en">Explore the Demo</span><span class="tab-text-es">Explorar la Demo</span></span>
+                        <span>→</span>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <!-- Tab 1: Vacancy Cost Tracker -->
-        <div class="tab-content active" id="vacancy">
+        <div class="tab-content" id="vacancy">
             <div class="card">
-                <div class="card-title">Vacancy Cost Tracker</div>
+                <div class="card-title"><span class="tab-text-en">Vacancy Cost Tracker</span><span class="tab-text-es">Rastreador de Costos de Vacantes</span></div>
                 <div class="vacancy-grid">
                     <div class="sliders-section">
                         <div class="slider-group">
                             <div class="slider-header">
-                                <span class="slider-label">Vacant Trucks</span>
+                                <span class="slider-label"><span class="tab-text-en">Vacant Trucks</span><span class="tab-text-es">Camiones Vacantes</span></span>
                                 <span class="slider-value" id="trucks-value">24</span>
                             </div>
                             <input type="range" class="slider" id="trucks-slider" min="0" max="100" value="24">
                         </div>
                         <div class="slider-group">
                             <div class="slider-header">
-                                <span class="slider-label">Revenue per Truck ($/day)</span>
+                                <span class="slider-label"><span class="tab-text-en">Revenue per Truck ($/day)</span><span class="tab-text-es">Ingreso por Camión ($/día)</span></span>
                                 <span class="slider-value" id="revenue-value">$1,250</span>
                             </div>
                             <input type="range" class="slider" id="revenue-slider" min="500" max="2000" value="1250">
                         </div>
                         <div class="slider-group">
                             <div class="slider-header">
-                                <span class="slider-label">Improvement Target</span>
+                                <span class="slider-label"><span class="tab-text-en">Improvement Target</span><span class="tab-text-es">Meta de Mejora</span></span>
                                 <span class="slider-value" id="improvement-value">35%</span>
                             </div>
                             <input type="range" class="slider" id="improvement-slider" min="0" max="100" value="35">
@@ -2047,13 +2849,13 @@
                     </div>
                     <div class="chart-section">
                         <div class="chart-bar-container">
-                            <div class="chart-bar-label">Daily Revenue Loss</div>
+                            <div class="chart-bar-label"><span class="tab-text-en">Daily Revenue Loss</span><span class="tab-text-es">Pérdida Diaria de Ingresos</span></div>
                             <div class="chart-bar-wrapper">
                                 <div class="chart-bar revenue" id="revenue-bar">$30,000</div>
                             </div>
                         </div>
                         <div class="chart-bar-container">
-                            <div class="chart-bar-label">Potential Daily Savings</div>
+                            <div class="chart-bar-label"><span class="tab-text-en">Potential Daily Savings</span><span class="tab-text-es">Ahorros Diarios Potenciales</span></div>
                             <div class="chart-bar-wrapper">
                                 <div class="chart-bar savings" id="savings-bar">$10,500</div>
                             </div>
@@ -2063,15 +2865,15 @@
                 <div class="summary-cards">
                     <div class="summary-card">
                         <div class="summary-card-value" id="monthly-loss">$900,000</div>
-                        <div class="summary-card-label">Estimated Monthly Revenue Loss</div>
+                        <div class="summary-card-label"><span class="tab-text-en">Estimated Monthly Revenue Loss</span><span class="tab-text-es">Pérdida Mensual Estimada de Ingresos</span></div>
                     </div>
                     <div class="summary-card">
                         <div class="summary-card-value" id="monthly-savings">$315,000</div>
-                        <div class="summary-card-label">Potential Monthly Recovery</div>
+                        <div class="summary-card-label"><span class="tab-text-en">Potential Monthly Recovery</span><span class="tab-text-es">Recuperación Mensual Potencial</span></div>
                     </div>
                     <div class="summary-card">
                         <div class="summary-card-value" id="roi">412%</div>
-                        <div class="summary-card-label">Projected ROI</div>
+                        <div class="summary-card-label"><span class="tab-text-en">Projected ROI</span><span class="tab-text-es">ROI Proyectado</span></div>
                     </div>
                 </div>
             </div>
@@ -2080,7 +2882,7 @@
         <!-- Tab 2: Interviews -->
         <div class="tab-content" id="interviews">
             <div class="card">
-                <div class="card-title">Interview Management</div>
+                <div class="card-title"><span class="tab-text-en">Interview Management</span><span class="tab-text-es">Gestión de Entrevistas</span></div>
                 <div class="interviews-grid">
                     <div class="candidates-list">
                         <div class="candidate-item active">
@@ -2142,35 +2944,35 @@
                                 <div class="stat-icon">👥</div>
                                 <div class="stat-info">
                                     <div class="stat-value">47</div>
-                                    <div class="stat-label">Total Candidates</div>
+                                    <div class="stat-label"><span class="tab-text-en">Total Candidates</span><span class="tab-text-es">Total de Candidatos</span></div>
                                 </div>
                             </div>
                             <div class="stat-card">
                                 <div class="stat-icon completed">✓</div>
                                 <div class="stat-info">
                                     <div class="stat-value">28</div>
-                                    <div class="stat-label">Interviewed</div>
+                                    <div class="stat-label"><span class="tab-text-en">Interviewed</span><span class="tab-text-es">Entrevistados</span></div>
                                 </div>
                             </div>
                             <div class="stat-card">
                                 <div class="stat-icon pending">⏳</div>
                                 <div class="stat-info">
                                     <div class="stat-value">12</div>
-                                    <div class="stat-label">Incomplete</div>
+                                    <div class="stat-label"><span class="tab-text-en">Incomplete</span><span class="tab-text-es">Incompletos</span></div>
                                 </div>
                             </div>
                             <div class="stat-card">
                                 <div class="stat-icon offers">📄</div>
                                 <div class="stat-info">
                                     <div class="stat-value">8</div>
-                                    <div class="stat-label">Offers Sent</div>
+                                    <div class="stat-label"><span class="tab-text-en">Offers Sent</span><span class="tab-text-es">Ofertas Enviadas</span></div>
                                 </div>
                             </div>
                             <div class="stat-card">
                                 <div class="stat-icon hired">🎉</div>
                                 <div class="stat-info">
                                     <div class="stat-value">5</div>
-                                    <div class="stat-label">Hired</div>
+                                    <div class="stat-label"><span class="tab-text-en">Hired</span><span class="tab-text-es">Contratados</span></div>
                                 </div>
                             </div>
                         </div>
@@ -2184,34 +2986,34 @@
                             </div>
                         </div>
                         <div class="ai-scoring">
-                            <h3>Interview Summary</h3>
+                            <h3><span class="tab-text-en">Interview Summary</span><span class="tab-text-es">Resumen de la Entrevista</span></h3>
                             <div class="score-bars">
                                 <div class="score-item">
-                                    <span class="score-label">Communications</span>
+                                    <span class="score-label"><span class="tab-text-en">Communications</span><span class="tab-text-es">Comunicación</span></span>
                                     <div class="score-bar-bg">
                                         <div class="score-bar-fill" style="width: 88%;">88%</div>
                                     </div>
                                 </div>
                                 <div class="score-item">
-                                    <span class="score-label">Experience</span>
+                                    <span class="score-label"><span class="tab-text-en">Experience</span><span class="tab-text-es">Experiencia</span></span>
                                     <div class="score-bar-bg">
                                         <div class="score-bar-fill" style="width: 75%;">75%</div>
                                     </div>
                                 </div>
                                 <div class="score-item">
-                                    <span class="score-label">Skills and Credentials</span>
+                                    <span class="score-label"><span class="tab-text-en">Skills and Credentials</span><span class="tab-text-es">Habilidades y Credenciales</span></span>
                                     <div class="score-bar-bg">
                                         <div class="score-bar-fill" style="width: 92%;">92%</div>
                                     </div>
                                 </div>
                                 <div class="score-item">
-                                    <span class="score-label">Career History</span>
+                                    <span class="score-label"><span class="tab-text-en">Career History</span><span class="tab-text-es">Historial Profesional</span></span>
                                     <div class="score-bar-bg">
                                         <div class="score-bar-fill" style="width: 70%;">70%</div>
                                     </div>
                                 </div>
                                 <div class="score-item">
-                                    <span class="score-label">Resume Quality</span>
+                                    <span class="score-label"><span class="tab-text-en">Resume Quality</span><span class="tab-text-es">Calidad del Currículum</span></span>
                                     <div class="score-bar-bg">
                                         <div class="score-bar-fill" style="width: 85%;">85%</div>
                                     </div>
@@ -2220,51 +3022,51 @@
                         </div>
                         <!-- Recruiter Actions Panel -->
                         <div class="recruiter-actions">
-                            <h3>Recruiter Actions</h3>
+                            <h3><span class="tab-text-en">Recruiter Actions</span><span class="tab-text-es">Acciones del Reclutador</span></h3>
                             <div class="action-buttons-grid">
                                 <button class="action-btn primary" onclick="showActionModal('approve')">
                                     <span class="action-icon">✓</span>
-                                    <span class="action-text">Approve for Next Step</span>
+                                    <span class="action-text"><span class="tab-text-en">Approve for Next Step</span><span class="tab-text-es">Aprobar para Siguiente Paso</span></span>
                                 </button>
                                 <button class="action-btn success" onclick="showActionModal('offer')">
                                     <span class="action-icon">📄</span>
-                                    <span class="action-text">Send Offer Letter</span>
+                                    <span class="action-text"><span class="tab-text-en">Send Offer Letter</span><span class="tab-text-es">Enviar Carta de Oferta</span></span>
                                 </button>
                                 <button class="action-btn secondary" onclick="showActionModal('forward')">
                                     <span class="action-icon">↗️</span>
-                                    <span class="action-text">Forward to Manager</span>
+                                    <span class="action-text"><span class="tab-text-en">Forward to Manager</span><span class="tab-text-es">Enviar al Gerente</span></span>
                                 </button>
                                 <button class="action-btn secondary" onclick="showActionModal('schedule')">
                                     <span class="action-icon">📅</span>
-                                    <span class="action-text">Schedule Interview</span>
+                                    <span class="action-text"><span class="tab-text-en">Schedule Interview</span><span class="tab-text-es">Programar Entrevista</span></span>
                                 </button>
                                 <button class="action-btn outline" onclick="showActionModal('notes')">
                                     <span class="action-icon">📝</span>
-                                    <span class="action-text">Add Notes</span>
+                                    <span class="action-text"><span class="tab-text-en">Add Notes</span><span class="tab-text-es">Agregar Notas</span></span>
                                 </button>
                                 <button class="action-btn outline" onclick="showActionModal('message')">
                                     <span class="action-icon">💬</span>
-                                    <span class="action-text">Send Message</span>
+                                    <span class="action-text"><span class="tab-text-en">Send Message</span><span class="tab-text-es">Enviar Mensaje</span></span>
                                 </button>
                                 <button class="action-btn outline" onclick="showActionModal('hold')">
                                     <span class="action-icon">⏸️</span>
-                                    <span class="action-text">Put on Hold</span>
+                                    <span class="action-text"><span class="tab-text-en">Put on Hold</span><span class="tab-text-es">Poner en Espera</span></span>
                                 </button>
                                 <button class="action-btn danger" onclick="showActionModal('reject')">
                                     <span class="action-icon">✕</span>
-                                    <span class="action-text">Reject Candidate</span>
+                                    <span class="action-text"><span class="tab-text-en">Reject Candidate</span><span class="tab-text-es">Rechazar Candidato</span></span>
                                 </button>
                             </div>
                             <div class="quick-notes">
-                                <h4>Quick Notes</h4>
+                                <h4><span class="tab-text-en">Quick Notes</span><span class="tab-text-es">Notas Rápidas</span></h4>
                                 <textarea class="notes-input" placeholder="Add notes about this candidate..."></textarea>
                                 <div class="notes-footer">
                                     <div class="note-tags">
-                                        <span class="note-tag" onclick="addTag('Strong candidate')">Strong candidate</span>
-                                        <span class="note-tag" onclick="addTag('Needs follow-up')">Needs follow-up</span>
-                                        <span class="note-tag" onclick="addTag('Check references')">Check references</span>
+                                        <span class="note-tag" onclick="addTag('Strong candidate')"><span class="tab-text-en">Strong candidate</span><span class="tab-text-es">Candidato fuerte</span></span>
+                                        <span class="note-tag" onclick="addTag('Needs follow-up')"><span class="tab-text-en">Needs follow-up</span><span class="tab-text-es">Necesita seguimiento</span></span>
+                                        <span class="note-tag" onclick="addTag('Check references')"><span class="tab-text-en">Check references</span><span class="tab-text-es">Verificar referencias</span></span>
                                     </div>
-                                    <button class="save-notes-btn">Save Notes</button>
+                                    <button class="save-notes-btn"><span class="tab-text-en">Save Notes</span><span class="tab-text-es">Guardar Notas</span></button>
                                 </div>
                             </div>
                         </div>
@@ -2276,13 +3078,13 @@
         <!-- Tab 3: Onboarding -->
         <div class="tab-content" id="onboarding">
             <div class="card">
-                <div class="card-title">Onboarding Management</div>
+                <div class="card-title"><span class="tab-text-en">Onboarding Management</span><span class="tab-text-es">Gestión de Incorporación</span></div>
                 <div class="interviews-grid">
                     <!-- Onboarding Candidates List -->
                     <div class="candidates-list">
                         <div class="list-header">
-                            <span class="list-title">Onboarding Candidates</span>
-                            <span class="list-count">4 active</span>
+                            <span class="list-title"><span class="tab-text-en">Onboarding Candidates</span><span class="tab-text-es">Candidatos en Incorporación</span></span>
+                            <span class="list-count"><span class="tab-text-en">4 active</span><span class="tab-text-es">4 activos</span></span>
                         </div>
                         <div class="candidate-item active">
                             <div class="candidate-avatar" style="background: url('https://i.pravatar.cc/100?img=1') center/cover, var(--gradient-accent);"></div>
@@ -2324,12 +3126,12 @@
                                 <div class="candidate-avatar large" style="background: url('https://i.pravatar.cc/100?img=1') center/cover, var(--gradient-accent);"></div>
                                 <div>
                                     <h3>Marcus Johnson</h3>
-                                    <p>CDL-A Driver • Start Date: Dec 15, 2025</p>
+                                    <p><span class="tab-text-en">CDL-A Driver • Start Date: Dec 15, 2025</span><span class="tab-text-es">Conductor CDL-A • Fecha de Inicio: 15 Dic, 2025</span></p>
                                 </div>
                             </div>
                             <div class="onboarding-progress-badge">
                                 <span class="progress-value">75%</span>
-                                <span class="progress-label">Complete</span>
+                                <span class="progress-label"><span class="tab-text-en">Complete</span><span class="tab-text-es">Completado</span></span>
                             </div>
                         </div>
                         <div class="onboarding-content">
@@ -2340,9 +3142,9 @@
                                 <div class="step-line completed"></div>
                             </div>
                             <div class="step-content">
-                                <div class="step-title">Offer Accepted</div>
-                                <div class="step-description">Candidate accepted the job offer</div>
-                                <div class="step-date completed">✓ Completed Dec 1, 2025</div>
+                                <div class="step-title"><span class="tab-text-en">Offer Accepted</span><span class="tab-text-es">Oferta Aceptada</span></div>
+                                <div class="step-description"><span class="tab-text-en">Candidate accepted the job offer</span><span class="tab-text-es">El candidato aceptó la oferta de trabajo</span></div>
+                                <div class="step-date completed"><span class="tab-text-en">✓ Completed Dec 1, 2025</span><span class="tab-text-es">✓ Completado 1 Dic, 2025</span></div>
                             </div>
                         </div>
                         <div class="onboarding-step">
@@ -2351,9 +3153,9 @@
                                 <div class="step-line completed"></div>
                             </div>
                             <div class="step-content">
-                                <div class="step-title">Documents Submitted</div>
-                                <div class="step-description">All required documents received and verified</div>
-                                <div class="step-date completed">✓ Completed Dec 4, 2025</div>
+                                <div class="step-title"><span class="tab-text-en">Documents Submitted</span><span class="tab-text-es">Documentos Enviados</span></div>
+                                <div class="step-description"><span class="tab-text-en">All required documents received and verified</span><span class="tab-text-es">Todos los documentos requeridos recibidos y verificados</span></div>
+                                <div class="step-date completed"><span class="tab-text-en">✓ Completed Dec 4, 2025</span><span class="tab-text-es">✓ Completado 4 Dic, 2025</span></div>
                             </div>
                         </div>
                         <div class="onboarding-step">
@@ -2362,9 +3164,9 @@
                                 <div class="step-line"></div>
                             </div>
                             <div class="step-content">
-                                <div class="step-title">Training Program</div>
-                                <div class="step-description">Safety orientation and route training</div>
-                                <div class="step-date">In Progress - Due Dec 10, 2025</div>
+                                <div class="step-title"><span class="tab-text-en">Training Program</span><span class="tab-text-es">Programa de Capacitación</span></div>
+                                <div class="step-description"><span class="tab-text-en">Safety orientation and route training</span><span class="tab-text-es">Orientación de seguridad y entrenamiento de rutas</span></div>
+                                <div class="step-date"><span class="tab-text-en">In Progress - Due Dec 10, 2025</span><span class="tab-text-es">En Progreso - Vence 10 Dic, 2025</span></div>
                             </div>
                         </div>
                         <div class="onboarding-step">
@@ -2372,72 +3174,72 @@
                                 <div class="step-circle pending">4</div>
                             </div>
                             <div class="step-content">
-                                <div class="step-title">First Assignment</div>
-                                <div class="step-description">Assigned to first delivery route</div>
-                                <div class="step-date">Scheduled Dec 12, 2025</div>
+                                <div class="step-title"><span class="tab-text-en">First Assignment</span><span class="tab-text-es">Primera Asignación</span></div>
+                                <div class="step-description"><span class="tab-text-en">Assigned to first delivery route</span><span class="tab-text-es">Asignado a la primera ruta de entrega</span></div>
+                                <div class="step-date"><span class="tab-text-en">Scheduled Dec 12, 2025</span><span class="tab-text-es">Programado 12 Dic, 2025</span></div>
                             </div>
                         </div>
                     </div>
                     <div class="onboarding-details">
                         <div class="detail-card">
-                            <h4>Documents</h4>
+                            <h4><span class="tab-text-en">Documents</span><span class="tab-text-es">Documentos</span></h4>
                             <div class="document-list">
                                 <div class="document-item">
                                     <div class="document-icon pdf">📄</div>
                                     <div class="document-info">
-                                        <div class="document-name">CDL License</div>
-                                        <div class="document-status">Verified</div>
+                                        <div class="document-name"><span class="tab-text-en">CDL License</span><span class="tab-text-es">Licencia CDL</span></div>
+                                        <div class="document-status"><span class="tab-text-en">Verified</span><span class="tab-text-es">Verificado</span></div>
                                     </div>
                                     <span class="document-check">✓</span>
                                 </div>
                                 <div class="document-item">
                                     <div class="document-icon doc">📋</div>
                                     <div class="document-info">
-                                        <div class="document-name">Medical Certificate</div>
-                                        <div class="document-status">Verified</div>
+                                        <div class="document-name"><span class="tab-text-en">Medical Certificate</span><span class="tab-text-es">Certificado Médico</span></div>
+                                        <div class="document-status"><span class="tab-text-en">Verified</span><span class="tab-text-es">Verificado</span></div>
                                     </div>
                                     <span class="document-check">✓</span>
                                 </div>
                                 <div class="document-item">
                                     <div class="document-icon pdf">📄</div>
                                     <div class="document-info">
-                                        <div class="document-name">Background Check</div>
-                                        <div class="document-status">Verified</div>
+                                        <div class="document-name"><span class="tab-text-en">Background Check</span><span class="tab-text-es">Verificación de Antecedentes</span></div>
+                                        <div class="document-status"><span class="tab-text-en">Verified</span><span class="tab-text-es">Verificado</span></div>
                                     </div>
                                     <span class="document-check">✓</span>
                                 </div>
                                 <div class="document-item">
                                     <div class="document-icon doc">📋</div>
                                     <div class="document-info">
-                                        <div class="document-name">Drug Test Results</div>
-                                        <div class="document-status">Verified</div>
+                                        <div class="document-name"><span class="tab-text-en">Drug Test Results</span><span class="tab-text-es">Resultados de Prueba de Drogas</span></div>
+                                        <div class="document-status"><span class="tab-text-en">Verified</span><span class="tab-text-es">Verificado</span></div>
                                     </div>
                                     <span class="document-check">✓</span>
                                 </div>
                             </div>
                         </div>
                         <div class="detail-card">
-                            <h4>Training Progress</h4>
+                            <h4><span class="tab-text-en">Training Progress</span><span class="tab-text-es">Progreso de Capacitación</span></h4>
                             <div class="document-list">
                                 <div class="document-item">
                                     <div class="document-icon" style="background: rgba(34, 197, 94, 0.2);">✓</div>
                                     <div class="document-info">
-                                        <div class="document-name">Safety Orientation</div>
-                                        <div class="document-status">Completed</div>
+                                        <div class="document-name"><span class="tab-text-en">Safety Orientation</span><span class="tab-text-es">Orientación de Seguridad</span></div>
+                                        <div class="document-status"><span class="tab-text-en">Completed</span><span class="tab-text-es">Completado</span></div>
                                     </div>
                                 </div>
                                 <div class="document-item">
                                     <div class="document-icon" style="background: rgba(212, 160, 25, 0.2);">▶</div>
                                     <div class="document-info">
-                                        <div class="document-name">Route Training</div>
-                                        <div class="document-status">In Progress - 60%</div>
+                                        <div class="document-name"><span class="tab-text-en">Route Training</span><span class="tab-text-es">Entrenamiento de Rutas</span></div>
+                                        <div class="document-status"><span class="tab-text-en">In Progress - 60%</span><span class="tab-text-es">En Progreso - 60%</span></div>
                                     </div>
                                 </div>
                                 <div class="document-item">
                                     <div class="document-icon" style="background: var(--input-bg);">○</div>
                                     <div class="document-info">
-                                        <div class="document-name">Equipment Certification</div>
-                                        <div class="document-status">Not Started</div>
+                                        <div class="document-name"><span class="tab-text-en">Equipment Certification</span><span class="tab-text-es">Certificación de Equipo</span></div>
+                                        <div class="document-status"><span class="tab-text-en">Not Started</span><span class="tab-text-es">No Iniciado</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -2453,7 +3255,7 @@
         <div class="tab-content" id="candidate-link">
             <div class="card">
                 <div class="card-title-header">
-                    <div class="card-title">Candidate Dashboard</div>
+                    <div class="card-title"><span class="tab-text-en">Candidate Dashboard</span><span class="tab-text-es">Panel del Candidato</span></div>
                     <div class="language-selector candidate-lang-selector" id="candidateLangSelector">
                         <button class="language-btn" onclick="toggleCandidateLanguageDropdown()">
                             <span class="lang-flag" id="candidateLangFlag">🇺🇸</span>
@@ -2481,117 +3283,117 @@
                         </div>
                         <div class="progress-step">
                             <div class="progress-circle completed">✓</div>
-                            <div class="progress-label active">Resume Received</div>
+                            <div class="progress-label active"><span class="tab-text-en">Resume Received</span><span class="tab-text-es">Currículum Recibido</span></div>
                         </div>
                         <div class="progress-step">
                             <div class="progress-circle completed">✓</div>
-                            <div class="progress-label active">Recruiter Review</div>
+                            <div class="progress-label active"><span class="tab-text-en">Recruiter Review</span><span class="tab-text-es">Revisión del Reclutador</span></div>
                         </div>
                         <div class="progress-step">
                             <div class="progress-circle completed">✓</div>
-                            <div class="progress-label active">Video Interview</div>
+                            <div class="progress-label active"><span class="tab-text-en">Video Interview</span><span class="tab-text-es">Entrevista por Video</span></div>
                         </div>
                         <div class="progress-step">
                             <div class="progress-circle current">4</div>
-                            <div class="progress-label active">Onboarding</div>
+                            <div class="progress-label active"><span class="tab-text-en">Onboarding</span><span class="tab-text-es">Incorporación</span></div>
                         </div>
                         <div class="progress-step">
                             <div class="progress-circle">5</div>
-                            <div class="progress-label">First Assignment</div>
+                            <div class="progress-label"><span class="tab-text-en">First Assignment</span><span class="tab-text-es">Primera Asignación</span></div>
                         </div>
                     </div>
                     <div class="journey-content">
                         <div class="journey-video">
                             <!-- Onboarding Document Upload Section -->
                             <div class="info-card">
-                                <h4>📄 Required Documents</h4>
+                                <h4><span class="tab-text-en">📄 Required Documents</span><span class="tab-text-es">📄 Documentos Requeridos</span></h4>
                                 <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin-bottom: 16px;">
-                                    Please upload the following documents to complete your onboarding process.
+                                    <span class="tab-text-en">Please upload the following documents to complete your onboarding process.</span><span class="tab-text-es">Por favor sube los siguientes documentos para completar tu proceso de incorporación.</span>
                                 </p>
                                 <div class="document-upload-list">
                                     <div class="upload-item completed">
                                         <div class="upload-icon">✓</div>
                                         <div class="upload-info">
-                                            <div class="upload-name">CDL License</div>
-                                            <div class="upload-status success">Uploaded & Verified</div>
+                                            <div class="upload-name"><span class="tab-text-en">CDL License</span><span class="tab-text-es">Licencia CDL</span></div>
+                                            <div class="upload-status success"><span class="tab-text-en">Uploaded & Verified</span><span class="tab-text-es">Subido y Verificado</span></div>
                                         </div>
-                                        <button class="upload-btn uploaded">View</button>
+                                        <button class="upload-btn uploaded"><span class="tab-text-en">View</span><span class="tab-text-es">Ver</span></button>
                                     </div>
                                     <div class="upload-item completed">
                                         <div class="upload-icon">✓</div>
                                         <div class="upload-info">
-                                            <div class="upload-name">Medical Certificate (DOT)</div>
-                                            <div class="upload-status success">Uploaded & Verified</div>
+                                            <div class="upload-name"><span class="tab-text-en">Medical Certificate (DOT)</span><span class="tab-text-es">Certificado Médico (DOT)</span></div>
+                                            <div class="upload-status success"><span class="tab-text-en">Uploaded & Verified</span><span class="tab-text-es">Subido y Verificado</span></div>
                                         </div>
-                                        <button class="upload-btn uploaded">View</button>
+                                        <button class="upload-btn uploaded"><span class="tab-text-en">View</span><span class="tab-text-es">Ver</span></button>
                                     </div>
                                     <div class="upload-item pending">
                                         <div class="upload-icon">📤</div>
                                         <div class="upload-info">
-                                            <div class="upload-name">Social Security Card</div>
-                                            <div class="upload-status warning">Required</div>
+                                            <div class="upload-name"><span class="tab-text-en">Social Security Card</span><span class="tab-text-es">Tarjeta de Seguro Social</span></div>
+                                            <div class="upload-status warning"><span class="tab-text-en">Required</span><span class="tab-text-es">Requerido</span></div>
                                         </div>
-                                        <button class="upload-btn">Upload</button>
+                                        <button class="upload-btn"><span class="tab-text-en">Upload</span><span class="tab-text-es">Subir</span></button>
                                     </div>
                                     <div class="upload-item pending">
                                         <div class="upload-icon">📤</div>
                                         <div class="upload-info">
-                                            <div class="upload-name">Proof of Address</div>
-                                            <div class="upload-status warning">Required</div>
+                                            <div class="upload-name"><span class="tab-text-en">Proof of Address</span><span class="tab-text-es">Comprobante de Domicilio</span></div>
+                                            <div class="upload-status warning"><span class="tab-text-en">Required</span><span class="tab-text-es">Requerido</span></div>
                                         </div>
-                                        <button class="upload-btn">Upload</button>
+                                        <button class="upload-btn"><span class="tab-text-en">Upload</span><span class="tab-text-es">Subir</span></button>
                                     </div>
                                     <div class="upload-item pending">
                                         <div class="upload-icon">📤</div>
                                         <div class="upload-info">
-                                            <div class="upload-name">Direct Deposit Form</div>
-                                            <div class="upload-status">Optional</div>
+                                            <div class="upload-name"><span class="tab-text-en">Direct Deposit Form</span><span class="tab-text-es">Formulario de Depósito Directo</span></div>
+                                            <div class="upload-status"><span class="tab-text-en">Optional</span><span class="tab-text-es">Opcional</span></div>
                                         </div>
-                                        <button class="upload-btn">Upload</button>
+                                        <button class="upload-btn"><span class="tab-text-en">Upload</span><span class="tab-text-es">Subir</span></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="info-card">
-                                <h4>✍️ Forms & Agreements</h4>
+                                <h4><span class="tab-text-en">✍️ Forms & Agreements</span><span class="tab-text-es">✍️ Formularios y Acuerdos</span></h4>
                                 <div class="document-upload-list">
                                     <div class="upload-item completed">
                                         <div class="upload-icon">✓</div>
                                         <div class="upload-info">
-                                            <div class="upload-name">W-4 Tax Form</div>
-                                            <div class="upload-status success">Completed</div>
+                                            <div class="upload-name"><span class="tab-text-en">W-4 Tax Form</span><span class="tab-text-es">Formulario de Impuestos W-4</span></div>
+                                            <div class="upload-status success"><span class="tab-text-en">Completed</span><span class="tab-text-es">Completado</span></div>
                                         </div>
-                                        <button class="upload-btn uploaded">View</button>
+                                        <button class="upload-btn uploaded"><span class="tab-text-en">View</span><span class="tab-text-es">Ver</span></button>
                                     </div>
                                     <div class="upload-item pending">
                                         <div class="upload-icon">📝</div>
                                         <div class="upload-info">
-                                            <div class="upload-name">I-9 Employment Eligibility</div>
-                                            <div class="upload-status warning">Action Required</div>
+                                            <div class="upload-name"><span class="tab-text-en">I-9 Employment Eligibility</span><span class="tab-text-es">Elegibilidad de Empleo I-9</span></div>
+                                            <div class="upload-status warning"><span class="tab-text-en">Action Required</span><span class="tab-text-es">Acción Requerida</span></div>
                                         </div>
-                                        <button class="upload-btn">Complete</button>
+                                        <button class="upload-btn"><span class="tab-text-en">Complete</span><span class="tab-text-es">Completar</span></button>
                                     </div>
                                     <div class="upload-item pending">
                                         <div class="upload-icon">📝</div>
                                         <div class="upload-info">
-                                            <div class="upload-name">Company Policy Acknowledgement</div>
-                                            <div class="upload-status warning">Signature Required</div>
+                                            <div class="upload-name"><span class="tab-text-en">Company Policy Acknowledgement</span><span class="tab-text-es">Reconocimiento de Políticas de la Empresa</span></div>
+                                            <div class="upload-status warning"><span class="tab-text-en">Signature Required</span><span class="tab-text-es">Firma Requerida</span></div>
                                         </div>
-                                        <button class="upload-btn">Sign</button>
+                                        <button class="upload-btn"><span class="tab-text-en">Sign</span><span class="tab-text-es">Firmar</span></button>
                                     </div>
                                     <div class="upload-item pending">
                                         <div class="upload-icon">📝</div>
                                         <div class="upload-info">
-                                            <div class="upload-name">Drug & Alcohol Policy</div>
-                                            <div class="upload-status warning">Signature Required</div>
+                                            <div class="upload-name"><span class="tab-text-en">Drug & Alcohol Policy</span><span class="tab-text-es">Política de Drogas y Alcohol</span></div>
+                                            <div class="upload-status warning"><span class="tab-text-en">Signature Required</span><span class="tab-text-es">Firma Requerida</span></div>
                                         </div>
-                                        <button class="upload-btn">Sign</button>
+                                        <button class="upload-btn"><span class="tab-text-en">Sign</span><span class="tab-text-es">Firmar</span></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="journey-info">
                             <div class="info-card onboarding-progress-card">
-                                <h4>📊 Onboarding Progress</h4>
+                                <h4><span class="tab-text-en">📊 Onboarding Progress</span><span class="tab-text-es">📊 Progreso de Incorporación</span></h4>
                                 <div class="onboarding-progress-ring">
                                     <svg viewBox="0 0 100 100">
                                         <circle class="progress-ring-bg" cx="50" cy="50" r="40"/>
@@ -2599,19 +3401,19 @@
                                     </svg>
                                     <div class="progress-ring-text">
                                         <span class="progress-percent">60%</span>
-                                        <span class="progress-subtext">Complete</span>
+                                        <span class="progress-subtext"><span class="tab-text-en">Complete</span><span class="tab-text-es">Completado</span></span>
                                     </div>
                                 </div>
                                 <div class="onboarding-checklist">
-                                    <div class="checklist-item done"><span>✓</span> Documents Uploaded (3/5)</div>
-                                    <div class="checklist-item done"><span>✓</span> W-4 Completed</div>
-                                    <div class="checklist-item pending"><span>○</span> I-9 Form Pending</div>
-                                    <div class="checklist-item pending"><span>○</span> Policy Signatures (0/2)</div>
-                                    <div class="checklist-item pending"><span>○</span> Training Scheduled</div>
+                                    <div class="checklist-item done"><span>✓</span> <span class="tab-text-en">Documents Uploaded (3/5)</span><span class="tab-text-es">Documentos Subidos (3/5)</span></div>
+                                    <div class="checklist-item done"><span>✓</span> <span class="tab-text-en">W-4 Completed</span><span class="tab-text-es">W-4 Completado</span></div>
+                                    <div class="checklist-item pending"><span>○</span> <span class="tab-text-en">I-9 Form Pending</span><span class="tab-text-es">Formulario I-9 Pendiente</span></div>
+                                    <div class="checklist-item pending"><span>○</span> <span class="tab-text-en">Policy Signatures (0/2)</span><span class="tab-text-es">Firmas de Políticas (0/2)</span></div>
+                                    <div class="checklist-item pending"><span>○</span> <span class="tab-text-en">Training Scheduled</span><span class="tab-text-es">Capacitación Programada</span></div>
                                 </div>
                             </div>
                             <div class="info-card">
-                                <h4>📅 Upcoming Tasks</h4>
+                                <h4><span class="tab-text-en">📅 Upcoming Tasks</span><span class="tab-text-es">📅 Tareas Próximas</span></h4>
                                 <div class="upcoming-tasks">
                                     <div class="task-item urgent">
                                         <div class="task-date">
@@ -2619,8 +3421,8 @@
                                             <span class="task-month">Dec</span>
                                         </div>
                                         <div class="task-info">
-                                            <div class="task-name">Complete I-9 Verification</div>
-                                            <div class="task-desc">In-person ID verification required</div>
+                                            <div class="task-name"><span class="tab-text-en">Complete I-9 Verification</span><span class="tab-text-es">Completar Verificación I-9</span></div>
+                                            <div class="task-desc"><span class="tab-text-en">In-person ID verification required</span><span class="tab-text-es">Verificación de ID en persona requerida</span></div>
                                         </div>
                                     </div>
                                     <div class="task-item">
@@ -2629,7 +3431,7 @@
                                             <span class="task-month">Dec</span>
                                         </div>
                                         <div class="task-info">
-                                            <div class="task-name">Drug Screening</div>
+                                            <div class="task-name"><span class="tab-text-en">Drug Screening</span><span class="tab-text-es">Prueba de Drogas</span></div>
                                             <div class="task-desc">LabCorp - 123 Main St, Dallas</div>
                                         </div>
                                     </div>
@@ -2639,29 +3441,29 @@
                                             <span class="task-month">Dec</span>
                                         </div>
                                         <div class="task-info">
-                                            <div class="task-name">Orientation Day</div>
-                                            <div class="task-desc">MVE Dallas Terminal - 8:00 AM</div>
+                                            <div class="task-name"><span class="tab-text-en">Orientation Day</span><span class="tab-text-es">Día de Orientación</span></div>
+                                            <div class="task-desc"><span class="tab-text-en">MVE Dallas Terminal - 8:00 AM</span><span class="tab-text-es">Terminal MVE Dallas - 8:00 AM</span></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="info-card">
-                                <h4>Application Details</h4>
+                                <h4><span class="tab-text-en">Application Details</span><span class="tab-text-es">Detalles de la Solicitud</span></h4>
                                 <div class="info-row">
-                                    <span class="info-label">Position</span>
-                                    <span class="info-value">CDL-A Driver</span>
+                                    <span class="info-label"><span class="tab-text-en">Position</span><span class="tab-text-es">Puesto</span></span>
+                                    <span class="info-value"><span class="tab-text-en">CDL-A Driver</span><span class="tab-text-es">Conductor CDL-A</span></span>
                                 </div>
                                 <div class="info-row">
-                                    <span class="info-label">Location</span>
+                                    <span class="info-label"><span class="tab-text-en">Location</span><span class="tab-text-es">Ubicación</span></span>
                                     <span class="info-value">Dallas, TX</span>
                                 </div>
                                 <div class="info-row">
-                                    <span class="info-label">Start Date</span>
-                                    <span class="info-value">Dec 15, 2025</span>
+                                    <span class="info-label"><span class="tab-text-en">Start Date</span><span class="tab-text-es">Fecha de Inicio</span></span>
+                                    <span class="info-value"><span class="tab-text-en">Dec 15, 2025</span><span class="tab-text-es">15 Dic, 2025</span></span>
                                 </div>
                                 <div class="info-row">
-                                    <span class="info-label">Status</span>
-                                    <span class="info-value" style="color: var(--mve-gold-light);">Onboarding</span>
+                                    <span class="info-label"><span class="tab-text-en">Status</span><span class="tab-text-es">Estado</span></span>
+                                    <span class="info-value" style="color: var(--mve-gold-light);"><span class="tab-text-en">Onboarding</span><span class="tab-text-es">Incorporación</span></span>
                                 </div>
                             </div>
                         </div>
@@ -2672,7 +3474,7 @@
 
         <!-- Footer -->
         <div class="footer-brand">
-            <p>Powered by <a href="https://www.purplesquirrelai.com/" target="_blank">Purplue Squirrel AI</p>
+            <p><span class="tab-text-en">Powered by</span><span class="tab-text-es">Desarrollado por</span> <a href="https://www.purplesquirrelai.com/" target="_blank">Purplesquirrel AI</a></p>
         </div>
     </div>
 
@@ -2687,8 +3489,8 @@
                 <!-- Dynamic content -->
             </div>
             <div class="modal-footer" id="modalFooter">
-                <button class="modal-btn cancel" onclick="closeModal()">Cancel</button>
-                <button class="modal-btn confirm" id="modalConfirm">Confirm</button>
+                <button class="modal-btn cancel" onclick="closeModal()"><span class="tab-text-en">Cancel</span><span class="tab-text-es">Cancelar</span></button>
+                <button class="modal-btn confirm" id="modalConfirm"><span class="tab-text-en">Confirm</span><span class="tab-text-es">Confirmar</span></button>
             </div>
         </div>
     </div>
