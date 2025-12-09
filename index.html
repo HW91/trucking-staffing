@@ -558,9 +558,16 @@
         .chart-bar-label {
             font-size: 12px;
             color: var(--text-secondary);
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+
+        .chart-bar-subtext {
+            font-size: 10px;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 8px;
         }
 
         .chart-bar-wrapper {
@@ -3002,7 +3009,7 @@
                                     <span class="truck-slider-label"><span class="tab-text-en">Revenue $/day</span><span class="tab-text-es">Ingreso $/día</span></span>
                                     <span class="truck-slider-value" id="dryvan-revenue-value">$1,100</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="dryvan-revenue-slider" min="500" max="2500" value="1100">
+                                <input type="range" class="truck-slider" id="dryvan-revenue-slider" min="0" max="2000" value="1100">
                             </div>
                             <div class="truck-row-bars">
                                 <div class="truck-mini-bar-container">
@@ -3042,7 +3049,7 @@
                                     <span class="truck-slider-label"><span class="tab-text-en">Revenue $/day</span><span class="tab-text-es">Ingreso $/día</span></span>
                                     <span class="truck-slider-value" id="reefer-revenue-value">$1,400</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="reefer-revenue-slider" min="500" max="2500" value="1400">
+                                <input type="range" class="truck-slider" id="reefer-revenue-slider" min="0" max="2000" value="1400">
                             </div>
                             <div class="truck-row-bars">
                                 <div class="truck-mini-bar-container">
@@ -3082,7 +3089,7 @@
                                     <span class="truck-slider-label"><span class="tab-text-en">Revenue $/day</span><span class="tab-text-es">Ingreso $/día</span></span>
                                     <span class="truck-slider-value" id="boxtruck-revenue-value">$900</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="boxtruck-revenue-slider" min="500" max="2500" value="900">
+                                <input type="range" class="truck-slider" id="boxtruck-revenue-slider" min="0" max="2000" value="900">
                             </div>
                             <div class="truck-row-bars">
                                 <div class="truck-mini-bar-container">
@@ -3122,7 +3129,7 @@
                                     <span class="truck-slider-label"><span class="tab-text-en">Revenue $/day</span><span class="tab-text-es">Ingreso $/día</span></span>
                                     <span class="truck-slider-value" id="flatbed-revenue-value">$1,300</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="flatbed-revenue-slider" min="500" max="2500" value="1300">
+                                <input type="range" class="truck-slider" id="flatbed-revenue-slider" min="0" max="2000" value="1300">
                             </div>
                             <div class="truck-row-bars">
                                 <div class="truck-mini-bar-container">
@@ -3162,7 +3169,7 @@
                                     <span class="truck-slider-label"><span class="tab-text-en">Revenue $/day</span><span class="tab-text-es">Ingreso $/día</span></span>
                                     <span class="truck-slider-value" id="tanker-revenue-value">$1,600</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="tanker-revenue-slider" min="500" max="2500" value="1600">
+                                <input type="range" class="truck-slider" id="tanker-revenue-slider" min="0" max="2000" value="1600">
                             </div>
                             <div class="truck-row-bars">
                                 <div class="truck-mini-bar-container">
@@ -3202,7 +3209,7 @@
                                     <span class="truck-slider-label"><span class="tab-text-en">Revenue $/day</span><span class="tab-text-es">Ingreso $/día</span></span>
                                     <span class="truck-slider-value" id="stepdeck-revenue-value">$1,500</span>
                                 </div>
-                                <input type="range" class="truck-slider" id="stepdeck-revenue-slider" min="500" max="2500" value="1500">
+                                <input type="range" class="truck-slider" id="stepdeck-revenue-slider" min="0" max="2000" value="1500">
                             </div>
                             <div class="truck-row-bars">
                                 <div class="truck-mini-bar-container">
@@ -3238,34 +3245,22 @@
                             </div>
                             <input type="range" class="slider" id="improvement-slider" min="0" max="100" value="35">
                         </div>
-                        <!-- Daily Revenue Loss -->
+                        <!-- Estimated Annual Revenue Loss -->
                         <div class="chart-bar-container">
-                            <div class="chart-bar-label"><span class="tab-text-en">Daily Revenue Loss</span><span class="tab-text-es">Pérdida Diaria de Ingresos</span></div>
+                            <div class="chart-bar-label"><span class="tab-text-en">Estimated Annual Revenue Loss</span><span class="tab-text-es">Pérdida Anual Estimada de Ingresos</span></div>
+                            <div class="chart-bar-subtext"><span class="tab-text-en">*Projected based on current daily data</span><span class="tab-text-es">*Proyectado basado en datos diarios actuales</span></div>
                             <div class="chart-bar-wrapper">
-                                <div class="chart-bar revenue" id="revenue-bar">$30,000</div>
+                                <div class="chart-bar revenue" id="revenue-bar">$10,950,000</div>
                             </div>
                         </div>
-                        <!-- Potential Daily Savings -->
+                        <!-- Potential Annual Savings -->
                         <div class="chart-bar-container">
-                            <div class="chart-bar-label"><span class="tab-text-en">Potential Daily Savings</span><span class="tab-text-es">Ahorros Diarios Potenciales</span></div>
+                            <div class="chart-bar-label"><span class="tab-text-en">Potential Annual Savings</span><span class="tab-text-es">Ahorros Anuales Potenciales</span></div>
+                            <div class="chart-bar-subtext"><span class="tab-text-en">*Projected based on current daily data</span><span class="tab-text-es">*Proyectado basado en datos diarios actuales</span></div>
                             <div class="chart-bar-wrapper">
-                                <div class="chart-bar savings" id="savings-bar">$10,500</div>
+                                <div class="chart-bar savings" id="savings-bar">$3,832,500</div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="summary-cards">
-                    <div class="summary-card">
-                        <div class="summary-card-value" id="annual-loss">$10,800,000</div>
-                        <div class="summary-card-label"><span class="tab-text-en">Estimated Annual Revenue Loss</span><span class="tab-text-es">Pérdida Anual Estimada de Ingresos</span></div>
-                    </div>
-                    <div class="summary-card">
-                        <div class="summary-card-value" id="annual-savings">$3,780,000</div>
-                        <div class="summary-card-label"><span class="tab-text-en">Potential Annual Recovery</span><span class="tab-text-es">Recuperación Anual Potencial</span></div>
-                    </div>
-                    <div class="summary-card">
-                        <div class="summary-card-value" id="roi">412%</div>
-                        <div class="summary-card-label"><span class="tab-text-en">Projected ROI</span><span class="tab-text-es">ROI Proyectado</span></div>
                     </div>
                 </div>
             </div>
@@ -4720,7 +4715,7 @@
 
         function updateCalculations() {
             let totalDailyLoss = 0;
-            const maxSingleTruckLoss = 50 * 2500; // Max loss for a single truck type (50 trucks × $2500)
+            const maxSingleTruckLoss = 50 * 2000; // Max loss for a single truck type (50 trucks × $2000)
             const improvement = parseInt(improvementSlider.value);
 
             // Calculate daily loss for each truck type
@@ -4774,21 +4769,16 @@
             const revenueBar = document.getElementById('revenue-bar');
             const savingsBar = document.getElementById('savings-bar');
 
-            const maxLoss = 50 * 5 * 2500; // 50 trucks × 5 types × $2500 max
-            const lossWidth = Math.min((remainingLoss / maxLoss) * 100, 100);
-            const savingsWidth = Math.min((dailySavings / maxLoss) * 100, 100);
+            const maxLoss = 50 * 6 * 2000; // 50 trucks × 6 types × $2000 max
+            const maxAnnualLoss = maxLoss * 365;
+            const lossWidth = Math.min((annualLoss / maxAnnualLoss) * 100, 100);
+            const savingsWidth = Math.min((annualSavings / maxAnnualLoss) * 100, 100);
 
             revenueBar.style.width = Math.max(lossWidth, 5) + '%';
-            revenueBar.textContent = '$' + remainingLoss.toLocaleString();
+            revenueBar.textContent = '$' + annualLoss.toLocaleString();
 
             savingsBar.style.width = Math.max(savingsWidth, 5) + '%';
-            savingsBar.textContent = '$' + dailySavings.toLocaleString();
-
-            document.getElementById('annual-loss').textContent = '$' + annualLoss.toLocaleString();
-            document.getElementById('annual-savings').textContent = '$' + annualSavings.toLocaleString();
-
-            const roi = annualSavings > 0 ? Math.round((annualSavings / 60000) * 100) : 0;
-            document.getElementById('roi').textContent = roi + '%';
+            savingsBar.textContent = '$' + annualSavings.toLocaleString();
         }
 
         // Add event listeners to all sliders
