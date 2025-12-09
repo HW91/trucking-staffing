@@ -34,6 +34,19 @@
             --gradient-accent: linear-gradient(135deg, var(--mve-gold-dark), var(--mve-gold-light));
         }
 
+        [data-theme="light"] {
+            --bg-primary: linear-gradient(135deg, #f8f9fc 0%, #eef1f7 100%);
+            --bg-secondary: rgba(255, 255, 255, 0.98);
+            --bg-tertiary: rgba(30, 42, 74, 0.04);
+            --text-primary: #1e2a4a;
+            --text-secondary: rgba(30, 42, 74, 0.7);
+            --text-muted: rgba(30, 42, 74, 0.5);
+            --border-color: rgba(30, 42, 74, 0.12);
+            --card-bg: rgba(255, 255, 255, 0.98);
+            --input-bg: rgba(30, 42, 74, 0.06);
+            --shadow-color: rgba(30, 42, 74, 0.12);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -84,6 +97,19 @@
             height: 100%;
             width: auto;
             object-fit: contain;
+        }
+
+        /* Logo switching for light/dark mode */
+        .logo-icon .logo-light {
+            display: none;
+        }
+
+        [data-theme="light"] .logo-icon .logo-dark {
+            display: none;
+        }
+
+        [data-theme="light"] .logo-icon .logo-light {
+            display: block;
         }
 
         .logo-icon svg {
@@ -137,6 +163,50 @@
             display: flex;
             align-items: center;
             gap: 16px;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            width: 56px;
+            height: 28px;
+            background: var(--bg-tertiary);
+            border-radius: 14px;
+            position: relative;
+            cursor: pointer;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle::before {
+            content: '🌙';
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .theme-toggle::before {
+            content: '☀️';
+            left: calc(100% - 22px);
+        }
+
+        .theme-toggle::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--mve-gold);
+            border-radius: 50%;
+            top: 2px;
+            left: 28px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px var(--shadow-color);
+        }
+
+        [data-theme="light"] .theme-toggle::after {
+            left: 4px;
         }
 
         .user-avatar {
@@ -1596,6 +1666,11 @@
             animation: modalSlideIn 0.3s ease;
         }
 
+        [data-theme="light"] .action-modal {
+            background: #ffffff;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        }
+
         @keyframes modalSlideIn {
             from {
                 opacity: 0;
@@ -1805,6 +1880,11 @@
             transition: all 0.2s ease;
             z-index: 100;
             overflow: hidden;
+        }
+
+        [data-theme="light"] .language-dropdown {
+            background: #ffffff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
 
         .language-selector.open .language-dropdown {
@@ -2333,7 +2413,8 @@
             <div class="header-brand">
                 <div class="header-logo">
                     <div class="logo-icon">
-                        <img src="mvelogo.png" alt="Mountain Valley Express" />
+                        <img src="mvelogo.png" alt="Mountain Valley Express" class="logo-dark" />
+                        <img src="mvelogo2.png" alt="Mountain Valley Express" class="logo-light" />
                     </div>
                 </div>
             </div>
@@ -2358,6 +2439,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Mode"></div>
                 <div class="notification-badge">🔔</div>
                 <div class="user-avatar">JD</div>
             </div>
@@ -2412,7 +2494,6 @@
                 <!-- Section 1: Smart Hiring Intelligence -->
                 <div class="intro-section">
                     <div class="intro-section-header">
-                        <div class="intro-section-icon">🧠</div>
                         <div class="intro-section-title">
                             <h3><span class="tab-text-en">Smart Hiring Intelligence</span><span class="tab-text-es">Inteligencia de Contratación Inteligente</span></h3>
                             <p><span class="tab-text-en">AI that understands trucking and cross-border recruiting</span><span class="tab-text-es">IA que entiende el transporte y el reclutamiento transfronterizo</span></p>
@@ -2521,7 +2602,6 @@
                 <!-- Section 2: Recruiter Tools -->
                 <div class="intro-section">
                     <div class="intro-section-header">
-                        <div class="intro-section-icon">💼</div>
                         <div class="intro-section-title">
                             <h3><span class="tab-text-en">Recruiter Tools That Save Money</span><span class="tab-text-es">Herramientas de Reclutador Que Ahorran Dinero</span></h3>
                             <p><span class="tab-text-en">Features that drastically reduce recruiter workload</span><span class="tab-text-es">Funciones que reducen drásticamente la carga de trabajo del reclutador</span></p>
@@ -2606,7 +2686,6 @@
                 <!-- Section 4: Innovation / Game-Changers -->
                 <div class="intro-section">
                     <div class="intro-section-header">
-                        <div class="intro-section-icon">🚀</div>
                         <div class="intro-section-title">
                             <h3><span class="tab-text-en">Game-Changing Innovations</span><span class="tab-text-es">Innovaciones Revolucionarias</span></h3>
                             <p><span class="tab-text-en">Out-of-the-box features to truly stand out from competition</span><span class="tab-text-es">Funciones innovadoras para destacar verdaderamente de la competencia</span></p>
@@ -3650,7 +3729,20 @@
             notesInput.focus();
         }
 
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
         const html = document.documentElement;
+        
+        // Check for saved theme preference or default to dark
+        const savedTheme = localStorage.getItem('mve-theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('mve-theme', newTheme);
+        });
 
         // Language Selector (Header)
         function toggleLanguageDropdown() {
