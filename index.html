@@ -2542,6 +2542,68 @@
             text-align: center;
         }
 
+        .roadmap-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .roadmap-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px;
+            background: var(--input-bg);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .roadmap-number {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            background: var(--gradient-accent);
+            color: var(--mve-navy-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .roadmap-content {
+            flex: 1;
+        }
+
+        .roadmap-content h5 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .roadmap-content p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .roadmap-content a {
+            color: var(--mve-gold);
+            text-decoration: underline;
+        }
+
+        .roadmap-content a:hover {
+            color: var(--mve-gold-light);
+        }
+
+        @media (max-width: 768px) {
+            .roadmap-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .how-it-works-item {
             margin-bottom: 20px;
             padding: 16px;
@@ -2788,7 +2850,7 @@
                 <!-- Hero Section -->
                 <div class="intro-hero">
                     <h2><span class="tab-text-en">Your Recruiting Process, </span><span class="tab-text-es">Tu Proceso de Reclutamiento, </span><span><span class="tab-text-en">Your Way</span><span class="tab-text-es">A Tu Manera</span></span></h2>
-                    <p><span class="tab-text-en">As you explore this software, keep in mind that everything you see can be customized to fit your needs. Think about your ideal recruiting process and how this system can help make it real.</span><span class="tab-text-es">Esto no es solo software — es una plataforma de reclutamiento completamente personalizable diseñada en torno a una pregunta: <strong>¿Cómo es el proceso de reclutamiento perfecto para TI?</strong></span></p>
+                    <p><span class="tab-text-en">As you explore this software, keep in mind that everything you see can be customized to fit your needs. Think about your ideal recruiting process and how this system can help make&nbsp;it&nbsp;real.</span><span class="tab-text-es">Esto no es solo software — es una plataforma de reclutamiento completamente personalizable diseñada en torno a una pregunta: <strong>¿Cómo es el proceso de reclutamiento perfecto para TI?</strong></span></p>
                     <div class="intro-badge">
                         <span>✨</span>
                         <span><span class="tab-text-en">100% Customizable to Your Needs</span><span class="tab-text-es">100% Personalizable a Tus Necesidades</span></span>
@@ -2798,49 +2860,75 @@
                 <!-- Customization Banner -->
                 <div class="customization-banner">
                     <h3><span class="tab-text-en">🎯 Built Around Your Vision</span><span class="tab-text-es">🎯 Construido Alrededor de Tu Visión</span></h3>
-                    <p><span class="tab-text-en">The recommended method is a video interview. Candidates answer one question at a time and can rerecord their responses. This lowers pressure and helps them perform closer to their true ability.</span><span class="tab-text-es">El método recomendado es una entrevista por video. Los candidatos responden una pregunta a la vez y pueden volver a grabar sus respuestas. Esto reduce la presión y les ayuda a desempeñarse más cerca de su verdadera capacidad.</span></p>
+                    <p><span class="tab-text-en">The recommended method is a video interview. Candidates answer one question at a time and can rerecord their responses. This lowers pressure and helps them perform closer to their&nbsp;true&nbsp;ability.</span><span class="tab-text-es">El método recomendado es una entrevista por video. Los candidatos responden una pregunta a la vez y pueden volver a grabar sus respuestas. Esto reduce la presión y les ayuda a desempeñarse más cerca de su verdadera capacidad.</span></p>
                     
                     <div class="how-it-works-section">
                         <h4><span class="tab-text-en">How It Works</span><span class="tab-text-es">Cómo Funciona</span></h4>
                         
-                        <div class="how-it-works-item">
-                            <h5><span class="tab-text-en">Integration with Paylocity</span><span class="tab-text-es">Integración con Paylocity</span></h5>
-                            <p><span class="tab-text-en">The system connects to your Paylocity account using the API (<a href="https://recruiting.paylocity.com/Recruiting/v2/api/feed/documentation" target="_blank">documentation here</a>). This lets the AI Assistant access candidate resumes and begin screening.</span><span class="tab-text-es">El sistema se conecta a su cuenta de Paylocity usando la API (<a href="https://recruiting.paylocity.com/Recruiting/v2/api/feed/documentation" target="_blank">documentación aquí</a>). Esto permite que el Asistente de IA acceda a los currículums de los candidatos y comience la selección.</span></p>
-                        </div>
-                        
-                        <div class="how-it-works-item">
-                            <h5><span class="tab-text-en">Vacancy Cost Tracker</span><span class="tab-text-es">Rastreador de Costo de Vacantes</span></h5>
-                            <p><span class="tab-text-en">Use this tool to monitor the cost of open positions. It helps you set priorities and identify when increasing paid job ad budgets may speed up hiring.</span><span class="tab-text-es">Use esta herramienta para monitorear el costo de las posiciones abiertas. Le ayuda a establecer prioridades e identificar cuándo aumentar los presupuestos de anuncios de trabajo pagados puede acelerar la contratación.</span></p>
-                        </div>
-                        
-                        <div class="how-it-works-item">
-                            <h5><span class="tab-text-en">AI Assistant Screening</span><span class="tab-text-es">Selección del Asistente de IA</span></h5>
-                            <p><span class="tab-text-en">The AI Assistant reviews resumes and documents submitted by applicants. Any candidate who scores above fifty percent, based on how well their information matches the job description, automatically receives a link to the Candidate Dashboard along with instructions and a deadline to complete their interview.</span><span class="tab-text-es">El Asistente de IA revisa los currículums y documentos enviados por los solicitantes. Cualquier candidato que obtenga más del cincuenta por ciento, basado en qué tan bien su información coincide con la descripción del trabajo, recibe automáticamente un enlace al Panel del Candidato junto con instrucciones y una fecha límite para completar su entrevista.</span></p>
-                        </div>
-                        
-                        <div class="how-it-works-item">
-                            <h5><span class="tab-text-en">Candidate Dashboard</span><span class="tab-text-es">Panel del Candidato</span></h5>
-                            <p><span class="tab-text-en">Candidates complete interviews, track their progress, view deadlines, and finish onboarding in one place. This reduces unnecessary check in calls and lowers candidate drop off during the hiring process. Candidates will also receive short surveys at key points to provide feedback and help improve the recruiting process.</span><span class="tab-text-es">Los candidatos completan entrevistas, rastrean su progreso, ven las fechas límite y terminan la incorporación en un solo lugar. Esto reduce las llamadas innecesarias de seguimiento y disminuye el abandono de candidatos durante el proceso de contratación. Los candidatos también recibirán encuestas cortas en puntos clave para proporcionar comentarios y ayudar a mejorar el proceso de reclutamiento.</span></p>
-                        </div>
-                        
-                        <div class="how-it-works-item">
-                            <h5><span class="tab-text-en">Recruiter Notifications</span><span class="tab-text-es">Notificaciones del Reclutador</span></h5>
-                            <p><span class="tab-text-en">After a candidate finishes, the AI Assistant creates a summary of the interview and the submitted documents. Recruiters are notified and can review the summary and watch the video before deciding the next steps.</span><span class="tab-text-es">Después de que un candidato termina, el Asistente de IA crea un resumen de la entrevista y los documentos enviados. Los reclutadores son notificados y pueden revisar el resumen y ver el video antes de decidir los próximos pasos.</span></p>
-                        </div>
-                        
-                        <div class="how-it-works-item">
-                            <h5><span class="tab-text-en">Onboarding Updates</span><span class="tab-text-es">Actualizaciones de Incorporación</span></h5>
-                            <p><span class="tab-text-en">Once the candidate enters onboarding, both the recruiter and the candidate receive real time updates for a smooth transition.</span><span class="tab-text-es">Una vez que el candidato entra en incorporación, tanto el reclutador como el candidato reciben actualizaciones en tiempo real para una transición fluida.</span></p>
-                        </div>
-                        
-                        <div class="how-it-works-item">
-                            <h5><span class="tab-text-en">Multilingual Candidate Support</span><span class="tab-text-es">Soporte Multilingüe para Candidatos</span></h5>
-                            <p><span class="tab-text-en">Candidates receive support in the language they prefer. A chatbot can answer questions about the recruitment process twenty four hours a day, and an ultrarealistic AI Assistant can answer incoming calls. Dynamic phone numbers are shown to candidates based on their location.</span><span class="tab-text-es">Los candidatos reciben soporte en el idioma que prefieren. Un chatbot puede responder preguntas sobre el proceso de reclutamiento las veinticuatro horas del día, y un Asistente de IA ultrarrealista puede responder llamadas entrantes. Se muestran números de teléfono dinámicos a los candidatos según su ubicación.</span></p>
-                        </div>
-                        
-                        <div class="how-it-works-item">
-                            <h5><span class="tab-text-en">Seamless Integration With Your Team</span><span class="tab-text-es">Integración Perfecta Con Su Equipo</span></h5>
-                            <p><span class="tab-text-en">Recruiter schedules can be shared with the AI Assistant so it knows when recruiters are unavailable. The assistant can inform candidates, take messages, and arrange a call back.</span><span class="tab-text-es">Los horarios de los reclutadores se pueden compartir con el Asistente de IA para que sepa cuándo los reclutadores no están disponibles. El asistente puede informar a los candidatos, tomar mensajes y organizar una devolución de llamada.</span></p>
+                        <div class="roadmap-container">
+                            <div class="roadmap-item">
+                                <div class="roadmap-number">1</div>
+                                <div class="roadmap-content">
+                                    <h5><span class="tab-text-en">Integration with Paylocity</span><span class="tab-text-es">Integración con Paylocity</span></h5>
+                                    <p><span class="tab-text-en">The system connects to your Paylocity account using the API (<a href="https://recruiting.paylocity.com/Recruiting/v2/api/feed/documentation" target="_blank">documentation here</a>). This lets the AI Assistant access candidate resumes and begin screening.</span><span class="tab-text-es">El sistema se conecta a su cuenta de Paylocity usando la API (<a href="https://recruiting.paylocity.com/Recruiting/v2/api/feed/documentation" target="_blank">documentación aquí</a>). Esto permite que el Asistente de IA acceda a los currículums de los candidatos y comience la selección.</span></p>
+                                </div>
+                            </div>
+                            
+                            <div class="roadmap-item">
+                                <div class="roadmap-number">2</div>
+                                <div class="roadmap-content">
+                                    <h5><span class="tab-text-en">Vacancy Cost Tracker</span><span class="tab-text-es">Rastreador de Costo de Vacantes</span></h5>
+                                    <p><span class="tab-text-en">Use this tool to monitor the cost of open positions. It helps you set priorities and identify when increasing paid job ad budgets may speed up hiring.</span><span class="tab-text-es">Use esta herramienta para monitorear el costo de las posiciones abiertas. Le ayuda a establecer prioridades e identificar cuándo aumentar los presupuestos de anuncios de trabajo pagados puede acelerar la contratación.</span></p>
+                                </div>
+                            </div>
+                            
+                            <div class="roadmap-item">
+                                <div class="roadmap-number">3</div>
+                                <div class="roadmap-content">
+                                    <h5><span class="tab-text-en">AI Assistant Screening</span><span class="tab-text-es">Selección del Asistente de IA</span></h5>
+                                    <p><span class="tab-text-en">The AI Assistant reviews resumes and documents submitted by applicants. Any candidate who scores above fifty percent, based on how well their information matches the job description, automatically receives a link to the Candidate Dashboard along with instructions and a deadline to complete their interview.</span><span class="tab-text-es">El Asistente de IA revisa los currículums y documentos enviados por los solicitantes. Cualquier candidato que obtenga más del cincuenta por ciento, basado en qué tan bien su información coincide con la descripción del trabajo, recibe automáticamente un enlace al Panel del Candidato junto con instrucciones y una fecha límite para completar su entrevista.</span></p>
+                                </div>
+                            </div>
+                            
+                            <div class="roadmap-item">
+                                <div class="roadmap-number">4</div>
+                                <div class="roadmap-content">
+                                    <h5><span class="tab-text-en">Candidate Dashboard</span><span class="tab-text-es">Panel del Candidato</span></h5>
+                                    <p><span class="tab-text-en">Candidates complete interviews, track their progress, view deadlines, and finish onboarding in one place. This reduces unnecessary check in calls and lowers candidate drop off during the hiring process. Candidates will also receive short surveys at key points to provide feedback and help improve the recruiting process.</span><span class="tab-text-es">Los candidatos completan entrevistas, rastrean su progreso, ven las fechas límite y terminan la incorporación en un solo lugar. Esto reduce las llamadas innecesarias de seguimiento y disminuye el abandono de candidatos durante el proceso de contratación. Los candidatos también recibirán encuestas cortas en puntos clave para proporcionar comentarios y ayudar a mejorar el proceso de reclutamiento.</span></p>
+                                </div>
+                            </div>
+                            
+                            <div class="roadmap-item">
+                                <div class="roadmap-number">5</div>
+                                <div class="roadmap-content">
+                                    <h5><span class="tab-text-en">Recruiter Notifications</span><span class="tab-text-es">Notificaciones del Reclutador</span></h5>
+                                    <p><span class="tab-text-en">After a candidate finishes, the AI Assistant creates a summary of the interview and the submitted documents. Recruiters are notified and can review the summary and watch the video before deciding the next steps.</span><span class="tab-text-es">Después de que un candidato termina, el Asistente de IA crea un resumen de la entrevista y los documentos enviados. Los reclutadores son notificados y pueden revisar el resumen y ver el video antes de decidir los próximos pasos.</span></p>
+                                </div>
+                            </div>
+                            
+                            <div class="roadmap-item">
+                                <div class="roadmap-number">6</div>
+                                <div class="roadmap-content">
+                                    <h5><span class="tab-text-en">Onboarding Updates</span><span class="tab-text-es">Actualizaciones de Incorporación</span></h5>
+                                    <p><span class="tab-text-en">Once the candidate enters onboarding, both the recruiter and the candidate receive real time updates for a smooth transition.</span><span class="tab-text-es">Una vez que el candidato entra en incorporación, tanto el reclutador como el candidato reciben actualizaciones en tiempo real para una transición fluida.</span></p>
+                                </div>
+                            </div>
+                            
+                            <div class="roadmap-item">
+                                <div class="roadmap-number">7</div>
+                                <div class="roadmap-content">
+                                    <h5><span class="tab-text-en">Multilingual Candidate Support</span><span class="tab-text-es">Soporte Multilingüe para Candidatos</span></h5>
+                                    <p><span class="tab-text-en">Candidates receive support in the language they prefer. A chatbot can answer questions about the recruitment process twenty four hours a day, and an ultrarealistic AI Assistant can answer incoming calls. Dynamic phone numbers are shown to candidates based on their location.</span><span class="tab-text-es">Los candidatos reciben soporte en el idioma que prefieren. Un chatbot puede responder preguntas sobre el proceso de reclutamiento las veinticuatro horas del día, y un Asistente de IA ultrarrealista puede responder llamadas entrantes. Se muestran números de teléfono dinámicos a los candidatos según su ubicación.</span></p>
+                                </div>
+                            </div>
+                            
+                            <div class="roadmap-item">
+                                <div class="roadmap-number">8</div>
+                                <div class="roadmap-content">
+                                    <h5><span class="tab-text-en">Seamless Integration With Your Team</span><span class="tab-text-es">Integración Perfecta Con Su Equipo</span></h5>
+                                    <p><span class="tab-text-en">Recruiter schedules can be shared with the AI Assistant so it knows when recruiters are unavailable. The assistant can inform candidates, take messages, and arrange a call back.</span><span class="tab-text-es">Los horarios de los reclutadores se pueden compartir con el Asistente de IA para que sepa cuándo los reclutadores no están disponibles. El asistente puede informar a los candidatos, tomar mensajes y organizar una devolución de llamada.</span></p>
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="sample-calls-section">
@@ -4476,8 +4564,37 @@
                 document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
                 tab.classList.add('active');
                 document.getElementById(tab.dataset.tab).classList.add('active');
+                
+                // Show popup when visiting Candidate Dashboard
+                if (tab.dataset.tab === 'candidate-link') {
+                    showCandidateDashboardPopup();
+                }
             });
         });
+        
+        // Candidate Dashboard Info Popup
+        function showCandidateDashboardPopup() {
+            // Check if popup was already shown this session
+            if (sessionStorage.getItem('candidateDashboardPopupShown')) return;
+            
+            const popupHTML = `
+                <div class="candidate-info-popup-overlay" id="candidateInfoPopup">
+                    <div class="candidate-info-popup">
+                        <div class="popup-icon">ℹ️</div>
+                        <h3><span class="tab-text-en">For Recruiters</span><span class="tab-text-es">Para Reclutadores</span></h3>
+                        <p><span class="tab-text-en">Recruiters will track the hiring process on the <strong>Interviews</strong> and <strong>Onboarding</strong> tabs. The Candidate Dashboard is only here to show you what the candidate will receive via email.</span><span class="tab-text-es">Los reclutadores darán seguimiento al proceso de contratación en las pestañas de <strong>Entrevistas</strong> e <strong>Incorporación</strong>. El Panel del Candidato solo está aquí para mostrarle lo que el candidato recibirá por correo electrónico.</span></p>
+                        <button class="popup-close-btn" onclick="closeCandidateDashboardPopup()"><span class="tab-text-en">Got it!</span><span class="tab-text-es">¡Entendido!</span></button>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', popupHTML);
+            sessionStorage.setItem('candidateDashboardPopupShown', 'true');
+        }
+        
+        function closeCandidateDashboardPopup() {
+            const popup = document.getElementById('candidateInfoPopup');
+            if (popup) popup.remove();
+        }
 
         // Candidate Data Store
         const candidatesData = {
@@ -4833,7 +4950,6 @@
             detailsPanel.innerHTML = `
                 <div class="onboarding-header-card">
                     <div class="onboarding-candidate-info">
-                        <div class="candidate-avatar large" style="background: url('${candidate.avatar}') center/cover, var(--gradient-accent);"></div>
                         <div>
                             <h3>${candidate.name}</h3>
                             <p>${candidate.role} • Start Date: ${ob.startDate}</p>
@@ -5330,6 +5446,77 @@
     </script>
     
     <style>
+        /* ===== CANDIDATE DASHBOARD POPUP STYLES ===== */
+        .candidate-info-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .candidate-info-popup {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 450px;
+            text-align: center;
+            border: 2px solid var(--mve-gold);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .candidate-info-popup .popup-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .candidate-info-popup h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--mve-gold);
+            margin-bottom: 16px;
+        }
+        
+        .candidate-info-popup p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        
+        .candidate-info-popup p strong {
+            color: var(--text-primary);
+        }
+        
+        .popup-close-btn {
+            padding: 12px 32px;
+            background: var(--gradient-accent);
+            color: var(--mve-navy-dark);
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .popup-close-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 160, 25, 0.4);
+        }
+        
         /* ===== CHATBOT STYLES ===== */
         .chatbot-container {
             position: fixed;
