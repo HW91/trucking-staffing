@@ -1888,8 +1888,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.9);
             z-index: 1000;
             align-items: center;
             justify-content: center;
@@ -4480,7 +4479,7 @@
             selector.classList.toggle('open');
         }
 
-        function setLanguage(lang, flag, text) {
+        function setLanguage(lang, flag, text, syncCandidate = true) {
             const selector = document.getElementById('languageSelector');
             const flagSpan = document.getElementById('currentLangFlag');
             const textSpan = document.getElementById('currentLangText');
@@ -4502,6 +4501,11 @@
             // Update document language attribute
             document.documentElement.lang = lang;
             
+            // Sync candidate dashboard dropdown
+            if (syncCandidate) {
+                setCandidateLanguage(lang, flag, text, false);
+            }
+            
             console.log('Language changed to:', lang);
         }
 
@@ -4511,7 +4515,7 @@
             selector.classList.toggle('open');
         }
 
-        function setCandidateLanguage(lang, flag, text) {
+        function setCandidateLanguage(lang, flag, text, syncMain = true) {
             const selector = document.getElementById('candidateLangSelector');
             const flagSpan = document.getElementById('candidateLangFlag');
             const textSpan = document.getElementById('candidateLangText');
@@ -4524,11 +4528,19 @@
                 opt.classList.toggle('active', opt.dataset.lang === lang);
             });
             
-            // Store preference for candidate view
-            localStorage.setItem('mve-candidate-language', lang);
+            // Store preference (use same key as main for sync)
+            localStorage.setItem('mve-language', lang);
             
             // Close dropdown
             selector.classList.remove('open');
+            
+            // Update document language attribute
+            document.documentElement.lang = lang;
+            
+            // Sync main header dropdown
+            if (syncMain) {
+                setLanguage(lang, flag, text, false);
+            }
             
             console.log('Candidate language changed to:', lang);
         }
@@ -4546,15 +4558,11 @@
             }
         });
 
-        // Load saved language preferences
+        // Load saved language preference (synced across both dropdowns)
         const savedLang = localStorage.getItem('mve-language');
         if (savedLang === 'es') {
-            setLanguage('es', '🇪🇸', 'Spanish');
-        }
-        
-        const savedCandidateLang = localStorage.getItem('mve-candidate-language');
-        if (savedCandidateLang === 'es') {
-            setCandidateLanguage('es', '🇪🇸', 'Spanish');
+            setLanguage('es', '🇪🇸', 'Spanish', false);
+            setCandidateLanguage('es', '🇪🇸', 'Spanish', false);
         }
 
         // Tab switching
@@ -5453,7 +5461,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.9);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -5581,8 +5589,7 @@
             right: 0;
             width: 380px;
             height: 520px;
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
+            background: var(--mve-navy);
             border-radius: 20px;
             border: 1px solid var(--border-color);
             box-shadow: 0 20px 60px var(--shadow-color);
@@ -5593,6 +5600,10 @@
             transform: translateY(20px) scale(0.95);
             transition: all 0.3s ease;
             overflow: hidden;
+        }
+
+        [data-theme="light"] .chatbot-window {
+            background: #ffffff;
         }
         
         .chatbot-window.open {
